@@ -20,7 +20,7 @@
 
 #pragma once
 
-#define MPC_WND_CLASS_NAMEW L"MPC-BE"
+#define MPC_WND_CLASS_NAMEW L"MithenPlayer"
 
 #define KILOBYTE          1024
 #define MEGABYTE       1048576

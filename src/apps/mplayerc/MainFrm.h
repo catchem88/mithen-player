@@ -41,7 +41,6 @@
 #include "KeyProvider.h"
 #include "PlayerYtDlp.h"
 #include "SvgHelper.h"
-#include "HistoryDlg.h"
 
 #include "mplayerc.h"
 #include "HistoryFile.h"
@@ -60,7 +59,6 @@
 #include <ID3DFullscreenControl.h>
 #include <HighDPI.h>
 
-#include "WebServer.h"
 #include <d3d9.h>
 #include <vmr9.h>
 #include <evr.h>
@@ -133,7 +131,6 @@ class CMainFrame : public CFrameWnd, public CDropTarget, public CDPI
 	friend class CThumbsTaskDlg;
 	friend class CShaderEditorDlg;
 	friend class CTextPassThruFilter;
-	friend class CWebClientSocket;
 	friend class CGraphThread;
 	friend class CPPageSubtitles;
 	friend class CPPageSoundProcessing;
@@ -257,15 +254,12 @@ class CMainFrame : public CFrameWnd, public CDropTarget, public CDPI
 	CMenu m_popupMainMenu;
 	CMenu m_popupMenu;
 	CMenu m_openCDsMenu;
-	CMenu m_recentfilesMenu;
-	CMenu m_languageMenu;
 	CMenu m_filtersMenu;
 	CMenu m_shadersMenu;
 	CMenu m_AudioMenu;
 	CMenu m_SubtitlesMenu;
 	CMenu m_VideoStreamsMenu;
 	CMenu m_chaptersMenu;
-	CMenu m_favoritesMenu;
 	CMenu m_RButtonMenu;
 	CMenu m_VideoFrameMenu;
 	CMenu m_PanScanMenu;
@@ -285,9 +279,6 @@ class CMainFrame : public CFrameWnd, public CDropTarget, public CDPI
 	void SetupSubtitleTracksSubMenu();
 	void SetupVideoStreamsSubMenu();
 	void SetupNavChaptersSubMenu();
-	void SetupFavoritesSubMenu();
-	void SetupRecentFilesSubMenu();
-	void SetupLanguageMenu();
 
 	IBaseFilter* FindSwitcherFilter();
 	void SetupAMStreamSubMenu(CMenu& submenu, UINT id, DWORD dwSelGroup);
@@ -374,7 +365,6 @@ class CMainFrame : public CFrameWnd, public CDropTarget, public CDPI
 	void SaveThumbnails(LPCWSTR fn);
 	//
 
-	std::unique_ptr<CWebServer> m_pWebServer;
 	PMODE m_ePlaybackMode;
 	ULONG m_lCurrentChapter;
 	ULONG m_lChapterStartTime;
@@ -402,9 +392,6 @@ public:
 	void SetColorMenu(CMenu& menu);
 
 	void SetColorTitle(const bool bSystemOnly = false);
-
-	void StartWebServer(int nPort);
-	void StopWebServer();
 
 	PMODE GetPlaybackMode() const {
 		return m_ePlaybackMode;
@@ -507,9 +494,6 @@ private:
 	DWORD m_iDVDTitleForHistory = 0;
 	bool m_bDVDStillOn    = false;
 	bool m_bDVDRestorePos = false;
-	std::vector<CStringW> m_RecentPaths; // used in SetupRecentFilesSubMenu and OnRecentFile
-	std::list<SessionInfo> m_FavFiles;   // used in SetupFavoritesSubMenu and OnFavoritesFile
-	std::list<SessionInfo> m_FavDVDs;    // used in SetupFavoritesSubMenu and OnFavoritesDVD
 
 	LPCWSTR GetFileNameOrTitleOrPath() {
 		return
@@ -679,8 +663,6 @@ public:
 	BOOL OpenCurPlaylistItem(REFERENCE_TIME rtStart = INVALID_TIME, BOOL bAddRecent = TRUE);
 	BOOL OpenFile(const CString fname, REFERENCE_TIME rtStart = INVALID_TIME, BOOL bAddRecent = TRUE);
 	void OpenMedia(std::unique_ptr<OpenMediaData> pOMD);
-	void PlayFavoriteFile(SessionInfo fav);
-	void PlayFavoriteDVD(SessionInfo fav);
 	bool ResizeDevice();
 	bool ResetDevice();
 	bool DisplayChange();
@@ -805,8 +787,6 @@ private: // control bar embedded members
 
 	std::vector<CSizingControlBar*> m_dockingbarsVisible;
 
-	std::unique_ptr<CHistoryDlg> m_pHistoryDlg;
-
 	CFileDropTarget m_fileDropTarget;
 	// TODO
 	DROPEFFECT OnDragEnter(COleDataObject* pDataObject, DWORD dwKeyState, CPoint point);
@@ -906,8 +886,6 @@ public:
 	afx_msg void OnMenuNavAudioOptions();
 	afx_msg void OnMenuNavSubtitleOptions();
 	afx_msg void OnMenuNavJumpTo();
-	afx_msg void OnMenuRecentFiles();
-	afx_msg void OnMenuFavorites();
 	afx_msg void OnUpdateMenuNavSubtitle(CCmdUI* pCmdUI);
 	afx_msg void OnUpdateMenuNavAudio(CCmdUI* pCmdUI);
 	afx_msg void OnMenuAfterPlayback();
@@ -1003,6 +981,9 @@ public:
 	afx_msg void OnViewZoom(UINT nID);
 	afx_msg void OnUpdateViewZoom(CCmdUI* pCmdUI);
 	afx_msg void OnViewZoomAutoFit();
+	afx_msg void OnViewMaximize();
+	afx_msg void OnViewOriginalSize();
+	afx_msg void OnViewScale(UINT nID);
 	afx_msg void OnViewDefaultVideoFrame(UINT nID);
 	afx_msg void OnUpdateViewDefaultVideoFrame(CCmdUI* pCmdUI);
 	afx_msg void OnViewSwitchVideoFrame();
@@ -1127,21 +1108,8 @@ public:
 	afx_msg void OnTunerScan();
 	afx_msg void OnUpdateTunerScan(CCmdUI* pCmdUI);
 
-	afx_msg void OnFavoritesAdd();
-	afx_msg void OnUpdateFavoritesAdd(CCmdUI* pCmdUI);
-	afx_msg void OnFavoritesQuickAdd();
-	afx_msg void OnFavoritesOrganize();
-	afx_msg void OnFavoritesFile(UINT nID);
-	afx_msg void OnFavoritesDVD(UINT nID);
-	afx_msg void OnShowHistory();
-	afx_msg void OnRecentFileClear();
-	afx_msg void OnUpdateRecentFileClear(CCmdUI* pCmdUI);
-	afx_msg void OnRecentFile(UINT nID);
-
 	afx_msg void OnHelpHomepage();
-	afx_msg void OnHelpCheckForUpdate();
 	//afx_msg void OnHelpDocumentation();
-	afx_msg void OnHelpToolbarImages();
 	//afx_msg void OnHelpDonate();
 
 	// Subtitle position
@@ -1157,8 +1125,6 @@ public:
 	afx_msg void OnPlaylistOpenFolder();
 
 	afx_msg void OnClose();
-
-	afx_msg void OnLanguage(UINT nID);
 
 	CString UpdatePlayerStatus();
 
@@ -1264,8 +1230,6 @@ public:
 
 	HBITMAP		m_ThumbCashedBitmap;
 	CSize		m_ThumbCashedSize;
-
-	void		AddFavorite(bool bDisplayMessage = false, bool bShowDialog = true);
 
 private:
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);

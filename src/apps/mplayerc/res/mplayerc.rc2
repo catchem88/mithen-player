@@ -153,6 +153,8 @@ IDF_SVG_TASKBAR_BUTTONS          FILE                    "res\\taskbar_buttons.s
 IDF_SVG_TASKBAR_STATE_ICONS      FILE                    "res\\taskbar_state_icons.svg"
 IDB_W7_AUDIO                     FILE                    "res\\audio.png"
 IDF_MAIN_ICON                    FILE                    "res\\main.png"
+IDF_MITHEN_LOGO                  FILE                    "res\\mithen-player.png"
+IDI_MITHEN_LOGO                  ICON                    "res\\mithen-player.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -176,20 +178,20 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "Comments", "Based on the original MPC v6.4.9.0 © Gabest & MPC-HC"
+            VALUE "Comments", "Based on the original MPC v6.4.9.0 ï¿½ Gabest & MPC-HC"
             VALUE "CompanyName", MPC_COMP_NAME_STR
             VALUE "FileVersion", MPC_VERSION_FULL_STR
             VALUE "LegalCopyright", MPC_COPYRIGHT_STR
 #ifdef _WIN64
-            VALUE "FileDescription", "MPC-BE x64"
+            VALUE "FileDescription", "MithenPlayer x64"
             VALUE "InternalName", "mpc-be64"
             VALUE "OriginalFilename", "mpc-be64.exe"
-            VALUE "ProductName", "MPC-BE x64"
+            VALUE "ProductName", "MithenPlayer x64"
 #else
-            VALUE "FileDescription", "MPC-BE"
+            VALUE "FileDescription", "MithenPlayer"
             VALUE "InternalName", "mpc-be"
             VALUE "OriginalFilename", "mpc-be.exe"
-            VALUE "ProductName", "MPC-BE"
+            VALUE "ProductName", "MithenPlayer"
 #endif
             VALUE "ProductVersion", MPC_VERSION_STR
         END

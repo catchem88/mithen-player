@@ -9,7 +9,8 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
+#include "afxres.h"
+
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -211,31 +212,31 @@ BEGIN
     CONTROL         "Paste URL from clipboard",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,96,134,9
 END
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 241, 202
+IDD_ABOUTBOX DIALOGEX 0, 0, 241, 235
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "About"
+CAPTION "About MithenPlayer"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_MAINFRAME_ICON,5,5,21,20
-    LTEXT           "MPC-BE",IDC_STATIC1,30,5,195,8,SS_NOPREFIX
+    CONTROL         "",IDC_MITHEN_LOGO,"Static",SS_ICON | SS_CENTERIMAGE,5,5,64,64
+    LTEXT           "MithenPlayer",IDC_STATIC1,75,14,160,14,SS_NOPREFIX
     CONTROL         "Copyright © 2002-2026 see Authors.txt",IDC_AUTHORS_LINK,
-                    "SysLink",WS_TABSTOP,30,17,195,8
-    LTEXT           "Version :",IDC_VERSION,30,34,90,8
-    LTEXT           "MPC-BE Compiler :",IDC_STATIC,30,66,90,8
-    LTEXT           "FFmpeg Compiler :",IDC_STATIC,30,83,90,8
-    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,30,99,90,8
-    EDITTEXT        IDC_VERSION_NUMBER,120,32,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT2,120,48,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_MPC_COMPILER,120,64,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_FFMPEG_COMPILER,120,81,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_LIBAVCODEC_VERSION,120,97,110,13,ES_AUTOHSCROLL | ES_READONLY
-    CONTROL         "<a>https://sourceforge.net/projects/mpcbe/</a>",IDC_SOURCEFORGE_LINK,
-                    "SysLink",WS_TABSTOP,30,114,200,8
-    CONTROL         "<a>https://github.com/Aleksoid1978/MPC-BE</a>",IDC_GITHUB_LINK,
-                    "SysLink",WS_TABSTOP,30,126,200,8
-    LTEXT           "This program is freeware and released under the GNU General Public License.",IDC_STATIC,30,138,200,18
-    LTEXT           "English translation made by MPC-BE Team",IDC_STATIC,30,161,200,18
-    DEFPUSHBUTTON   "OK",IDOK,185,183,50,14,WS_GROUP
+                    "SysLink",WS_TABSTOP,75,32,160,8
+    LTEXT           "Version :",IDC_VERSION,75,50,70,8
+    EDITTEXT        IDC_VERSION_NUMBER,145,48,90,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT2,145,64,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Compiler :",IDC_STATIC,75,82,70,8
+    EDITTEXT        IDC_MPC_COMPILER,145,80,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "FFmpeg Compiler :",IDC_STATIC,75,99,70,8
+    EDITTEXT        IDC_FFMPEG_COMPILER,145,97,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,75,116,70,8
+    EDITTEXT        IDC_LIBAVCODEC_VERSION,145,114,90,13,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "<a>https://github.com/catchem88/mithen-player</a>",IDC_GITHUB_LINK,
+                    "SysLink",WS_TABSTOP,75,134,160,8
+    LTEXT           "This program is freeware and released under the GNU General Public License.",IDC_STATIC,5,150,230,18
+    LTEXT           "Original MPC by Gabest",IDC_STATIC,5,170,230,8
+    LTEXT           "MPC-HC by casimir666",IDC_STATIC,5,182,230,8
+    LTEXT           "Based on MPC-BE by Aleksoid1978",IDC_STATIC,5,194,230,8
+    DEFPUSHBUTTON   "OK",IDOK,185,216,50,14,WS_GROUP
 END
 
 IDD_PLAYERSTATUSBAR DIALOGEX 0, 0, 183, 15
@@ -272,35 +273,21 @@ BEGIN
     CONTROL         "Windows registry",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | BS_TOP | WS_GROUP,10,148,106,10
     CONTROL         "User profile",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON | BS_TOP,10,161,106,10
     CONTROL         "Player folder",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON | BS_TOP,10,175,106,10
-    GROUPBOX        "History",IDC_STATIC,124,5,167,128,WS_GROUP
-    CONTROL         "Keep history of recently opened files",IDC_CHECK1,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,17,156,9
-    LTEXT           "Maximum number of entries:",IDC_STATIC,129,31,110,8
-    EDITTEXT        IDC_EDIT3,255,29,30,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "",IDC_SPIN3,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,275,29,11,13
-    LTEXT           "Number of recent files:",IDC_STATIC,129,47,122,8
-    EDITTEXT        IDC_EDIT1,255,45,30,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "",IDC_SPIN1,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,275,45,12,13
-    CONTROL         "Remember DVD position",IDC_DVD_POS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,60,156,9
-    CONTROL         "Remember File position",IDC_FILE_POS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,72,158,9
-    CONTROL         "Remember last Pan-n-Scan Zoom",IDC_CHECK11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,84,156,9
-    CONTROL         "Remember main playlist",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,96,156,9
-    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,129,108,158,1
-    CONTROL         "Display title for URL in recent files",IDC_CHECK4,
-                    "Button",BS_AUTOCHECKBOX | BS_TOP | BS_MULTILINE | WS_TABSTOP,129,112,156,17
-    GROUPBOX        "Other",IDC_STATIC,124,135,167,55,WS_GROUP
-    CONTROL         "Tray icon",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,147,156,9
-    CONTROL         "Disable 'Open Disc' menu",IDC_CHECK10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,159,156,9
-    CONTROL         "Process priority above normal",IDC_CHECK9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,171,156,9
-    GROUPBOX        "Network timeouts",IDC_STATIC,124,191,167,41,WS_GROUP
-    LTEXT           "Connection:",IDC_STATIC,129,202,96,8
-    EDITTEXT        IDC_EDIT2,230,200,29,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "",IDC_SPIN2,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_HOTTRACK,248,200,11,13
-    LTEXT           "sec.",IDC_STATIC,263,202,26,8
-    LTEXT           "Receiving data:",IDC_STATIC,129,218,96,8
-    EDITTEXT        IDC_EDIT4,230,216,29,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "",IDC_SPIN4,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_HOTTRACK,248,216,12,13
-    LTEXT           "sec.",IDC_STATIC,263,218,26,8
+    GROUPBOX        "Other",IDC_STATIC,124,5,167,77,WS_GROUP
+    CONTROL         "Tray icon",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,17,156,9
+    CONTROL         "Disable 'Open Disc' menu",IDC_CHECK10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,29,156,9
+    CONTROL         "Process priority above normal",IDC_CHECK9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,41,156,9
+    CONTROL         "Remember last Pan-n-Scan Zoom",IDC_CHECK11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,53,156,9
+    CONTROL         "Remember main playlist",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,65,156,9
+    GROUPBOX        "Network timeouts",IDC_STATIC,124,88,167,41,WS_GROUP
+    LTEXT           "Connection:",IDC_STATIC,129,99,96,8
+    EDITTEXT        IDC_EDIT2,230,97,29,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_SPIN2,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_HOTTRACK,248,97,11,13
+    LTEXT           "sec.",IDC_STATIC,263,99,26,8
+    LTEXT           "Receiving data:",IDC_STATIC,129,115,96,8
+    EDITTEXT        IDC_EDIT4,230,113,29,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_SPIN4,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_HOTTRACK,248,113,12,13
+    LTEXT           "sec.",IDC_STATIC,263,115,26,8
 END
 
 IDD_PPAGEDVD DIALOGEX 0, 0, 296, 264
@@ -495,7 +482,7 @@ STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     GROUPBOX        "Window size at startup",IDC_STATIC,5,5,286,67
-    CONTROL         "Standard window size",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,10,16,106,10
+    CONTROL         "Automatic",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,10,16,106,10
     CONTROL         "Remember last window size",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,10,30,127,10
     CONTROL         "Set specified window size",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,10,44,118,10
     CONTROL         "Set specified video area",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | WS_DISABLED,10,58,118,10
@@ -504,7 +491,7 @@ BEGIN
     EDITTEXT        IDC_EDIT2,172,43,28,13,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
     PUSHBUTTON      "Current size",IDC_BUTTON1,204,42,64,14
     GROUPBOX        "After starting playback",IDC_STATIC,5,76,286,68
-    CONTROL         "not change",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON | WS_GROUP,10,87,64,10
+    CONTROL         "Automatic",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON | WS_GROUP,10,87,64,10
     CONTROL         "scale to video size",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,10,101,115,10
     CONTROL         "fit window to screen",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON,10,116,123,10
     COMBOBOX        IDC_COMBO1,133,99,43,47,CBS_DROPDOWNLIST | WS_VSCROLL | WS_GROUP | WS_TABSTOP
@@ -668,7 +655,7 @@ EXSTYLE WS_EX_TOOLWINDOW
 CAPTION "Warning"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "MPC-BE could not render some of the pins in the graph, you may not have the needed codecs or filters installed on the system.",IDC_STATIC1,5,5,286,18
+    LTEXT           "MithenPlayer could not render some of the pins in the graph, you may not have the needed codecs or filters installed on the system.",IDC_STATIC1,5,5,286,18
     LTEXT           "The following pin(s) failed to find a connectable filter:",IDC_STATIC2,5,27,286,8
     COMBOBOX        IDC_COMBO1,5,39,286,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        IDC_EDIT1,5,56,286,140,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
@@ -925,36 +912,6 @@ BEGIN
     COMBOBOX        IDC_COMBO3,188,105,98,49,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
 END
 
-IDD_PPAGEYOUTUBE DIALOGEX 0, 0, 296, 264
-STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
-BEGIN
-    LTEXT           "Preferred video format:",IDC_STATIC2,10,33,120,8
-    COMBOBOX        IDC_COMBO1,10,43,52,46,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    COMBOBOX        IDC_COMBO2,66,43,50,46,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "50/60 fps",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,120,45,48,10
-    CONTROL         "HDR",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,45,30,10
-    LTEXT           "Preferred audio format:",IDC_STATIC3,10,58,120,8
-    COMBOBOX        IDC_COMBO3,10,68,52,46,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Preferred audio track language:",IDC_STATIC4,10,82,140,8
-    COMBOBOX        IDC_COMBO4,10,93,130,46,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "Load playlist",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,123,130,10
-    GROUPBOX        "",IDC_STATIC,6,5,285,145
-    CONTROL         "Use the built-in YouTube playlist parser",IDC_CHECK7,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,19,137,206,10
-    CONTROL         "yt-dlp",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,4,74,10
-    LTEXT           "Executable file:",IDC_STATIC,10,17,77,8
-    COMBOBOX        IDC_COMBO5,91,15,195,30,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "Select max bitrate",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,108,276,10
-    LTEXT           "AceStream address:",IDC_STATIC,10,156,77,8
-    EDITTEXT        IDC_EDIT1,91,154,195,13,ES_AUTOHSCROLL
-    LTEXT           "MatriX (TorrServer) address:",IDC_STATIC,10,173,103,8
-    EDITTEXT        IDC_EDIT2,10,185,276,13,ES_AUTOHSCROLL
-    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,5,205,283,1
-    LTEXT           "User agent:",IDC_STATIC,10,214,77,8
-    EDITTEXT        IDC_EDIT3,91,212,195,13,ES_AUTOHSCROLL
-    PUSHBUTTON      "Default",IDC_BUTTON3,224,246,66,14
-END
 
 IDD_AUTH_DLG DIALOGEX 0, 0, 213, 127
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
@@ -972,31 +929,6 @@ BEGIN
     CONTROL         "Remember my password",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,79,92,129,9
 END
 
-IDD_PPAGEWEBSERVER DIALOGEX 0, 0, 296, 264
-STYLE DS_SETFONT | WS_CHILD
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
-BEGIN
-    CONTROL         "Listen on port:",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,7,95,9
-    EDITTEXT        IDC_EDIT1,104,5,30,13,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Image quality %:",IDC_STATIC,150,7,95,8
-    EDITTEXT        IDC_EDIT4,250,5,30,13,ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "",IDC_SPIN1,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,280,5,12,13
-    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,5,22,284,1
-    CONTROL         "Enable compression",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,26,138,9
-    CONTROL         "Allow access from localhost only",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,38,285,9
-    CONTROL         "Enable preview",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,50,138,9
-    CONTROL         "Print debug information",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,61,285,9
-    LTEXT           "Launch in web browser...",IDC_STATIC1,150,26,120,8
-    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,5,73,284,1
-    CONTROL         "Serve pages from:",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,77,285,9
-    EDITTEXT        IDC_EDIT2,15,89,167,14,ES_AUTOHSCROLL
-    PUSHBUTTON      "Browse...",IDC_BUTTON1,186,89,50,14
-    PUSHBUTTON      "Deploy...",IDC_BUTTON2,240,89,50,14
-    LTEXT           "Default page:",IDC_STATIC,5,107,285,8
-    EDITTEXT        IDC_EDIT9,15,119,275,14,ES_AUTOHSCROLL
-    LTEXT           "CGI handlers: (.ext1=path1;.ext2=path2;...)",IDC_STATIC,5,137,285,8
-    EDITTEXT        IDC_EDIT3,15,149,275,14,ES_AUTOHSCROLL
-END
 
 IDD_SUBTITLEDL_DLG DIALOGEX 0, 0, 500, 200
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
@@ -1116,15 +1048,9 @@ BEGIN
     CONTROL         "Enable MiniDump",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,137,184,9
     LTEXT           "FFmpeg executable file:",IDC_STATIC,7,152,104,8
     COMBOBOX        IDC_COMBO1,113,150,170,30,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Update check",IDC_STATIC,5,167,286,40
-    CONTROL         "Enable automatic update check",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,179,250,9
-    LTEXT           "Delay between each check:",IDC_STATIC5,10,192,110,8
-    EDITTEXT        IDC_EDIT4,120,190,30,13,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "",IDC_SPIN1,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_HOTTRACK,140,190,13,14
-    LTEXT           "day(s)",IDC_STATIC6,155,192,50,8
-    GROUPBOX        "Settings management",IDC_STATIC,5,209,286,28
-    PUSHBUTTON      "Reset",IDC_RESET_SETTINGS,10,220,55,14
-    PUSHBUTTON      "Export",IDC_EXPORT_SETTINGS,73,220,55,14
+    GROUPBOX        "Settings management",IDC_STATIC,5,167,286,28
+    PUSHBUTTON      "Reset",IDC_RESET_SETTINGS,10,178,55,14
+    PUSHBUTTON      "Export",IDC_EXPORT_SETTINGS,73,178,55,14
 END
 
 IDD_TUNER_SCAN DIALOGEX 0, 0, 407, 246
@@ -1271,16 +1197,6 @@ BEGIN
     CONTROL         "Automatically detect code page",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,135,178,10
 END
 
-IDD_UPDATE_DIALOG DIALOGEX 0, 0, 238, 60
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Update Checker"
-FONT 8, "MS Shell Dlg", 400, 0, 0x1
-BEGIN
-    DEFPUSHBUTTON   "&Yes",IDOK,129,40,50,14
-    PUSHBUTTON      "&No",IDCANCEL,182,40,50,14
-    LTEXT           "",IDC_UPDATE_DLG_TEXT,36,4,193,32
-    ICON            "",IDC_UPDATE_ICON,6,8,21,20,SS_CENTERIMAGE
-END
 
 IDD_ITEMPROPERTIES_DIALOG DIALOGEX 0, 0, 238, 100
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
@@ -1516,21 +1432,10 @@ BEGIN
         VERTGUIDE, 286
     END
 
-    IDD_PPAGEYOUTUBE, DIALOG
-    BEGIN
-        VERTGUIDE, 10
-        VERTGUIDE, 286
-        VERTGUIDE, 291
-    END
-
     IDD_AUTH_DLG, DIALOG
     BEGIN
         VERTGUIDE, 10
         VERTGUIDE, 79
-    END
-
-    IDD_PPAGEWEBSERVER, DIALOG
-    BEGIN
     END
 
     IDD_FILEPROPRES, DIALOG
@@ -1658,7 +1563,6 @@ BEGIN
         MENUITEM "Open Directory...",           ID_FILE_OPENDIRECTORY
         MENUITEM "Open &Iso image...",          ID_FILE_OPENISO
         MENUITEM "O&pen Disc",                  ID_SUBMENU_OPENDISC
-        MENUITEM "Recent Files",                ID_SUBMENU_RECENTFILES
         MENUITEM "&Close",                      ID_FILE_CLOSEPLAYLIST
         MENUITEM SEPARATOR
         MENUITEM "&Save As...",                 ID_FILE_SAVE_COPY
@@ -1700,8 +1604,6 @@ BEGIN
             MENUITEM "&200%",                       ID_VIEW_ZOOM_200
             MENUITEM "Auto Fit",                    ID_VIEW_ZOOM_AUTOFIT
         END
-        MENUITEM SEPARATOR
-        MENUITEM "&Language",                   ID_SUBMENU_LANGUAGE
         MENUITEM SEPARATOR
         POPUP "Renderer Settings"
         BEGIN
@@ -1773,13 +1675,9 @@ BEGIN
         MENUITEM "After Playback",              ID_SUBMENU_AFTERPLAYBACK
     END
     MENUITEM "&Navigate",                   ID_SUBMENU_NAVIGATE_MAIN
-    MENUITEM "F&avorites",                  ID_SUBMENU_FAVORITES_MAIN
     POPUP "&Help"
     BEGIN
-        MENUITEM "&Home Page",                  ID_HELP_HOMEPAGE
-        MENUITEM "Check for &updates",          ID_HELP_CHECKFORUPDATE
-        MENUITEM "&Command Line Switches",      ID_HELP_SHOWCOMMANDLINESWITCHES
-        MENUITEM "Download &Toolbar Images",    ID_HELP_TOOLBARIMAGES
+        MENUITEM "&GitHub",                     ID_HELP_HOMEPAGE
         MENUITEM SEPARATOR
         MENUITEM "&About...",                   ID_HELP_ABOUT
     END
@@ -1799,7 +1697,6 @@ BEGIN
             MENUITEM "Open Directory...",           ID_FILE_OPENDIRECTORY
             MENUITEM "Open &Iso image...",          ID_FILE_OPENISO
             MENUITEM "O&pen Disc",                  ID_SUBMENU_OPENDISC
-            MENUITEM "Recent Files",                ID_SUBMENU_RECENTFILES
             MENUITEM "&Close",                      ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "&Save As...",                 ID_FILE_SAVE_COPY
@@ -1838,7 +1735,6 @@ BEGIN
         MENUITEM "Pan&&S&can",                  ID_SUBMENU_PANSCAN
         MENUITEM SEPARATOR
         MENUITEM "&Navigate",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "Favo&rites",                  ID_SUBMENU_FAVORITES
         MENUITEM SEPARATOR
         MENUITEM "F&ilters",                    ID_SUBMENU_FILTERS
         MENUITEM "S&haders",                    ID_SUBMENU_SHADERS
@@ -1876,7 +1772,6 @@ BEGIN
             MENUITEM "Capture",                     ID_VIEW_CAPTURE
             MENUITEM "Shader Editor",               ID_VIEW_SHADEREDITOR
             MENUITEM "Navigation",                  ID_VIEW_NAVIGATION
-            MENUITEM "&Language",                   ID_SUBMENU_LANGUAGE
             POPUP "&Presets..."
             BEGIN
                 MENUITEM "&Minimal",                    ID_VIEW_PRESETS_MINIMAL
@@ -1930,7 +1825,6 @@ BEGIN
             MENUITEM "Open Directory...",           ID_FILE_OPENDIRECTORY
             MENUITEM "Open &Iso image...",          ID_FILE_OPENISO
             MENUITEM "O&pen Disc",                  ID_SUBMENU_OPENDISC
-            MENUITEM "Recent Files",                ID_SUBMENU_RECENTFILES
             MENUITEM "&Close",                      ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "&Save As...",                 ID_FILE_SAVE_COPY
@@ -1955,7 +1849,6 @@ BEGIN
             MENUITEM "Capture",                     ID_VIEW_CAPTURE
             MENUITEM "Shader Editor",               ID_VIEW_SHADEREDITOR
             MENUITEM "Navigation",                  ID_VIEW_NAVIGATION
-            MENUITEM "&Language",                   ID_SUBMENU_LANGUAGE
             POPUP "&Presets..."
             BEGIN
                 MENUITEM "&Minimal",                    ID_VIEW_PRESETS_MINIMAL
@@ -2027,12 +1920,9 @@ BEGIN
             MENUITEM "Reset Rate",                  ID_PLAY_RESETRATE
         END
         MENUITEM "&Navigate",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "Favo&rites",                  ID_SUBMENU_FAVORITES
         POPUP "&Help"
         BEGIN
-            MENUITEM "&Home Page",                  ID_HELP_HOMEPAGE
-            MENUITEM "Check for &updates",          ID_HELP_CHECKFORUPDATE
-            MENUITEM "&Command Line Switches",      ID_HELP_SHOWCOMMANDLINESWITCHES
+            MENUITEM "&GitHub",                     ID_HELP_HOMEPAGE
             MENUITEM SEPARATOR
             MENUITEM "&About...",                   ID_HELP_ABOUT
         END
@@ -2212,11 +2102,6 @@ BEGIN
     0
 END
 
-IDD_PPAGEYOUTUBE AFX_DIALOG_LAYOUT
-BEGIN
-    0
-END
-
 IDD_PPAGEMISC AFX_DIALOG_LAYOUT
 BEGIN
     0
@@ -2238,11 +2123,6 @@ BEGIN
 END
 
 IDD_PPAGEPLAYBACK AFX_DIALOG_LAYOUT
-BEGIN
-    0
-END
-
-IDD_PPAGEWEBSERVER AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
@@ -2340,7 +2220,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "MPC-BE"
+    IDR_MAINFRAME           "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2538,7 +2418,7 @@ END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_APP_TITLE       "MPC-BE"
+    AFX_IDS_APP_TITLE       "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2560,7 +2440,6 @@ BEGIN
     IDD_PPAGEINTERFACE      "Player::Interface"
     IDD_PPAGEOSD            "Player::OSD"
     IDD_PPAGEWINDOWSIZE     "Player::Window size"
-    IDD_PPAGEWEBSERVER      "Player::Web Interface"
     IDD_PPAGEPLAYBACK       "Playback"
     IDD_PPAGEDVD            "Playback::DVD-Video"
 END
@@ -2568,7 +2447,6 @@ END
 STRINGTABLE
 BEGIN
     IDD_PPAGECAPTURE        "Playback::Capture"
-    IDD_PPAGEYOUTUBE        "Playback::Online media services"
     IDD_PPAGEVIDEO          "Video"
     IDD_PPAGECOLOR          "Video::Color correction"
     IDD_PPAGESYNC           "Video::Frame synchronization"
@@ -2643,7 +2521,7 @@ BEGIN
     IDS_CM_INTENT_SATURATION "Saturation"
     IDS_CM_INTENT_ABSOLUTECM "Absolute Colorimetric"
     IDS_WEBUI_DISABLED_PREVIEW_MSG 
-                            "Preview is currently disabled. You can enable it in MPC-BE's options."
+                            "Preview is currently disabled. You can enable it in MithenPlayer's options."
 END
 
 STRINGTABLE
@@ -2692,7 +2570,7 @@ BEGIN
                             "Disabling this option will prevent the subtitles from blinking but it may cause the video renderer to skip some video frames."
     IDC_CHECK_SPCANIMWITHBUFFER 
                             "Allows subtitle animation when using a subpicture buffer larger than 0. Disabling this option will lower CPU usage. Also disable if you experience flashing subtitles."
-    IDC_BUTTON_EXT_SET      "After clicking this button, the checked state of the format group will reflect the actual file association for MPC-BE. A newly added extension will usually make it grayed, so don't forget to check it again before closing this dialog!"
+    IDC_BUTTON_EXT_SET      "After clicking this button, the checked state of the format group will reflect the actual file association for MithenPlayer. A newly added extension will usually make it grayed, so don't forget to check it again before closing this dialog!"
 END
 
 STRINGTABLE
@@ -2890,9 +2768,9 @@ BEGIN
     IDS_MENU_VIDEO_ANGLE    "Video Ang&le"
     IDS_RESET_SETTINGS      "Reset settings"
     IDS_RESET_SETTINGS_WARNING 
-                            "Are you sure you want to restore MPC-BE to its default settings?\nBe warned that ALL your current settings will be lost!"
+                            "Are you sure you want to restore MithenPlayer to its default settings?\nBe warned that ALL your current settings will be lost!"
     IDS_RESET_SETTINGS_MUTEX 
-                            "Please close all instances of MPC-BE so that the default settings can be restored."
+                            "Please close all instances of MithenPlayer so that the default settings can be restored."
     IDS_EXPORT_SETTINGS     "Export settings"
     IDS_EXPORT_SETTINGS_WARNING 
                             "Some changes have not been saved yet.\nDo you want to save them before exporting?"
@@ -2918,8 +2796,8 @@ BEGIN
     IDS_AG_RESET_STATS      "EVR Sync reset stats"
     IDS_VIEW_BORDERLESS     "Hide borders\tCtrl+0"
     IDS_VIEW_FRAMEONLY      "Frame Only\tCtrl+0"
-    IDS_VIEW_CAPTIONMENU    "Show Caption&&Menu\tCtrl+0"
-    IDS_VIEW_HIDEMENU       "Hide Menu\tCtrl+0"
+    IDS_VIEW_CAPTIONMENU    "Show Caption&&Menu"
+    IDS_VIEW_HIDEMENU       "Hide Menu"
 END
 
 STRINGTABLE
@@ -3125,10 +3003,10 @@ STRINGTABLE
 BEGIN
     IDS_ZOOM_AUTOFIT        "Auto fit"
     IDS_ZOOM_AUTOFITLARGE   "Auto fit (larger only)"
-    IDS_ADD_TO_PLAYLIST     "Add to MPC-BE Playlist"
-    IDS_OPEN_WITH_MPC       "Play with MPC-BE"
+    IDS_ADD_TO_PLAYLIST     "Add to MithenPlayer Playlist"
+    IDS_OPEN_WITH_MPC       "Play with MithenPlayer"
     IDS_CANNOT_CHANGE_FORMAT 
-                            "MPC-BE has not enough privileges to change files formats associations. Please click on ""Modify"" button to get administrator rights."
+                            "MithenPlayer has not enough privileges to change files formats associations. Please click on ""Modify"" button to get administrator rights."
     IDS_APP_DESCRIPTION     "One of the most powerful, configurable multimedia players for Windows operating system. Originaly made by a Hungarian developer known as Gabest, this version has additional features such as exclusive fullscreen mode and better support for Windows Vista/7."
     IDS_MAINFRM_12          "channel"
     IDS_MAINFRM_13          "channels"
@@ -3172,7 +3050,7 @@ BEGIN
     IDS_ADDTOPLS_FROMDIR_SIMILAR "similar files from folder"
     IDS_ADDTOPLS_FROMDIR_ALL "all files from folder"
     IDS_EXCLUSIVE_FS_WARNING 
-                            "This option is designed to avoid tearing. However, it will also prevent MPC-BE from displaying the context menu and any dialog box during playback.\n\nTo exit the exclusive full screen, use the keys: Alt+Enter, Ctrl+Enter or Ctrl+C.\n\nDo you really want to activate this option?"
+                            "This option is designed to avoid tearing. However, it will also prevent MithenPlayer from displaying the context menu and any dialog box during playback.\n\nTo exit the exclusive full screen, use the keys: Alt+Enter, Ctrl+Enter or Ctrl+C.\n\nDo you really want to activate this option?"
     IDS_MAINFRM_139         "Sub delay: %ld ms"
     IDS_AG_TITLE2           "Title: %02d/%02d"
     IDS_THUMB_ROWNUMBER     "Rows:"
@@ -3243,7 +3121,7 @@ BEGIN
     IDS_GAIN_OSD            "Gain: %+.1f dB"
     IDS_BALANCE_OSD         "Balance: %s"
     IDS_FULLSCREENMONITOR_CURRENT "Current"
-    IDS_MPC_CRASH           "MPC-BE terminated unexpectedly. To help us fix this problem, please send this file '%s' to our bug tracker.\n\nDo you want to open the folder containing the minidump file and visit the bug tracker now?"
+    IDS_MPC_CRASH           "MithenPlayer terminated unexpectedly. To help us fix this problem, please send this file '%s' to our bug tracker.\n\nDo you want to open the folder containing the minidump file and visit the bug tracker now?"
     IDS_MPC_MINIDUMP_FAIL   "Failed to create dump file to '%s' (error %d)"
     IDS_MAINFRM_DIR_TITLE   "Select Directory"
     IDS_MAINFRM_DIR_CHECK   "Include subdirectories"
@@ -3301,7 +3179,7 @@ BEGIN
     IDS_AG_REMOVING         "Removing: "
     IDS_MAINFRM_134         "WARNING: CMainFrame::CloseMedia() called twice or more\n"
     IDS_MAINFRM_135         "CRITICAL ERROR: !!! Must kill opener thread !!!"
-    IDS_MAINFRM_136         "MPC-BE Exclusive Fullscreen"
+    IDS_MAINFRM_136         "MithenPlayer Exclusive Fullscreen"
     IDS_MAINFRM_137         "Unknown format"
     IDS_MAINFRM_138         "Sub shift: %ld ms"
     IDS_VOLUME_GAIN_INC     "Volume gain increase"
@@ -3330,7 +3208,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_CMD_USAGE           "Usage: mpc-be.exe ""pathname"" [switches]"
+    IDS_CMD_USAGE           "Usage: mithen-player.exe ""pathname"" [switches]"
     IDS_CMD_PATHNAME        """pathname""\tThe main file or directory to be loaded (wildcards\nallowed)"
     IDS_CMD_HELP            "/help /h /?\tShow help about command line switches"
     IDS_CMD_DUB             "/dub ""dubname""\tLoad an additional audio file"
@@ -3553,6 +3431,11 @@ BEGIN
     IDS_AG_TOGGLE_PLAYLIST  "Toggle Playlist Bar"
     IDS_AG_TOGGLE_CAPTURE   "Toggle Capture Bar"
     IDS_AG_TOGGLE_SHADER    "Toggle Shader Editor Bar"
+    IDS_AG_MAXIMIZE         "Maximize Window"
+    IDS_AG_ORIGINAL_SIZE    "Original Video Size"
+    IDS_AG_SCALE_1X         "Window Size 1x"
+    IDS_AG_SCALE_2X         "Window Size 2x"
+    IDS_AG_SCALE_3X         "Window Size 3x"
     IDS_AG_ZOOM_50          "Zoom 50%"
     IDS_AG_ZOOM_100         "Zoom 100%"
     IDS_AG_ZOOM_200         "Zoom 200%"
@@ -3775,7 +3658,7 @@ BEGIN
     IDS_UPDATE_ERROR_DATA   "The update server gives the wrong data.\n\nPlease try later."
     IDS_USING_NEWER_VERSION "You are already using the latest version %s."
     IDS_NEW_UPDATE_AVAILABLE 
-                            "A new version %s is available.\n\nDo you want to visit MPC-BE's website to download it?"
+                            "A new version %s is available.\n\nDo you want to visit MithenPlayer's website to download it?"
     IDS_UPDATE_ERROR_CONNECT 
                             "Update server not found.\n\nPlease check your internet connection or try again later."
     IDS_UPDATE_CLOSE        "&Close"

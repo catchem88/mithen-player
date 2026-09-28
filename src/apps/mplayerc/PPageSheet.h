@@ -30,10 +30,8 @@
 #include "PPageDVD.h"
 #include "PPageVideo.h"
 #include "PPageColor.h"
-#include "PPageYoutube.h"
 #include "PPageFullscreen.h"
 #include "PPageSync.h"
-#include "PPageWebServer.h"
 #include "PPageInternalFilters.h"
 #include "PPageAudio.h"
 #include "PPageSoundProcessing.h"
@@ -81,11 +79,9 @@ private:
 	CPPageInterface       m_interface;
 	CPPageOSD             m_osd;
 	CPPageWindowSize      m_windowsize;
-	CPPageWebServer       m_webserver;
 	CPPagePlayback        m_playback;
 	CPPageDVD             m_dvd;
 	CPPageCapture         m_tuner;
-	CPPageYoutube         m_youtube;
 	CPPageVideo           m_video;
 	CPPageColor           m_color;
 	CPPageSync            m_sync;

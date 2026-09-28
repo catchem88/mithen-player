@@ -212,31 +212,31 @@ BEGIN
     CONTROL         "Copier l'URL du Presse-papiers",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,96,134,9
 END
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 241, 202
+IDD_ABOUTBOX DIALOGEX 0, 0, 241, 235
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "A propos"
+CAPTION "About MithenPlayer"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_MAINFRAME_ICON,5,5,21,20
-    LTEXT           "MPC-BE",IDC_STATIC1,30,5,195,8,SS_NOPREFIX
-    CONTROL         "Copyright © 2002-2026 voir le fichier Authors.txt",IDC_AUTHORS_LINK,
-                    "SysLink",WS_TABSTOP,30,17,195,8
-    LTEXT           "Version :",IDC_VERSION,30,34,90,8
-    LTEXT           "Compilateur MPC-BE :",IDC_STATIC,30,66,90,8
-    LTEXT           "Compilateur FFmpeg :",IDC_STATIC,30,83,90,8
-    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,30,99,90,8
-    EDITTEXT        IDC_VERSION_NUMBER,120,32,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT2,120,48,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_MPC_COMPILER,120,64,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_FFMPEG_COMPILER,120,81,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_LIBAVCODEC_VERSION,120,97,110,13,ES_AUTOHSCROLL | ES_READONLY
-    CONTROL         "<a>https://sourceforge.net/projects/mpcbe/</a>",IDC_SOURCEFORGE_LINK,
-                    "SysLink",WS_TABSTOP,30,114,200,8
-    CONTROL         "<a>https://github.com/Aleksoid1978/MPC-BE</a>",IDC_GITHUB_LINK,
-                    "SysLink",WS_TABSTOP,30,126,200,8
-    LTEXT           "Ce programme est gratuit et est distribué sous GNU General Public License.",IDC_STATIC,30,138,200,18
-    LTEXT           "Traduction : Julien (Vk), rhahgleuhargh, Pho3nX et al. (voir Authors.txt)",IDC_STATIC,30,161,200,18
-    DEFPUSHBUTTON   "OK",IDOK,185,183,50,14,WS_GROUP
+    CONTROL         "",IDC_MITHEN_LOGO,"Static",SS_ICON | SS_CENTERIMAGE,5,5,64,64
+    LTEXT           "MithenPlayer",IDC_STATIC1,75,14,160,14,SS_NOPREFIX
+    CONTROL         "Copyright © 2002-2026 see Authors.txt",IDC_AUTHORS_LINK,
+                    "SysLink",WS_TABSTOP,75,32,160,8
+    LTEXT           "Version :",IDC_VERSION,75,50,70,8
+    EDITTEXT        IDC_VERSION_NUMBER,145,48,90,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT2,145,64,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Compiler :",IDC_STATIC,75,82,70,8
+    EDITTEXT        IDC_MPC_COMPILER,145,80,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "FFmpeg Compiler :",IDC_STATIC,75,99,70,8
+    EDITTEXT        IDC_FFMPEG_COMPILER,145,97,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,75,116,70,8
+    EDITTEXT        IDC_LIBAVCODEC_VERSION,145,114,90,13,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "<a>https://github.com/catchem88/mithen-player</a>",IDC_GITHUB_LINK,
+                    "SysLink",WS_TABSTOP,75,134,160,8
+    LTEXT           "This program is freeware and released under the GNU General Public License.",IDC_STATIC,5,150,230,18
+    LTEXT           "Original MPC by Gabest",IDC_STATIC,5,170,230,8
+    LTEXT           "MPC-HC by casimir666",IDC_STATIC,5,182,230,8
+    LTEXT           "Based on MPC-BE by Aleksoid1978",IDC_STATIC,5,194,230,8
+    DEFPUSHBUTTON   "OK",IDOK,185,216,50,14,WS_GROUP
 END
 
 IDD_PLAYERSTATUSBAR DIALOGEX 0, 0, 183, 15
@@ -409,7 +409,7 @@ BEGIN
     PUSHBUTTON      "&Modifier",IDC_BUTTON5,42,198,63,14,NOT WS_VISIBLE
     PUSHBUTTON      "&Tout",IDC_BUTTON1,108,198,40,14
     PUSHBUTTON      "&Aucun",IDC_BUTTON6,150,198,40,14
-    CONTROL         "Utiliser icônes MPC-BE",IDC_CHECK8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,201,70,9
+    CONTROL         "Utiliser icônes MithenPlayer",IDC_CHECK8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,201,70,9
     GROUPBOX        "Lecture auto. (XP uniquement)",IDC_STATIC1,5,217,108,37
     CONTROL         "Vidéo",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,229,47,9
     CONTROL         "Musique",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,241,47,9
@@ -669,7 +669,7 @@ EXSTYLE WS_EX_TOOLWINDOW
 CAPTION "Avertissement"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "MPC-BE ne peut pas effectuer le rendu de certains points du graphe, les codecs ou filtres nécessaires ne figurant pas sur votre ordinateur.",IDC_STATIC1,5,5,286,18
+    LTEXT           "MithenPlayer ne peut pas effectuer le rendu de certains points du graphe, les codecs ou filtres nécessaires ne figurant pas sur votre ordinateur.",IDC_STATIC1,5,5,286,18
     LTEXT           "Le(s) élément(s) suivant(s) n'ont pas pu trouver de filtre approprié :",IDC_STATIC2,5,27,286,8
     COMBOBOX        IDC_COMBO1,5,39,286,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        IDC_EDIT1,5,56,286,140,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
@@ -1661,7 +1661,6 @@ BEGIN
         MENUITEM "Ouvrir un répertoire...",     ID_FILE_OPENDIRECTORY
         MENUITEM "Ouvrir &image Iso...",          ID_FILE_OPENISO
         MENUITEM "O&uvrir le disque",           ID_SUBMENU_OPENDISC
-        MENUITEM "Fichiers récents",            ID_SUBMENU_RECENTFILES
         MENUITEM "&Fermer",                     ID_FILE_CLOSEPLAYLIST
         MENUITEM SEPARATOR
         MENUITEM "&Enregistrer sous...",        ID_FILE_SAVE_COPY
@@ -1704,7 +1703,6 @@ BEGIN
             MENUITEM "Automatique",            ID_VIEW_ZOOM_AUTOFIT
         END
         MENUITEM SEPARATOR
-        MENUITEM "&Langue (Language)",                   ID_SUBMENU_LANGUAGE
         MENUITEM SEPARATOR
         POPUP "Options d'affichage"
         BEGIN
@@ -1776,15 +1774,11 @@ BEGIN
         MENUITEM "En fin de lecture",                  ID_SUBMENU_AFTERPLAYBACK
     END
     MENUITEM "&Navigation",                   ID_SUBMENU_NAVIGATE_MAIN
-    MENUITEM "F&avoris",                  ID_SUBMENU_FAVORITES_MAIN
     POPUP "&Aide"
     BEGIN
-        MENUITEM "Site Web de &MPC-BE", ID_HELP_HOMEPAGE
-        MENUITEM "Vérifier les &mises à jour",          ID_HELP_CHECKFORUPDATE
-        MENUITEM "Options de la ligne de commandes",      ID_HELP_SHOWCOMMANDLINESWITCHES
-        MENUITEM "Télécharger &des barres d'outil",    ID_HELP_TOOLBARIMAGES
+        MENUITEM "&GitHub", ID_HELP_HOMEPAGE
         MENUITEM SEPARATOR
-        MENUITEM "&A propos de MPC-BE...", ID_HELP_ABOUT
+        MENUITEM "&A propos de MithenPlayer...", ID_HELP_ABOUT
     END
 END
 
@@ -1802,7 +1796,6 @@ BEGIN
             MENUITEM "Ouvrir un répertoire...",     ID_FILE_OPENDIRECTORY
             MENUITEM "Ouvrir &image Iso...",          ID_FILE_OPENISO
             MENUITEM "O&uvrir le disque",           ID_SUBMENU_OPENDISC
-            MENUITEM "Fichiers récents",            ID_SUBMENU_RECENTFILES
             MENUITEM "&Fermer",                     ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "&Enregistrer sous...",        ID_FILE_SAVE_COPY
@@ -1841,7 +1834,6 @@ BEGIN
         MENUITEM "Panoramique",                      ID_SUBMENU_PANSCAN
         MENUITEM SEPARATOR
         MENUITEM "&Navigation",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "F&avoris",                    ID_SUBMENU_FAVORITES
         MENUITEM SEPARATOR
         MENUITEM "F&iltres",                    ID_SUBMENU_FILTERS
         MENUITEM "S&haders",                    ID_SUBMENU_SHADERS
@@ -1879,7 +1871,6 @@ BEGIN
             MENUITEM "Capture",               ID_VIEW_CAPTURE
             MENUITEM "Editeur de rendu",      ID_VIEW_SHADEREDITOR
             MENUITEM "Navigation",                  ID_VIEW_NAVIGATION
-            MENUITEM "&Langue (Language)",                   ID_SUBMENU_LANGUAGE
             POPUP "Présélections..."
             BEGIN
                 MENUITEM "Minimal",                     ID_VIEW_PRESETS_MINIMAL
@@ -1933,7 +1924,6 @@ BEGIN
             MENUITEM "Ouvrir un répertoire...",     ID_FILE_OPENDIRECTORY
             MENUITEM "Ouvrir &image Iso...",          ID_FILE_OPENISO
             MENUITEM "O&uvrir le disque",                  ID_SUBMENU_OPENDISC
-            MENUITEM "Fichiers récents",            ID_SUBMENU_RECENTFILES
             MENUITEM "&Fermer",                     ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "&Enregistrer sous...",        ID_FILE_SAVE_COPY
@@ -1958,7 +1948,6 @@ BEGIN
             MENUITEM "Capture",               ID_VIEW_CAPTURE
             MENUITEM "Editeur de Pixels Shaders",   ID_VIEW_SHADEREDITOR
             MENUITEM "Navigation",                  ID_VIEW_NAVIGATION
-            MENUITEM "&Langue (Language)",                   ID_SUBMENU_LANGUAGE
             POPUP "Pré sélections..."
             BEGIN
                 MENUITEM "Minimal",                     ID_VIEW_PRESETS_MINIMAL
@@ -2030,14 +2019,11 @@ BEGIN
             MENUITEM "Réinitialiser",          ID_PLAY_RESETRATE
         END
         MENUITEM "&Navigation",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "F&avoris",                  ID_SUBMENU_FAVORITES
         POPUP "&Aide"
         BEGIN
-            MENUITEM "Site Web de &MPC-BE", ID_HELP_HOMEPAGE
-            MENUITEM "Vérifier les mises à jour",          ID_HELP_CHECKFORUPDATE
-            MENUITEM "Options de la ligne de commandes", ID_HELP_SHOWCOMMANDLINESWITCHES
+            MENUITEM "&GitHub", ID_HELP_HOMEPAGE
             MENUITEM SEPARATOR
-            MENUITEM "&A propos de MPC-BE...", ID_HELP_ABOUT
+            MENUITEM "&A propos de MithenPlayer...", ID_HELP_ABOUT
         END
         MENUITEM SEPARATOR
         MENUITEM "&Filtres",                    ID_SUBMENU_FILTERS
@@ -2343,7 +2329,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "MPC-BE"
+    IDR_MAINFRAME           "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2537,7 +2523,7 @@ END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_APP_TITLE       "MPC-BE"
+    AFX_IDS_APP_TITLE       "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2641,7 +2627,7 @@ BEGIN
     IDS_CM_INTENT_RELATIVECM "Colorimétrie Relative"
     IDS_CM_INTENT_SATURATION "Saturation"
     IDS_CM_INTENT_ABSOLUTECM "Colorimétrie Absolue"
-    IDS_WEBUI_DISABLED_PREVIEW_MSG  "L'aperçu est actuellement désactivé. Vous pouvez l'activer dans les options de MPC-BE."
+    IDS_WEBUI_DISABLED_PREVIEW_MSG  "L'aperçu est actuellement désactivé. Vous pouvez l'activer dans les options de MithenPlayer."
 END
 
 STRINGTABLE
@@ -2687,7 +2673,7 @@ BEGIN
     IDC_CHECK_RELATIVETO    "L'état par défaut devient héréditaire à d'autres styles où il est encore mal défini"
     IDC_CHECK_ALLOW_DROPPING_SUBPIC  "Désactiver cette option empêchera les sous-titres de clignoter, mais peut amener le moteur de rendu vidéo à sauter certaines images vidéo."
     IDC_CHECK_SPCANIMWITHBUFFER  "Permet l'utilisation de sous-titres quand on utilise un tampon de subpicture supérieur à 0. La désactivation de cette option diminuera l'utilisation du processeur. A désactiver si vous rencontrez des clignotements de sous-titres."
-    IDC_BUTTON_EXT_SET      "Après avoir cliqué sur ce bouton, la case à cocher du groupe de format devra refléter l'actuelle association de fichier pour MPC-BE. Une extension nouvellement ajoutée est généralement grisée, il ne faut pas oublier de la sélectionner à nouveau avant de fermer cette boîte de dialogue !"
+    IDC_BUTTON_EXT_SET      "Après avoir cliqué sur ce bouton, la case à cocher du groupe de format devra refléter l'actuelle association de fichier pour MithenPlayer. Une extension nouvellement ajoutée est généralement grisée, il ne faut pas oublier de la sélectionner à nouveau avant de fermer cette boîte de dialogue !"
 END
 
 STRINGTABLE
@@ -2880,8 +2866,8 @@ BEGIN
     IDS_MENU_VIDEO_STREAM   "Piste &vidéo"
     IDS_MENU_VIDEO_ANGLE    "Ang&le de la vidéo"
     IDS_RESET_SETTINGS      "Réinitialisation des paramètres"
-    IDS_RESET_SETTINGS_WARNING  "Etes-vous sûr de vouloir restaurer les paramètres par défaut de MPC-BE ?\nNotez bien que TOUS vos paramètres actuels seront perdus !"
-    IDS_RESET_SETTINGS_MUTEX  "Veuillez fermer toutes les instances de MPC-BE pour que les paramètres par défaut puissent être restaurés."
+    IDS_RESET_SETTINGS_WARNING  "Etes-vous sûr de vouloir restaurer les paramètres par défaut de MithenPlayer ?\nNotez bien que TOUS vos paramètres actuels seront perdus !"
+    IDS_RESET_SETTINGS_MUTEX  "Veuillez fermer toutes les instances de MithenPlayer pour que les paramètres par défaut puissent être restaurés."
     IDS_EXPORT_SETTINGS     "Exportation des paramètres"
     IDS_EXPORT_SETTINGS_WARNING  "Certains changements n'ont pas encore été sauvegardés.\nSouhaitez-vous les appliquer avant d'exporter ?"
     IDS_EXPORT_SETTINGS_SUCCESS  "Les paramètres ont été exportés avec succès."
@@ -2904,8 +2890,8 @@ BEGIN
     IDS_AG_RESET_STATS      "EVR Sync : remise à zéro des statistiques"
     IDS_VIEW_BORDERLESS     "Cacher les bordures\tCtrl+0"
     IDS_VIEW_FRAMEONLY      "Vidéo uniquement\tCtrl+0"
-    IDS_VIEW_CAPTIONMENU    "Afficher le titre et les menus\tCtrl+0"
-    IDS_VIEW_HIDEMENU       "Cacher les menus\tCtrl+0"
+    IDS_VIEW_CAPTIONMENU    "Afficher le titre et les menus"
+    IDS_VIEW_HIDEMENU       "Cacher les menus"
 END
 
 STRINGTABLE
@@ -3111,9 +3097,9 @@ STRINGTABLE
 BEGIN
     IDS_ZOOM_AUTOFIT        "Ajustement automatique"
     IDS_ZOOM_AUTOFITLARGE   "Ajustement automatique (plus grand seulement)"
-    IDS_ADD_TO_PLAYLIST     "Ajouter à la liste de lecture de MPC-BE"
-    IDS_OPEN_WITH_MPC       "Lire avec MPC-BE"
-    IDS_CANNOT_CHANGE_FORMAT  "Vous ne disposez pas des droits suffisants pour changer les associations des formats de fichiers. Veuillez cliquer sur le bouton ""Modifier"" pour donner les droits d'administration à MPC-BE."
+    IDS_ADD_TO_PLAYLIST     "Ajouter à la liste de lecture de MithenPlayer"
+    IDS_OPEN_WITH_MPC       "Lire avec MithenPlayer"
+    IDS_CANNOT_CHANGE_FORMAT  "Vous ne disposez pas des droits suffisants pour changer les associations des formats de fichiers. Veuillez cliquer sur le bouton ""Modifier"" pour donner les droits d'administration à MithenPlayer."
     IDS_APP_DESCRIPTION     "L'un des plus puissant et configurable lecteur multimédia pour les systèmes Windows. Originalement créé par un développeur Hongrois connu sous le nom de Gabest, cette version possède des fonctionnalitées avancées tel que le mode Direct 3D plein écran et un meilleur support pour Windows Vista/7."
     IDS_MAINFRM_12          "canal"
     IDS_MAINFRM_13          "canaux"
@@ -3156,14 +3142,14 @@ STRINGTABLE
 BEGIN
     IDS_ADDTOPLS_FROMDIR_SIMILAR "fichiers similaires du dossier"
     IDS_ADDTOPLS_FROMDIR_ALL "tous les fichiers du dossier"
-    IDS_EXCLUSIVE_FS_WARNING  "Cette option est conçue pour éviter le tearing (déchirement de l'image). Cependant elle empêche MPC-BE d'affichier les menus contextuels et les boîtes de dialogue pendant la lecture.\n\nPour quitter le mode plein écran Direct3D et arrêter la lecture, vous devez utiliser le raccourci ""Ctrl + C"".\n\nEtes vous vraiment sûr de vouloir activer cette option ?"
+    IDS_EXCLUSIVE_FS_WARNING  "Cette option est conçue pour éviter le tearing (déchirement de l'image). Cependant elle empêche MithenPlayer d'affichier les menus contextuels et les boîtes de dialogue pendant la lecture.\n\nPour quitter le mode plein écran Direct3D et arrêter la lecture, vous devez utiliser le raccourci ""Ctrl + C"".\n\nEtes vous vraiment sûr de vouloir activer cette option ?"
     IDS_MAINFRM_139         "Délai des sous-titres : %ld ms"
     IDS_AG_TITLE2           "Titre: %02d/%02d"
     IDS_THUMB_ROWNUMBER     "Lignes :"
     IDS_THUMB_COLNUMBER     "Colonnes :"
     IDS_THUMB_IMAGE_WIDTH   "Largeur de l'image"
     IDS_PPSDB_URLCORRECT    "Adresse du site correcte"
-    IDS_PPSDB_PROTOCOLERR   "Protocole de communication incorrect, veuillez mettre à jour MPC-BE ou bien sélectionner une autre adresse"
+    IDS_PPSDB_PROTOCOLERR   "Protocole de communication incorrect, veuillez mettre à jour MithenPlayer ou bien sélectionner une autre adresse"
 END
 
 STRINGTABLE
@@ -3227,7 +3213,7 @@ BEGIN
     IDS_GAIN_OSD            "Gain: %+.1f dB"
     IDS_BALANCE_OSD         "Balance : %s"
     IDS_FULLSCREENMONITOR_CURRENT "Courant"
-    IDS_MPC_CRASH           "MPC-BE s'est terminé de manière inattendue. Pour nous aider à résoudre ce problème, veuillez envoyer ce fichier '%s' à notre outil de suivi des bogues.\n\nVoulez-vous ouvrir le dossier contenant le fichier minidump et visiter le outil de suivi des bogues maintenant ?"
+    IDS_MPC_CRASH           "MithenPlayer s'est terminé de manière inattendue. Pour nous aider à résoudre ce problème, veuillez envoyer ce fichier '%s' à notre outil de suivi des bogues.\n\nVoulez-vous ouvrir le dossier contenant le fichier minidump et visiter le outil de suivi des bogues maintenant ?"
     IDS_MPC_MINIDUMP_FAIL   "Impossible de créer le mini-dump '%s' (erreur %d)"
     IDS_MAINFRM_DIR_TITLE   "Sélectionnez le répertoire"
     IDS_MAINFRM_DIR_CHECK   "Inclure les sous-répertoires"
@@ -3285,7 +3271,7 @@ BEGIN
     IDS_AG_REMOVING         "Suppression : "
     IDS_MAINFRM_134         "ATTENTION : CMainFrame::CloseMedia() appelé 2 fois ou plus\n"
     IDS_MAINFRM_135         "ERREUR CRITIQUE : !!! Obligation de fermer le processus ouvert !!!"
-    IDS_MAINFRM_136         "Plein écran exclusif de MPC-BE"
+    IDS_MAINFRM_136         "Plein écran exclusif de MithenPlayer"
     IDS_MAINFRM_137         "Format inconnu"
     IDS_MAINFRM_138         "Décalage des sous-titres : %ld"
     IDS_VOLUME_GAIN_INC     "Augmentation du gain de volume"
@@ -3314,7 +3300,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_CMD_USAGE           "Utilisation : mpc-be.exe ""nom du fichier"" [options]"
+    IDS_CMD_USAGE           "Utilisation : mithen-player.exe ""nom du fichier"" [options]"
     IDS_CMD_PATHNAME        """nom du fichier""\tFichier principal ou répertoire à charger (jockers\nautorisés)"
     IDS_CMD_HELP            "/help /h /?\tAffiche l'aide pour les options de la ligne de commande"
     IDS_CMD_DUB             "/dub ""fichier audio""\tCharge un fichier audio supplémentaire"
@@ -3336,22 +3322,22 @@ BEGIN
     IDS_CMD_SHUTDOWN        "/shutdown\tEteindre la machine après la lecture"
     IDS_CMD_FULLSCREEN      "/fullscreen\tDémarrer en plein écran"
     IDS_CMD_MINIMIZED       "/minimized\tDémarrer en mode minimisé"
-    IDS_CMD_NEW             "/new\tLance une nouvelle instance de MPC-BE"
+    IDS_CMD_NEW             "/new\tLance une nouvelle instance de MithenPlayer"
     IDS_CMD_ADD             "/add\tAjoute un fichier à la Playlist"
 END
 
 STRINGTABLE
 BEGIN
     IDS_CMD_RANDOMIZE       "/randomize\tRandomiser la Playlist"
-    IDS_CMD_REGVID          "/regvid\tAssocie les formats vidéo à MPC-BE"
-    IDS_CMD_REGAUD          "/regaud\tAssocie les formats audio à MPC-BE"
+    IDS_CMD_REGVID          "/regvid\tAssocie les formats vidéo à MithenPlayer"
+    IDS_CMD_REGAUD          "/regaud\tAssocie les formats audio à MithenPlayer"
     IDS_CMD_REGPL           "/regpl\tCréer des associations de fichiers pour les fichiers de la Playlist"
     IDS_CMD_REGALL          "/regall\tCréer des associations de fichiers pour tous les types de fichiers pris en charge"
-    IDS_CMD_UNREGALL        "/unregall\tSupprime l'association des formats vidéo à MPC-BE"
+    IDS_CMD_UNREGALL        "/unregall\tSupprime l'association des formats vidéo à MithenPlayer"
     IDS_CMD_START           "/start ms\tDémarre la lecture à ""ms"" (millisecondes)"
     IDS_CMD_STARTPOS        "/startpos hh:mm:ss\tCommencer à lecture à la position hh:mm:ss"
     IDS_CMD_FIXEDSIZE       "/fixedsize L,H\tFixe la taille de la fenêtre vidéo à LxH"
-    IDS_CMD_MONITOR         "/monitor N\tDémarre MPC-BE sur l'écran N (N à partir de 1)"
+    IDS_CMD_MONITOR         "/monitor N\tDémarre MithenPlayer sur l'écran N (N à partir de 1)"
     IDS_CMD_AUDIORENDERER   "/audiorenderer ""name""\tStart using audiorenderer, where ""name"" is the name\nof the audio renderer (see ""Audio"" settings)"
     IDS_CMD_VOLUME          "/volume N\tSet Volume, where N is a range from 0 to 100"
     IDS_CMD_CLIPBOARD       "/clipboard\tOuvrir paths/links from the clipboard"
@@ -3755,7 +3741,7 @@ BEGIN
     IDS_RESET_COLOR         "Réinitialiser les paramètres de couleur"
     IDS_UPDATE_ERROR_DATA   "Le serveur de mise à jour donne des données erronées.\n\nVeuillez réessayer plus tard."
     IDS_USING_NEWER_VERSION "Vous utilisez déjà la dernière version %s."
-    IDS_NEW_UPDATE_AVAILABLE  "Une nouvelle version %s est disponible.\n\nVoulez-vous visiter le site Web de  MPC-BE pour la télécharger ?"
+    IDS_NEW_UPDATE_AVAILABLE  "Une nouvelle version %s est disponible.\n\nVoulez-vous visiter le site Web de  MithenPlayer pour la télécharger ?"
     IDS_UPDATE_ERROR_CONNECT  "Impossible de vérifier les mises à jour.\n\nVérifiez votre connexion à Internet ou réessayez plus tard."
     IDS_UPDATE_CLOSE        "&Fermer"
     IDS_OSD_ZOOM            "Zoom : %.0lf%%"
@@ -3789,7 +3775,7 @@ BEGIN
     IDS_GOTO_ERROR_PARSING_FPS "L'analyse du nombre d'images/seconde entré a échoué !"
     IDS_FRAME_STEP_ERROR_RENDERER  "Impossible d'utiliser le déplacement image par image.\nRéessayez avec un autre rendu vidéo."
     IDS_SCREENSHOT_ERROR_SHOCKWAVE  "Les fonctions ""Enregistrer l'image"" et ""Enregistrer les miniatures"" pour les fichiers Shockwave."
-    IDS_SCREENSHOT_ERROR_OVERLAY  "Les fonctions ""Enregistrer l'image"" et ""Enregistrer les miniatures"" ne fonctionnent pas avec le rendu vidéo Overlay.\nChangez le rendu vidéo dans les options de sortie de MPC-BE et réouvrez le fichier."
+    IDS_SCREENSHOT_ERROR_OVERLAY  "Les fonctions ""Enregistrer l'image"" et ""Enregistrer les miniatures"" ne fonctionnent pas avec le rendu vidéo Overlay.\nChangez le rendu vidéo dans les options de sortie de MithenPlayer et réouvrez le fichier."
     IDS_SUBDL_DLG_CONNECT_ERROR  "Impossible de se connecter à la base de données de sous-titres en ligne."
 END
 
@@ -3967,14 +3953,14 @@ BEGIN
     BEGIN
         BLOCK "040c04b0"
         BEGIN
-            VALUE "Comments", "French language resource for MPC-BE"
+            VALUE "Comments", "French language resource for MithenPlayer"
             VALUE "CompanyName", MPC_COMP_NAME_STR
-            VALUE "FileDescription", "French language resource for MPC-BE"
+            VALUE "FileDescription", "French language resource for MithenPlayer"
             VALUE "FileVersion", MPC_VERSION_FULL_STR
             VALUE "InternalName", "mpc-be"
             VALUE "LegalCopyright", MPC_COPYRIGHT_STR
             VALUE "OriginalFilename", "mpcresources.fr.dll"
-            VALUE "ProductName", "MPC-BE"
+            VALUE "ProductName", "MithenPlayer"
             VALUE "ProductVersion", MPC_VERSION_STR
         END
     END

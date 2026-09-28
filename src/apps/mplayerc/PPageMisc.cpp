@@ -53,20 +53,12 @@ void CPPageMisc::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECK9, m_bWinMediaControls);
 	DDX_Check(pDX, IDC_CHECK2, m_fMiniDump);
 	DDX_Control(pDX, IDC_COMBO1, m_cbFFmpegExePath);
-	DDX_Control(pDX, IDC_CHECK3, m_updaterAutoCheckCtrl);
-	DDX_Control(pDX, IDC_EDIT4, m_updaterDelayCtrl);
-	DDX_Control(pDX, IDC_SPIN1, m_updaterDelaySpin);
-	DDX_Text(pDX, IDC_EDIT4, m_nUpdaterDelay);
 }
 
 BEGIN_MESSAGE_MAP(CPPageMisc, CPPageBase)
 	ON_BN_CLICKED(IDC_BUTTON1, OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_RESET_SETTINGS, OnResetSettings)
 	ON_BN_CLICKED(IDC_EXPORT_SETTINGS, OnExportSettings)
-	ON_UPDATE_COMMAND_UI(IDC_EDIT4, OnUpdateDelayEditBox)
-	ON_UPDATE_COMMAND_UI(IDC_SPIN1, OnUpdateDelayEditBox)
-	ON_UPDATE_COMMAND_UI(IDC_STATIC5, OnUpdateDelayEditBox)
-	ON_UPDATE_COMMAND_UI(IDC_STATIC6, OnUpdateDelayEditBox)
 END_MESSAGE_MAP()
 
 // CPPageMisc message handlers
@@ -98,10 +90,6 @@ BOOL CPPageMisc::OnInitDialog()
 	}
 	m_cbFFmpegExePath.SelectString(0, s.strFFmpegExePath);
 
-	m_updaterAutoCheckCtrl.SetCheck(s.bUpdaterAutoCheck);
-	m_nUpdaterDelay = s.nUpdaterDelay;
-	m_updaterDelaySpin.SetRange32(1, 365);
-
 	UpdateData(FALSE);
 
 	return TRUE;
@@ -129,8 +117,6 @@ BOOL CPPageMisc::OnApply()
 
     m_cbFFmpegExePath.GetWindowTextW(s.strFFmpegExePath);
 	CleanPath(s.strFFmpegExePath);
-	s.bUpdaterAutoCheck = !!m_updaterAutoCheckCtrl.GetCheck();
-	s.nUpdaterDelay     = (m_nUpdaterDelay = std::clamp(m_nUpdaterDelay, 1, 365));
 
 	return __super::OnApply();
 }
@@ -144,11 +130,6 @@ void CPPageMisc::OnBnClickedButton1()
 	UpdateData(FALSE);
 
 	SetModified();
-}
-
-void CPPageMisc::OnUpdateDelayEditBox(CCmdUI* pCmdUI)
-{
-	pCmdUI->Enable(m_updaterAutoCheckCtrl.GetCheck() == BST_CHECKED);
 }
 
 void CPPageMisc::OnResetSettings()

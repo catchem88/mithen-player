@@ -36,7 +36,6 @@
 #include "DSUtil/GUIDString.h"
 #include <ExtLib/Detours/src/detours.h>
 #include <afxsock.h>
-#include "UpdateChecker.h"
 
 #include "Version.h"
 
@@ -246,7 +245,7 @@ bool CMPlayerCApp::GetAppSavePath(CString& path)
 	} else {
 		PWSTR pathRoamingAppData = nullptr;
 		HRESULT hr = SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, nullptr, &pathRoamingAppData);
-		path = CStringW(pathRoamingAppData) + L"\\MPC-BE\\";
+		path = CStringW(pathRoamingAppData) + L"\\MithenPlayer\\";
 		CoTaskMemFree(pathRoamingAppData);
 
 		if (FAILED(hr)) {
@@ -460,9 +459,9 @@ void CMPlayerCApp::ExportSettings()
 	CFileDialog fileSaveDialog(
 		FALSE, 0,
 #ifdef _WIN64
-		L"mpc-be64-settings." + ext,
+		L"MithenPlayer-settings." + ext,
 #else
-		L"mpc-be-settings." + ext,
+		L"MithenPlayer-settings." + ext,
 #endif
 		OFN_EXPLORER | OFN_ENABLESIZING | OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT | OFN_PATHMUSTEXIST | OFN_NOCHANGEDIR,
 		 ext_list
@@ -487,7 +486,7 @@ void CMPlayerCApp::ExportSettings()
 			CStdioFile file(fStream);
 			file.WriteString(L"Windows Registry Editor Version 5.00\n\n");
 
-			success = !error && ExportRegistryKey(file, HKEY_CURRENT_USER, L"Software\\MPC-BE");
+			success = !error && ExportRegistryKey(file, HKEY_CURRENT_USER, L"Software\\MithenPlayer");
 
 			file.Close();
 		}
@@ -999,7 +998,7 @@ BOOL CMPlayerCApp::InitInstance()
 
 	if (m_Profile.GetSettingsLocation() != SETS_PROGRAMDIR) {
 		CRegKey key;
-		if (ERROR_SUCCESS == key.Create(HKEY_LOCAL_MACHINE, L"Software\\MPC-BE")) {
+		if (ERROR_SUCCESS == key.Create(HKEY_LOCAL_MACHINE, L"Software\\MithenPlayer")) {
 			CString path = GetProgramPath();
 			key.SetStringValue(L"ExePath", path);
 		}
@@ -1016,7 +1015,7 @@ BOOL CMPlayerCApp::InitInstance()
 
 			PWSTR pathProgramData = nullptr;
 			SHGetKnownFolderPath(FOLDERID_ProgramData, 0, nullptr, &pathProgramData);
-			CString appStorage = CStringW(pathProgramData) + L"\\MPC-BE\\";
+			CString appStorage = CStringW(pathProgramData) + L"\\MithenPlayer\\";
 			CoTaskMemFree(pathProgramData);
 
 			if (!bShaderDirExists) {
@@ -1082,12 +1081,6 @@ BOOL CMPlayerCApp::InitInstance()
 	m_s.WinLircClient.SetHWND(m_pMainWnd->m_hWnd);
 	if (m_s.bWinLirc) {
 		m_s.WinLircClient.Connect(m_s.strWinLircAddr);
-	}
-
-	if (m_s.bUpdaterAutoCheck && m_s.slFiles.empty() && !m_s.fLaunchfullscreen) {
-		if (UpdateChecker::IsTimeToAutoUpdate(m_s.nUpdaterDelay, m_s.tUpdaterLastCheck)) {
-			UpdateChecker::CheckForUpdate(true);
-		}
 	}
 
 	SendCommandLine(m_pMainWnd->m_hWnd);
@@ -1541,8 +1534,8 @@ void CMPlayerCApp::SetLanguage(int nLanguage, bool bSave/* = true*/)
 				// hook is installed in CMainFrame::OnCreate, so the RAII guard installs a scoped one).
 				DarkTheme::CDarkMessageBoxHook mbHook;
 				// This message should stay in English!
-				MessageBoxW(nullptr, L"Your language pack will not work with this version. Please download a compatible one from the MPC-BE homepage.",
-					L"MPC-BE", MB_OK);
+				MessageBoxW(nullptr, L"Your language pack will not work with this version. Please download a compatible one from the MithenPlayer homepage.",
+					L"MithenPlayer", MB_OK);
 			}
 		}
 	} else if (bSave && nLanguage == GetLanguageIndex(ID_LANGUAGE_ENGLISH)) {

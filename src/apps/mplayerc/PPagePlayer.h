@@ -39,12 +39,8 @@ public:
 
 	int  m_iMultipleInst = 1;
 
-	BOOL m_bKeepHistory     = FALSE;
-	BOOL m_bRememberDVDPos  = FALSE;
-	BOOL m_bRememberFilePos = FALSE;
 	BOOL m_bSavePnSZoom     = FALSE;
 	BOOL m_bRememberPlaylistItems = FALSE;
-	BOOL m_bRecentFilesShowUrlTitle = FALSE;
 
 	BOOL m_bTrayIcon    = FALSE;
 	BOOL m_bHideCDROMsSubMenu = FALSE;
@@ -52,11 +48,6 @@ public:
 
 	CComboBox m_cbTitleBarPrefix;
 	CComboBox m_cbSeekBarText;
-
-	CIntEdit m_edtHistoryEntriesMax;
-	CSpinButtonCtrl m_spnHistoryEntriesMax;
-	CIntEdit m_edtRecentFiles;
-	CSpinButtonCtrl m_spnRecentFiles;
 
 	CIntEdit m_edtNetworkTimeout;
 	CSpinButtonCtrl m_spnNetworkTimeout;
@@ -71,7 +62,4 @@ protected:
 	virtual BOOL OnApply();
 
 	DECLARE_MESSAGE_MAP()
-
-public:
-	afx_msg void OnUpdateKeepHistory(CCmdUI* pCmdUI);
 };

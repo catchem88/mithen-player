@@ -20,8 +20,10 @@
 
 #include "stdafx.h"
 #include "AboutDlg.h"
+#include "Misc.h"
 #include "DSUtil/FileHandle.h"
 #include "controls/DarkTheme.h"
+#include "WicUtils.h"
 
 #include "Version.h"
 
@@ -39,11 +41,16 @@ CAboutDlg::~CAboutDlg()
 	if (m_hIcon) {
 		DestroyIcon(m_hIcon);
 	}
+	if (m_hLogoIcon) {
+		DestroyIcon(m_hLogoIcon);
+	}
 }
 
 BOOL CAboutDlg::OnInitDialog()
 {
 	UpdateData();
+
+	m_appname = L"MithenPlayer";
 
 	__super::OnInitDialog();
 
@@ -87,8 +94,12 @@ BOOL CAboutDlg::OnInitDialog()
 		m_Credits.Replace(L"Authors.txt", L"<a>Authors.txt</a>");
 	}
 
-	if (m_hIcon != nullptr) {
-		static_cast<CStatic*>(GetDlgItem(IDC_MAINFRAME_ICON))->SetIcon(m_hIcon);
+	// display the MithenPlayer logo
+	m_hLogoIcon = (HICON)LoadImageW(AfxGetInstanceHandle(), MAKEINTRESOURCEW(IDI_MITHEN_LOGO), IMAGE_ICON, 64, 64, 0);
+	if (m_hLogoIcon) {
+		if (CStatic* pLogo = static_cast<CStatic*>(GetDlgItem(IDC_MITHEN_LOGO))) {
+			pLogo->SetIcon(m_hLogoIcon);
+		}
 	}
 
 	UpdateData(FALSE);
@@ -114,7 +125,6 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 	ON_NOTIFY(NM_CLICK, IDC_AUTHORS_LINK, OnAuthors)
-	ON_NOTIFY(NM_CLICK, IDC_SOURCEFORGE_LINK, OnHomepage)
 	ON_NOTIFY(NM_CLICK, IDC_GITHUB_LINK, OnGitHub)
 END_MESSAGE_MAP()
 
@@ -125,16 +135,9 @@ void CAboutDlg::OnAuthors(NMHDR* pNMHDR, LRESULT* pResult)
 	*pResult = 0;
 }
 
-void CAboutDlg::OnHomepage(NMHDR *pNMHDR, LRESULT *pResult)
-{
-	ShellExecuteW(m_hWnd, L"open", L"https://sourceforge.net/projects/mpcbe/", nullptr, nullptr, SW_SHOWDEFAULT);
-
-	*pResult = 0;
-}
-
 void CAboutDlg::OnGitHub(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	ShellExecuteW(m_hWnd, L"open", L"https://github.com/Aleksoid1978/MPC-BE", nullptr, nullptr, SW_SHOWDEFAULT);
+	ShellExecuteW(m_hWnd, L"open", L"https://github.com/catchem88/mithen-player", nullptr, nullptr, SW_SHOWDEFAULT);
 
 	*pResult = 0;
 }

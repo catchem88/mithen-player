@@ -37,9 +37,6 @@
     <Filter Include="Controls">
       <UniqueIdentifier>{cb62768f-3084-4ae3-b385-c7953845709f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="WebServer">
-      <UniqueIdentifier>{b8be811f-d5ff-47f4-a83d-b2fa5d5eb556}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Dialogs">
       <UniqueIdentifier>{608421c6-623f-4b1b-87fc-c3cdd2a34a9e}</UniqueIdentifier>
     </Filter>
@@ -165,13 +162,7 @@
     <ClCompile Include="PPageVideo.cpp">
       <Filter>Player Options</Filter>
     </ClCompile>
-    <ClCompile Include="PPageWebServer.cpp">
-      <Filter>Player Options</Filter>
-    </ClCompile>
     <ClCompile Include="PPageWindowSize.cpp">
-      <Filter>Player Options</Filter>
-    </ClCompile>
-    <ClCompile Include="PPageYouTube.cpp">
       <Filter>Player Options</Filter>
     </ClCompile>
     <ClCompile Include="PlayerBar.cpp">
@@ -243,12 +234,6 @@
     <ClCompile Include="CmdLineHelpDlg.cpp">
       <Filter>Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="FavoriteAddDlg.cpp">
-      <Filter>Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="FavoriteOrganizeDlg.cpp">
-      <Filter>Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="ItemPropertiesDlg.cpp">
       <Filter>Dialogs</Filter>
     </ClCompile>
@@ -311,12 +296,6 @@
     </ClCompile>
     <ClCompile Include="CShockwaveFlash.cpp">
       <Filter>Graph</Filter>
-    </ClCompile>
-    <ClCompile Include="WebClient.cpp">
-      <Filter>WebServer</Filter>
-    </ClCompile>
-    <ClCompile Include="WebServer.cpp">
-      <Filter>WebServer</Filter>
     </ClCompile>
     <ClCompile Include="AppSettings.cpp">
       <Filter>Player Config</Filter>
@@ -390,9 +369,6 @@
     <ClCompile Include="TorrentInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UpdateChecker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="vkCodes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -410,9 +386,6 @@
     </ClCompile>
     <ClCompile Include="HistoryFile.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HistoryDlg.cpp">
-      <Filter>Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="MediaControls.cpp">
       <Filter>Source Files</Filter>
@@ -504,9 +477,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vkCodes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UpdateChecker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OSD.h">
@@ -644,13 +614,7 @@
     <ClInclude Include="PPageVideo.h">
       <Filter>Player Options</Filter>
     </ClInclude>
-    <ClInclude Include="PPageWebServer.h">
-      <Filter>Player Options</Filter>
-    </ClInclude>
     <ClInclude Include="PPageWindowSize.h">
-      <Filter>Player Options</Filter>
-    </ClInclude>
-    <ClInclude Include="PPageYouTube.h">
       <Filter>Player Options</Filter>
     </ClInclude>
     <ClInclude Include="PlayerBar.h">
@@ -725,12 +689,6 @@
     <ClInclude Include="CmdLineHelpDlg.h">
       <Filter>Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="FavoriteAddDlg.h">
-      <Filter>Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="FavoriteOrganizeDlg.h">
-      <Filter>Dialogs</Filter>
-    </ClInclude>
     <ClInclude Include="GoToDlg.h">
       <Filter>Dialogs</Filter>
     </ClInclude>
@@ -788,12 +746,6 @@
     <ClInclude Include="CShockwaveFlash.h">
       <Filter>Graph</Filter>
     </ClInclude>
-    <ClInclude Include="WebClient.h">
-      <Filter>WebServer</Filter>
-    </ClInclude>
-    <ClInclude Include="WebServer.h">
-      <Filter>WebServer</Filter>
-    </ClInclude>
     <ClInclude Include="PlaylistNameDlg.h">
       <Filter>Dialogs</Filter>
     </ClInclude>
@@ -823,9 +775,6 @@
     </ClInclude>
     <ClInclude Include="HistoryFile.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HistoryDlg.h">
-      <Filter>Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="MediaControls.h">
       <Filter>Header Files</Filter>

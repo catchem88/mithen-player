@@ -222,7 +222,7 @@ enum : int {
 };
 
 enum : int {
-	PLAYBACKWND_NONE = 0,
+	PLAYBACKWND_AUTOMATIC = 0, // "Automatic" - scale to video size, maximize if the video is larger than the screen
 	PLAYBACKWND_SCALEVIDEO,
 	PLAYBACKWND_FITSCREEN,
 	PLAYBACKWND_FITSCREENLARGER,

@@ -27,6 +27,8 @@
 #define IDF_SVG_FLYBAR                  223
 #define IDF_SVG_TASKBAR_BUTTONS         224
 #define IDF_SVG_TASKBAR_STATE_ICONS     225
+#define IDF_MITHEN_LOGO                 226
+#define IDI_MITHEN_LOGO                 227
 
 #define IDI_DVD                         302
 #define IDI_AUDIOCD                     303
@@ -158,6 +160,10 @@
 #define ID_VIEW_VF_SWITCHZOOM           843
 #define ID_VIEW_VF_KEEPASPECTRATIO      844
 #define ID_VIEW_VF_COMPMONDESKARDIFF    845
+#define ID_VIEW_MAXIMIZE                846
+#define ID_VIEW_ORIGINAL_SIZE           847
+#define ID_VIEW_SCALE_1X                848
+#define ID_VIEW_SCALE_2X                849
 #define ID_ASPECTRATIO_START            850
 #define ID_ASPECTRATIO_SOURCE           850
 #define ID_ASPECTRATIO_4_3              851
@@ -167,6 +173,7 @@
 #define ID_ASPECTRATIO_185_100          855
 #define ID_ASPECTRATIO_END              858
 #define ID_ASPECTRATIO_NEXT             859
+#define ID_VIEW_SCALE_3X                860
 #define ID_VIEW_RESET                   861
 #define ID_VIEW_INCSIZE                 862
 #define ID_VIEW_DECSIZE                 863
@@ -840,6 +847,7 @@
 #define IDC_AUTHORS_LINK                10859
 #define IDC_SOURCEFORGE_LINK            10860
 #define IDC_GITHUB_LINK                 10861
+#define IDC_MITHEN_LOGO                 10862
 #define IDC_LCDSUPPORT                  10862
 #define IDC_CHECK_LCD                   10863
 #define IDC_CHECK_PRV                   10864
@@ -1347,6 +1355,11 @@
 #define IDS_AG_PNS_ROTATE_CCW           33235
 #define IDS_AG_PNS_ROTATE_CW            33236
 #define IDS_AG_TEARING_TEST             33237
+#define IDS_AG_MAXIMIZE                 33312
+#define IDS_AG_ORIGINAL_SIZE            33313
+#define IDS_AG_SCALE_1X                 33314
+#define IDS_AG_SCALE_2X                 33315
+#define IDS_AG_SCALE_3X                 33316
 #define IDS_SCALE_16_9                  33239
 #define IDS_SCALE_WIDESCREEN            33240
 #define IDS_SCALE_ULTRAWIDE             33241

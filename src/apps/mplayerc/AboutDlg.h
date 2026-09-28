@@ -34,6 +34,7 @@ class CAboutDlg : public CDialog
 	CString m_AuthorsPath;
 
 	HICON	m_hIcon;
+	HICON	m_hLogoIcon = nullptr;
 
 public:
 	CAboutDlg();
@@ -42,7 +43,6 @@ public:
 	virtual BOOL OnInitDialog();
 
 	afx_msg void OnAuthors(NMHDR *pNMHDR, LRESULT *pResult);
-	afx_msg void OnHomepage(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnGitHub(NMHDR *pNMHDR, LRESULT *pResult);
 
 	enum { IDD = IDD_ABOUTBOX };

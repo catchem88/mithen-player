@@ -44,7 +44,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)_bin\mpc-be_x64_$(Configuration)\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)_bin\mpc-be_x86\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)_bin\mpc-be_x64\</OutDir>
-    <TargetName Condition="'$(Platform)'=='x64'">$(ProjectName)64</TargetName>
+    <TargetName>mithen-player</TargetName>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup>
@@ -114,7 +114,6 @@
     <ClCompile Include="filters\DeinterlacerFilter.cpp" />
     <ClCompile Include="filters\TextPassThruFilter.cpp" />
     <ClCompile Include="GraphThread.cpp" />
-    <ClCompile Include="HistoryDlg.cpp" />
     <ClCompile Include="HistoryFile.cpp" />
     <ClCompile Include="ItemPropertiesDlg.cpp" />
     <ClCompile Include="MediaControls.cpp" />
@@ -132,11 +131,8 @@
     <ClCompile Include="PPageOSD.cpp" />
     <ClCompile Include="PPageSoundProcessing.cpp" />
     <ClCompile Include="PPageWindowSize.cpp" />
-    <ClCompile Include="PPageYouTube.cpp" />
     <ClCompile Include="DVBChannel.cpp" />
     <ClCompile Include="FakeFilterMapper2.cpp" />
-    <ClCompile Include="FavoriteAddDlg.cpp" />
-    <ClCompile Include="FavoriteOrganizeDlg.cpp" />
     <ClCompile Include="FGFilter.cpp" />
     <ClCompile Include="FGManager.cpp" />
     <ClCompile Include="FGManagerBDA.cpp" />
@@ -193,7 +189,6 @@
     <ClCompile Include="PPageSubStyle.cpp" />
     <ClCompile Include="PPageSubtitles.cpp" />
     <ClCompile Include="PPageSync.cpp" />
-    <ClCompile Include="PPageWebServer.cpp" />
     <ClCompile Include="RateControl.cpp" />
     <ClCompile Include="RegFilterChooserDlg.cpp" />
     <ClCompile Include="SaveFFmpegDialog.cpp" />
@@ -214,10 +209,7 @@
     <ClCompile Include="ThumbsTaskDlg.cpp" />
     <ClCompile Include="TorrentInfo.cpp" />
     <ClCompile Include="TunerScanDlg.cpp" />
-    <ClCompile Include="UpdateChecker.cpp" />
     <ClCompile Include="vkCodes.cpp" />
-    <ClCompile Include="WebClient.cpp" />
-    <ClCompile Include="WebServer.cpp" />
     <ClCompile Include="WicUtils.cpp" />
     <ClCompile Include="WindowsUserChoice.cpp" />
   </ItemGroup>
@@ -251,7 +243,6 @@
     <ClInclude Include="filters\DeinterlacerFilter.h" />
     <ClInclude Include="filters\TextPassThruFilter.h" />
     <ClInclude Include="GraphThread.h" />
-    <ClInclude Include="HistoryDlg.h" />
     <ClInclude Include="HistoryFile.h" />
     <ClInclude Include="ItemPropertiesDlg.h" />
     <ClInclude Include="MediaControls.h" />
@@ -271,11 +262,8 @@
     <ClInclude Include="PPageOSD.h" />
     <ClInclude Include="PPageSoundProcessing.h" />
     <ClInclude Include="PPageWindowSize.h" />
-    <ClInclude Include="PPageYouTube.h" />
     <ClInclude Include="DVBChannel.h" />
     <ClInclude Include="FakeFilterMapper2.h" />
-    <ClInclude Include="FavoriteAddDlg.h" />
-    <ClInclude Include="FavoriteOrganizeDlg.h" />
     <ClInclude Include="FGFilter.h" />
     <ClInclude Include="FGManager.h" />
     <ClInclude Include="FGManagerBDA.h" />
@@ -334,7 +322,6 @@
     <ClInclude Include="PPageSubStyle.h" />
     <ClInclude Include="PPageSubtitles.h" />
     <ClInclude Include="PPageSync.h" />
-    <ClInclude Include="PPageWebServer.h" />
     <ClInclude Include="rapidjsonHelper.h" />
     <ClInclude Include="RegFilterChooserDlg.h" />
     <ClInclude Include="FileItem.h" />
@@ -357,10 +344,7 @@
     <ClInclude Include="TorrentInfo.h" />
     <ClInclude Include="TunerScanDlg.h" />
     <ClInclude Include="..\..\..\include\Version.h" />
-    <ClInclude Include="UpdateChecker.h" />
     <ClInclude Include="vkCodes.h" />
-    <ClInclude Include="WebClient.h" />
-    <ClInclude Include="WebServer.h" />
     <ClInclude Include="WicUtils.h" />
     <ClInclude Include="Win10Api.h" />
     <ClInclude Include="WindowsUserChoice.h" />

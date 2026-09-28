@@ -33,8 +33,8 @@
 #pragma comment(lib, "uxtheme.lib")
 
 static constexpr auto previousRegistration = L"PreviousRegistration";
-static constexpr auto registeredAppName    = L"MPC-BE";
-static constexpr auto registeredKey        = L"Software\\Clients\\Media\\MPC-BE\\Capabilities";
+static constexpr auto registeredAppName    = L"MithenPlayer";
+static constexpr auto registeredKey        = L"Software\\Clients\\Media\\MithenPlayer\\Capabilities";
 
 // Renders the native themed dark checkbox — the same celeste-accent glyph the rest of
 // the dark Options dialog uses (Internal Filters, Fullscreen) — into a 3-state image
@@ -337,7 +337,7 @@ bool CPPageFormats::RegisterApp()
 	CRegKey key;
 
 	if (ERROR_SUCCESS == key.Open(HKEY_LOCAL_MACHINE, L"SOFTWARE\\RegisteredApplications")) {
-		key.SetStringValue(L"MPC-BE", registeredKey);
+		key.SetStringValue(L"MithenPlayer", registeredKey);
 
 		if (ERROR_SUCCESS != key.Create(HKEY_LOCAL_MACHINE, registeredKey)) {
 			return false;
@@ -703,7 +703,7 @@ void CPPageFormats::AddAutoPlayToRegistry(autoplay_t ap, bool fRegister)
 			return;
 		}
 		key.SetStringValue(L"Action", ResStr(handlers[i].action));
-		key.SetStringValue(L"Provider", L"MPC-BE");
+		key.SetStringValue(L"Provider", L"MithenPlayer");
 		key.SetStringValue(L"InvokeProgID", L"MPCBE.Autorun");
 		key.SetStringValue(L"InvokeVerb", CString(CStringA("Play") + handlers[i].verb));
 		key.SetStringValue(L"DefaultIcon", exe + L",0");

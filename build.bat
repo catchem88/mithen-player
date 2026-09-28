@@ -278,7 +278,7 @@ IF /I "%1" == "Win32" (
 )
 
 IF /I "%SIGN%" == "True" (
-  CALL :SubSign %DIR% mpc-be*.exe
+  CALL :SubSign %DIR% mithen-player*.exe
   CALL :SubSign %DIR% mpciconlib*.dll
 )
 
@@ -381,7 +381,7 @@ IF NOT DEFINED InnoSetupPath (
 
 TITLE Compiling %1 installer...
 
-"%InnoSetupPath%\iscc.exe" /Q /O"%BIN%" "distrib\mpc-be_setup.iss" %ISDefs% %ISDefsSign%
+"%InnoSetupPath%\iscc.exe" /Q /O"res" "distrib\mpc-be_setup.iss" %ISDefs% %ISDefsSign%
 IF %ERRORLEVEL% NEQ 0 (
   CALL :SubMsg "ERROR" "Compilation failed!"
   EXIT /B %ERRORLEVEL%
@@ -434,23 +434,20 @@ IF /I "%NAME%" == "MPC-BE" (
   IF NOT EXIST "%PCKG_NAME%\Shaders" MD "%PCKG_NAME%\Shaders"
   IF NOT EXIST "%PCKG_NAME%\Shaders11" MD "%PCKG_NAME%\Shaders11"
   IF /I "%ARCH%" == "x64" (
-    COPY /Y /V "%~1_%ARCH%\mpc-be64.exe"                   "%PCKG_NAME%\mpc-be64.exe" >NUL
+    COPY /Y /V "%~1_%ARCH%\mithen-player.exe"              "%PCKG_NAME%\mithen-player.exe" >NUL
     COPY /Y /V "%~1_%ARCH%\MPCBEShellExt64.dll"            "%PCKG_NAME%\MPCBEShellExt64.dll" >NUL
     COPY /Y /V "..\distrib\MPC_components\DirectX\x64\d3dcompiler_47.dll" "%PCKG_NAME%\d3dcompiler_47.dll" >NUL
     COPY /Y /V "..\distrib\MPC_components\DirectX\x64\d3dx9_43.dll"       "%PCKG_NAME%\d3dx9_43.dll" >NUL
-    COPY /Y /V "..\distrib\VisualElements\mpc-be64.VisualElementsManifest.xml" "%PCKG_NAME%" >NUL
   ) ELSE (
-    COPY /Y /V "%~1_%ARCH%\mpc-be.exe"                     "%PCKG_NAME%\mpc-be.exe" >NUL
+    COPY /Y /V "%~1_%ARCH%\mithen-player.exe"              "%PCKG_NAME%\mithen-player.exe" >NUL
     COPY /Y /V "%~1_%ARCH%\MPCBEShellExt.dll"              "%PCKG_NAME%\MPCBEShellExt.dll" >NUL
     COPY /Y /V "..\distrib\MPC_components\DirectX\x86\d3dcompiler_47.dll" "%PCKG_NAME%\d3dcompiler_47.dll" >NUL
     COPY /Y /V "..\distrib\MPC_components\DirectX\x86\d3dx9_43.dll"       "%PCKG_NAME%\d3dx9_43.dll" >NUL
-    COPY /Y /V "..\distrib\VisualElements\mpc-be.VisualElementsManifest.xml" "%PCKG_NAME%" >NUL
   )
   COPY /Y /V "%~1_%ARCH%\mpciconlib.dll"           "%PCKG_NAME%\mpciconlib.dll" >NUL
   COPY /Y /V "%~1_%ARCH%\Lang\mpcresources.??.dll" "%PCKG_NAME%\Lang\mpcresources.??.dll" >NUL
   COPY /Y /V "..\distrib\Shaders\*.hlsl"           "%PCKG_NAME%\Shaders\*.hlsl" >NUL
   COPY /Y /V "..\distrib\Shaders11\*.hlsl"         "%PCKG_NAME%\Shaders11\*.hlsl" >NUL
-  COPY /Y /V "..\distrib\VisualElements\*.png"     "%PCKG_NAME%" >NUL
 ) ELSE (
   COPY /Y /V "%~1_%ARCH%\*.ax"           "%PCKG_NAME%\*.ax" >NUL
 )
@@ -465,7 +462,7 @@ COPY /Y /V "..\docs\Readme.md"               "%PCKG_NAME%" >NUL
 IF /I "%NAME%" == "MPC-BE" (
   IF /I "%INSTALLER%" == "True" (
     TITLE Creating archive %ZIP_NAME%-installer.zip...
-    START "7z" /B /WAIT "%SEVENZIP%" a -tzip "%PackagesOut%\%MPCBE_VER%\%ZIP_NAME%-installer.zip" "%PCKG_NAME%.exe" -mx9
+    START "7z" /B /WAIT "%SEVENZIP%" a -tzip "%PackagesOut%\%MPCBE_VER%\%ZIP_NAME%-installer.zip" "..\res\MithenPlayer-setup.exe" -mx9
     IF %ERRORLEVEL% NEQ 0 CALL :SubMsg "ERROR" "Unable to create %ZIP_NAME%-installer.zip!"
     CALL :SubMsg "INFO" "%ZIP_NAME%-installer.zip successfully created"
   )
@@ -485,10 +482,10 @@ IF EXIST "%PCKG_NAME%" RD /Q /S "%PCKG_NAME%"
 IF /I "%NAME%" == "MPC-BE" IF /I "%PDB%" == "True" (
   TITLE Creating archive %ZIP_NAME%-pdb.7z...
   IF /I "%ARCH%" == "x64" (
-    START "7z" /B /WAIT "%SEVENZIP%" a -t7z "%PackagesOut%\%MPCBE_VER%\%ZIP_NAME%-pdb.7z" "%~1_%ARCH%\mpc-be64.pdb"^
+    START "7z" /B /WAIT "%SEVENZIP%" a -t7z "%PackagesOut%\%MPCBE_VER%\%ZIP_NAME%-pdb.7z" "%~1_%ARCH%\mithen-player.pdb"^
  -m0=lzma -mx9 -mmt -ms=on
   ) ELSE (
-    START "7z" /B /WAIT "%SEVENZIP%" a -t7z "%PackagesOut%\%MPCBE_VER%\%ZIP_NAME%-pdb.7z" "%~1_%ARCH%\mpc-be.pdb"^
+    START "7z" /B /WAIT "%SEVENZIP%" a -t7z "%PackagesOut%\%MPCBE_VER%\%ZIP_NAME%-pdb.7z" "%~1_%ARCH%\mithen-player.pdb"^
  -m0=lzma -mx9 -mmt -ms=on
   )
 )

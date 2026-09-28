@@ -212,31 +212,31 @@ BEGIN
     CONTROL         "Paste URL from clipboard",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,96,134,9
 END
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 241, 202
+IDD_ABOUTBOX DIALOGEX 0, 0, 241, 235
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "אודות"
+CAPTION "About MithenPlayer"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_MAINFRAME_ICON,5,5,21,20
-    LTEXT           "MPC-BE",IDC_STATIC1,30,5,195,8,SS_NOPREFIX
-    CONTROL         "כל הזכויות שמורות © 2002-2026 קרא את קובץ היוצרים (Authors.txt)",IDC_AUTHORS_LINK,
-                    "SysLink",WS_TABSTOP,30,17,195,8
-    LTEXT           "Version :",IDC_VERSION,30,34,90,8
-    LTEXT           "מהדר MPC-BE :",IDC_STATIC,30,66,90,8
-    LTEXT           "מהדר FFmpeg :",IDC_STATIC,30,83,90,8
-    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,30,99,90,8
-    EDITTEXT        IDC_VERSION_NUMBER,120,32,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT2,120,48,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_MPC_COMPILER,120,64,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_FFMPEG_COMPILER,120,81,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_LIBAVCODEC_VERSION,120,97,110,13,ES_AUTOHSCROLL | ES_READONLY
-    CONTROL         "<a>https://sourceforge.net/projects/mpcbe/</a>",IDC_SOURCEFORGE_LINK,
-                    "SysLink",WS_TABSTOP,30,114,200,8
-    CONTROL         "<a>https://github.com/Aleksoid1978/MPC-BE</a>",IDC_GITHUB_LINK,
-                    "SysLink",WS_TABSTOP,30,126,200,8
-    LTEXT           "תוכנה זו הינה חינמית ומשוחררת תחת הרשיון GNU General Public License.",IDC_STATIC,30,138,200,18
-    LTEXT           "תרגום עברי ע""י Superb",IDC_STATIC,30,161,200,18
-    DEFPUSHBUTTON   "אישור",IDOK,185,183,50,14,WS_GROUP
+    CONTROL         "",IDC_MITHEN_LOGO,"Static",SS_ICON | SS_CENTERIMAGE,5,5,64,64
+    LTEXT           "MithenPlayer",IDC_STATIC1,75,14,160,14,SS_NOPREFIX
+    CONTROL         "Copyright © 2002-2026 see Authors.txt",IDC_AUTHORS_LINK,
+                    "SysLink",WS_TABSTOP,75,32,160,8
+    LTEXT           "Version :",IDC_VERSION,75,50,70,8
+    EDITTEXT        IDC_VERSION_NUMBER,145,48,90,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT2,145,64,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Compiler :",IDC_STATIC,75,82,70,8
+    EDITTEXT        IDC_MPC_COMPILER,145,80,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "FFmpeg Compiler :",IDC_STATIC,75,99,70,8
+    EDITTEXT        IDC_FFMPEG_COMPILER,145,97,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,75,116,70,8
+    EDITTEXT        IDC_LIBAVCODEC_VERSION,145,114,90,13,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "<a>https://github.com/catchem88/mithen-player</a>",IDC_GITHUB_LINK,
+                    "SysLink",WS_TABSTOP,75,134,160,8
+    LTEXT           "This program is freeware and released under the GNU General Public License.",IDC_STATIC,5,150,230,18
+    LTEXT           "Original MPC by Gabest",IDC_STATIC,5,170,230,8
+    LTEXT           "MPC-HC by casimir666",IDC_STATIC,5,182,230,8
+    LTEXT           "Based on MPC-BE by Aleksoid1978",IDC_STATIC,5,194,230,8
+    DEFPUSHBUTTON   "OK",IDOK,185,216,50,14,WS_GROUP
 END
 
 IDD_PLAYERSTATUSBAR DIALOGEX 0, 0, 183, 15
@@ -669,7 +669,7 @@ EXSTYLE WS_EX_TOOLWINDOW
 CAPTION "אזהרה"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "MPC-BE לא הצליח לחבר חלק מהשקעים בגרף, יתכן ולא מותקנים אצלך חלק מהמפענחים הדרושים.",IDC_STATIC1,5,5,286,18
+    LTEXT           "MithenPlayer לא הצליח לחבר חלק מהשקעים בגרף, יתכן ולא מותקנים אצלך חלק מהמפענחים הדרושים.",IDC_STATIC1,5,5,286,18
     LTEXT           "השקעים הבאים לא הצליחו למצוא פילטר אליו ניתן להתחבר:",IDC_STATIC2,5,27,286,8
     COMBOBOX        IDC_COMBO1,5,39,286,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        IDC_EDIT1,5,56,286,140,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
@@ -1659,7 +1659,6 @@ BEGIN
         MENUITEM "פתיחת תיקייה...",           ID_FILE_OPENDIRECTORY
         MENUITEM "Open &Iso image...",          ID_FILE_OPENISO
         MENUITEM "פתיחת דיסק",                  ID_SUBMENU_OPENDISC
-        MENUITEM "קבצים אחרונים",                ID_SUBMENU_RECENTFILES
         MENUITEM "סגור",                ID_FILE_CLOSEPLAYLIST
         MENUITEM SEPARATOR
         MENUITEM "שמירה בשם...",                 ID_FILE_SAVE_COPY
@@ -1702,7 +1701,6 @@ BEGIN
             MENUITEM "התאמה אוטומטית",               ID_VIEW_ZOOM_AUTOFIT
         END
         MENUITEM SEPARATOR
-        MENUITEM "&Language",                   ID_SUBMENU_LANGUAGE
         MENUITEM SEPARATOR
         POPUP "הגדרות מציג וידאו"
         BEGIN
@@ -1774,13 +1772,9 @@ BEGIN
         MENUITEM "אחרי ניגון",                  ID_SUBMENU_AFTERPLAYBACK
     END
     MENUITEM "ניווט",                   ID_SUBMENU_NAVIGATE_MAIN
-    MENUITEM "מועדפים",                  ID_SUBMENU_FAVORITES_MAIN
     POPUP "עזרה"
     BEGIN
-        MENUITEM "אתר הבית",                   ID_HELP_HOMEPAGE
-        MENUITEM "Check for &updates",          ID_HELP_CHECKFORUPDATE
-        MENUITEM "פרמטרים שורת פקודה",         ID_HELP_SHOWCOMMANDLINESWITCHES
-        MENUITEM "Download &Toolbar Images",   ID_HELP_TOOLBARIMAGES
+        MENUITEM "&GitHub", ID_HELP_HOMEPAGE
         MENUITEM SEPARATOR
         MENUITEM "אודות...",                   ID_HELP_ABOUT
     END
@@ -1800,7 +1794,6 @@ BEGIN
             MENUITEM "פתיחת תיקייה...",           ID_FILE_OPENDIRECTORY
             MENUITEM "Open &Iso image...",          ID_FILE_OPENISO
             MENUITEM "פתיחת דיסק",                  ID_SUBMENU_OPENDISC
-            MENUITEM "קבצים אחרונים",                ID_SUBMENU_RECENTFILES
             MENUITEM "סגור",                ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "שמירה בשם...",                 ID_FILE_SAVE_COPY
@@ -1839,7 +1832,6 @@ BEGIN
         MENUITEM "הזזה&&סריקה",                      ID_SUBMENU_PANSCAN
         MENUITEM SEPARATOR
         MENUITEM "ניווט",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "מועדפים",                  ID_SUBMENU_FAVORITES
         MENUITEM SEPARATOR
         MENUITEM "פילטרים",                    ID_SUBMENU_FILTERS
         MENUITEM "מצלילים",                    ID_SUBMENU_SHADERS
@@ -1877,7 +1869,6 @@ BEGIN
             MENUITEM "לכידה",                     ID_VIEW_CAPTURE
             MENUITEM "עורך המצלילים",               ID_VIEW_SHADEREDITOR
             MENUITEM "ניווט",                  ID_VIEW_NAVIGATION
-            MENUITEM "&Language",                   ID_SUBMENU_LANGUAGE
             POPUP "מראה מותאם מראש..."
             BEGIN
                 MENUITEM "מינימלי",                     ID_VIEW_PRESETS_MINIMAL
@@ -1931,7 +1922,6 @@ BEGIN
             MENUITEM "פתיחת תיקייה...",           ID_FILE_OPENDIRECTORY
             MENUITEM "Open &Iso image...",          ID_FILE_OPENISO
             MENUITEM "פתיחת דיסק",                  ID_SUBMENU_OPENDISC
-            MENUITEM "קבצים אחרונים",                ID_SUBMENU_RECENTFILES
             MENUITEM "סגור",                      ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "שמירה בשם...",                 ID_FILE_SAVE_COPY
@@ -1956,7 +1946,6 @@ BEGIN
             MENUITEM "לכידה",               ID_VIEW_CAPTURE
             MENUITEM "עורך המצלילים",         ID_VIEW_SHADEREDITOR
             MENUITEM "ניווט",                  ID_VIEW_NAVIGATION
-            MENUITEM "&Language",                   ID_SUBMENU_LANGUAGE
             POPUP "מראה מותאם מראש..."
             BEGIN
                 MENUITEM "מינימלי",                     ID_VIEW_PRESETS_MINIMAL
@@ -2028,12 +2017,9 @@ BEGIN
             MENUITEM "אפס מהירות",            ID_PLAY_RESETRATE
         END
         MENUITEM "ניווט",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "מועדפים",                  ID_SUBMENU_FAVORITES
         POPUP "עזרה"
         BEGIN
-            MENUITEM "אתר הבית",                   ID_HELP_HOMEPAGE
-            MENUITEM "Check for &updates",          ID_HELP_CHECKFORUPDATE
-            MENUITEM "פרמטרים שורת פקודה",       ID_HELP_SHOWCOMMANDLINESWITCHES
+            MENUITEM "&GitHub", ID_HELP_HOMEPAGE
             MENUITEM SEPARATOR
             MENUITEM "אודות...",                   ID_HELP_ABOUT
         END
@@ -2341,7 +2327,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "MPC-BE"
+    IDR_MAINFRAME           "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2535,7 +2521,7 @@ END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_APP_TITLE       "MPC-BE"
+    AFX_IDS_APP_TITLE       "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2639,7 +2625,7 @@ BEGIN
     IDS_CM_INTENT_RELATIVECM "Relative Colorimetric"
     IDS_CM_INTENT_SATURATION "Saturation"
     IDS_CM_INTENT_ABSOLUTECM "Absolute Colorimetric"
-    IDS_WEBUI_DISABLED_PREVIEW_MSG  "Preview is currently disabled. You can enable it in MPC-BE's options."
+    IDS_WEBUI_DISABLED_PREVIEW_MSG  "Preview is currently disabled. You can enable it in MithenPlayer's options."
 END
 
 STRINGTABLE
@@ -2685,7 +2671,7 @@ BEGIN
     IDC_CHECK_RELATIVETO    "מצב ברירת המחדל עובר בירושה לסגנונות אחרים בהם שם הוא עדיין אינו מוגדר"
     IDC_CHECK_ALLOW_DROPPING_SUBPIC  "Disabling this option will prevent the subtitles from blinking but it may cause the video renderer to skip some video frames."
     IDC_CHECK_SPCANIMWITHBUFFER  "מאפשר הנפשת כתוביות כאשר משתמשים בחוצץ תת-תמונות גדול מ-0. כיבוי אפשרות זו תנמיך את השימוש במעבד. אפשר לכבות אם אתה סובל מכתוביות מהבהבות."
-    IDC_BUTTON_EXT_SET      "אחרי לחיצה על כפתור זה, המצב המסומן של קבוצת פורמטים ייצג את השיוך האמיתי של הקבצים ל-MPC-BE. הרחבת חדשה שנוספת בדרך כלל תהפוך זאת לאפור, אז אל תשכח לסמון אותו שוב לפני שאתה סוגר את הדיאלוג!"
+    IDC_BUTTON_EXT_SET      "אחרי לחיצה על כפתור זה, המצב המסומן של קבוצת פורמטים ייצג את השיוך האמיתי של הקבצים ל-MithenPlayer. הרחבת חדשה שנוספת בדרך כלל תהפוך זאת לאפור, אז אל תשכח לסמון אותו שוב לפני שאתה סוגר את הדיאלוג!"
 END
 
 STRINGTABLE
@@ -2878,8 +2864,8 @@ BEGIN
     IDS_MENU_VIDEO_STREAM   "זרם וידאו"
     IDS_MENU_VIDEO_ANGLE    "זווית וידאו"
     IDS_RESET_SETTINGS      "איפוס הגדרות"
-    IDS_RESET_SETTINGS_WARNING  "Are you sure you want to restore MPC-BE to its default settings?\nBe warned that ALL your current settings will be lost!"
-    IDS_RESET_SETTINGS_MUTEX  "אנא סגור את כל התהליכים של MPC-BE כדי שיהיה ניתן לשחזר להגדרות ברירת המחדל."
+    IDS_RESET_SETTINGS_WARNING  "Are you sure you want to restore MithenPlayer to its default settings?\nBe warned that ALL your current settings will be lost!"
+    IDS_RESET_SETTINGS_MUTEX  "אנא סגור את כל התהליכים של MithenPlayer כדי שיהיה ניתן לשחזר להגדרות ברירת המחדל."
     IDS_EXPORT_SETTINGS     "יצוא הגדרות"
     IDS_EXPORT_SETTINGS_WARNING  "Some changes have not been saved yet.\nDo you want to save them before exporting?"
     IDS_EXPORT_SETTINGS_SUCCESS  "The settings have been successfully exported."
@@ -2902,8 +2888,8 @@ BEGIN
     IDS_AG_RESET_STATS      "אפס סטטיסטיקת EVR מסונכרן"
     IDS_VIEW_BORDERLESS     "הסתר מסגרת\tCtrl+0"
     IDS_VIEW_FRAMEONLY      "פריים בלבד\tCtrl+0"
-    IDS_VIEW_CAPTIONMENU    "הצג כותרת&&תפריט\tCtrl+0"
-    IDS_VIEW_HIDEMENU       "הסתר תפריט\tCtrl+0"
+    IDS_VIEW_CAPTIONMENU    "הצג כותרת&&תפריט"
+    IDS_VIEW_HIDEMENU       "הסתר תפריט"
 END
 
 STRINGTABLE
@@ -3109,9 +3095,9 @@ STRINGTABLE
 BEGIN
     IDS_ZOOM_AUTOFIT        "Auto fit"
     IDS_ZOOM_AUTOFITLARGE   "Auto fit (larger only)"
-    IDS_ADD_TO_PLAYLIST     "הוסף לרשימת ההשמעה של MPC-BE"
-    IDS_OPEN_WITH_MPC       "נגן עם MPC-BE"
-    IDS_CANNOT_CHANGE_FORMAT  "ל-MPC-BE אין מספיק הרשאות לשנות הגדרות שייוך קבצים. אנא לחץ על כפתור ה-""שנה"" בכדי לקבל הרשאות מנהל."
+    IDS_ADD_TO_PLAYLIST     "הוסף לרשימת ההשמעה של MithenPlayer"
+    IDS_OPEN_WITH_MPC       "נגן עם MithenPlayer"
+    IDS_CANNOT_CHANGE_FORMAT  "ל-MithenPlayer אין מספיק הרשאות לשנות הגדרות שייוך קבצים. אנא לחץ על כפתור ה-""שנה"" בכדי לקבל הרשאות מנהל."
     IDS_APP_DESCRIPTION     "אחד מנגני המולטימדיה הכי חזקים וניתנים להתאמה אישית עבור מערכת Windows. במקור נותר על-ידי מפתח הונגרי בשם Gabest. לגרסה זו ישנן יכולות נוספות כמו מצב מסך מלא ב-Direct 3D ותמיכה טובה יותר לויסטה ומעלה."
     IDS_MAINFRM_12          "ערוץ"
     IDS_MAINFRM_13          "ערוצים"
@@ -3154,7 +3140,7 @@ STRINGTABLE
 BEGIN
     IDS_ADDTOPLS_FROMDIR_SIMILAR "similar files from folder"
     IDS_ADDTOPLS_FROMDIR_ALL "all files from folder"
-    IDS_EXCLUSIVE_FS_WARNING  "אפשרות זו נועדה לעצור קריעת תמונה. בנוסף, היא גם תמנע מ-MPC-BE להציג תפריטים ודיאלוגים בזמן הניגון.\n\nכדי לצאת ממסך מלא של Direct3D ולעצור את הניגון, יש ללחוץ: Ctrl + C.\n\nהאם אתה בטוח שברצונך להפעיל אפשרות זו?"
+    IDS_EXCLUSIVE_FS_WARNING  "אפשרות זו נועדה לעצור קריעת תמונה. בנוסף, היא גם תמנע מ-MithenPlayer להציג תפריטים ודיאלוגים בזמן הניגון.\n\nכדי לצאת ממסך מלא של Direct3D ולעצור את הניגון, יש ללחוץ: Ctrl + C.\n\nהאם אתה בטוח שברצונך להפעיל אפשרות זו?"
     IDS_MAINFRM_139         "שיהוי כתוביות: %ld מילי-שניות"
     IDS_AG_TITLE2           "כותר: %02d/%02d"
     IDS_THUMB_ROWNUMBER     "שורות:"
@@ -3225,7 +3211,7 @@ BEGIN
     IDS_GAIN_OSD            "Gain: %+.1f dB"
     IDS_BALANCE_OSD         "איזון: %s"
     IDS_FULLSCREENMONITOR_CURRENT "נוכחי"
-    IDS_MPC_CRASH           "MPC-BE terminated unexpectedly. To help us fix this problem, please send this file '%s' to our bug tracker.\n\nDo you want to open the folder containing the minidump file and visit the bug tracker now?"
+    IDS_MPC_CRASH           "MithenPlayer terminated unexpectedly. To help us fix this problem, please send this file '%s' to our bug tracker.\n\nDo you want to open the folder containing the minidump file and visit the bug tracker now?"
     IDS_MPC_MINIDUMP_FAIL   "לא מצליח ליצור קובץ הטלה ב-'%s' (שגיאה %d)"
     IDS_MAINFRM_DIR_TITLE   "בחר תיקיה"
     IDS_MAINFRM_DIR_CHECK   "כולל תת-תיקיות"
@@ -3283,7 +3269,7 @@ BEGIN
     IDS_AG_REMOVING         "מסיר: "
     IDS_MAINFRM_134         "אזהרה: CMainFrame::CloseMedia() נקראה פעמיים או יותר\n"
     IDS_MAINFRM_135         "שגיאה קריטית: !!! חייב לסגור תהליכון פתיחה !!!"
-    IDS_MAINFRM_136         "MPC-BE Exclusive Fullscreen"
+    IDS_MAINFRM_136         "MithenPlayer Exclusive Fullscreen"
     IDS_MAINFRM_137         "פורמט לא ידוע"
     IDS_MAINFRM_138         "שיהוי כתוביות: %ld מילי-שניות"
     IDS_VOLUME_GAIN_INC     "Volume gain increase"
@@ -3312,7 +3298,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_CMD_USAGE           "Usage: mpc-be.exe ""pathname"" [switches]"
+    IDS_CMD_USAGE           "Usage: mithen-player.exe ""pathname"" [switches]"
     IDS_CMD_PATHNAME        """pathname""\tThe main file or directory to be loaded (wildcards\nallowed)"
     IDS_CMD_HELP            "/help /h /?\tShow help about command line switches"
     IDS_CMD_DUB             "/dub ""dubname""\tLoad an additional audio file"
@@ -3753,7 +3739,7 @@ BEGIN
     IDS_RESET_COLOR         "איפוס הגדרות צבע"
     IDS_UPDATE_ERROR_DATA   "The update server gives the wrong data.\n\nPlease try later."
     IDS_USING_NEWER_VERSION "You are already using the latest version %s."
-    IDS_NEW_UPDATE_AVAILABLE  "A new %s is available.\n\nDo you want to visit MPC-BE's website to download it?"
+    IDS_NEW_UPDATE_AVAILABLE  "A new %s is available.\n\nDo you want to visit MithenPlayer's website to download it?"
     IDS_UPDATE_ERROR_CONNECT  "Update server not found.\n\nPlease check your internet connection or try again later."
     IDS_UPDATE_CLOSE        "&Close"
     IDS_OSD_ZOOM            "Zoom: %.0lf%%"
@@ -3965,14 +3951,14 @@ BEGIN
     BEGIN
         BLOCK "040d04c0"
         BEGIN
-            VALUE "Comments", "Hebrew language resource for MPC-BE"
+            VALUE "Comments", "Hebrew language resource for MithenPlayer"
             VALUE "CompanyName", MPC_COMP_NAME_STR
-            VALUE "FileDescription", "Hebrew language resource for MPC-BE"
+            VALUE "FileDescription", "Hebrew language resource for MithenPlayer"
             VALUE "FileVersion", MPC_VERSION_FULL_STR
             VALUE "InternalName", "mpc-be"
             VALUE "LegalCopyright", MPC_COPYRIGHT_STR
             VALUE "OriginalFilename", "mpcresources.he.dll"
-            VALUE "ProductName", "MPC-BE"
+            VALUE "ProductName", "MithenPlayer"
             VALUE "ProductVersion", MPC_VERSION_STR
         END
     END

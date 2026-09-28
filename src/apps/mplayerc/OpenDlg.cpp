@@ -79,29 +79,6 @@ BOOL COpenDlg::OnInitDialog()
 	m_bPasteClipboardURL = s.bPasteClipboardURL;
 	UpdateData(FALSE);
 
-	if (s.bKeepHistory) {
-		m_mrucombo.ResetContent();
-		m_mrucombo2.ResetContent();
-
-		std::vector<SessionInfo> recentSessions;
-		AfxGetMyApp()->m_HistoryFile.GetRecentSessions(recentSessions, AfxGetAppSettings().iRecentFilesNumber);
-
-		for (const auto& rs : recentSessions) {
-			if (!rs.Path.IsEmpty()) {
-				m_mrucombo.AddString(rs.Path);
-			}
-			if (!rs.AudioPath.IsEmpty()) {
-				m_mrucombo2.AddString(rs.Path);
-			}
-		}
-		CorrectComboListWidth(m_mrucombo);
-		CorrectComboListWidth(m_mrucombo2);
-
-		if (m_mrucombo.GetCount() > 0) {
-			m_mrucombo.SetCurSel(0);
-		}
-	}
-
 	if (m_bPasteClipboardURL && ::IsClipboardFormatAvailable(CF_UNICODETEXT) && ::OpenClipboard(m_hWnd)) {
 		if (HGLOBAL hglb = ::GetClipboardData(CF_UNICODETEXT)) {
 			if (LPCWSTR pText = (LPCWSTR)::GlobalLock(hglb)) {

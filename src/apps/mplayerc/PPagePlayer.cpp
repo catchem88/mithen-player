@@ -42,17 +42,9 @@ void CPPagePlayer::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_COMBO2, m_cbSeekBarText);
 	DDX_Check(pDX, IDC_CHECK3,   m_bTrayIcon);
 	DDX_Check(pDX, IDC_CHECK11,  m_bSavePnSZoom);
-	DDX_Check(pDX, IDC_CHECK1,   m_bKeepHistory);
 	DDX_Check(pDX, IDC_CHECK10,  m_bHideCDROMsSubMenu);
 	DDX_Check(pDX, IDC_CHECK9,   m_bPriority);
-	DDX_Check(pDX, IDC_DVD_POS,  m_bRememberDVDPos);
-	DDX_Check(pDX, IDC_FILE_POS, m_bRememberFilePos);
 	DDX_Check(pDX, IDC_CHECK2,   m_bRememberPlaylistItems);
-	DDX_Check(pDX, IDC_CHECK4,   m_bRecentFilesShowUrlTitle);
-	DDX_Control(pDX, IDC_EDIT3,  m_edtHistoryEntriesMax);
-	DDX_Control(pDX, IDC_SPIN3,  m_spnHistoryEntriesMax);
-	DDX_Control(pDX, IDC_EDIT1,  m_edtRecentFiles);
-	DDX_Control(pDX, IDC_SPIN1,  m_spnRecentFiles);
 	DDX_Control(pDX, IDC_EDIT2,  m_edtNetworkTimeout);
 	DDX_Control(pDX, IDC_SPIN2,  m_spnNetworkTimeout);
 	DDX_Control(pDX, IDC_EDIT4,  m_edtNetworkReceiveTimeout);
@@ -60,8 +52,6 @@ void CPPagePlayer::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CPPagePlayer, CPPageBase)
-	ON_UPDATE_COMMAND_UI(IDC_DVD_POS, OnUpdateKeepHistory)
-	ON_UPDATE_COMMAND_UI(IDC_FILE_POS, OnUpdateKeepHistory)
 END_MESSAGE_MAP()
 
 // CPPagePlayer message handlers
@@ -99,25 +89,9 @@ BOOL CPPagePlayer::OnInitDialog()
 	m_iMultipleInst				= s.iMultipleInst;
 	m_bTrayIcon					= s.bTrayIcon;
 	m_bSavePnSZoom				= s.bSavePnSZoom;
-	m_bKeepHistory				= s.bKeepHistory;
 	m_bHideCDROMsSubMenu		= s.bHideCDROMsSubMenu;
 	m_bPriority					= s.dwPriority != NORMAL_PRIORITY_CLASS;
-	m_bRememberDVDPos			= s.bRememberDVDPos;
-	m_bRememberFilePos			= s.bRememberFilePos;
 	m_bRememberPlaylistItems	= s.bRememberPlaylistItems;
-	m_bRecentFilesShowUrlTitle	= s.bRecentFilesShowUrlTitle;
-
-	UDACCEL acc;
-	m_edtHistoryEntriesMax.SetRange(100, 900);
-	m_spnHistoryEntriesMax.SetRange(100, 900);
-	m_spnHistoryEntriesMax.SetPos(s.nHistoryEntriesMax);
-	acc = { 0, 100 };
-	m_spnHistoryEntriesMax.SetAccel(1, &acc);
-	m_edtRecentFiles.SetRange(APP_RECENTFILES_MIN, APP_RECENTFILES_MAX);
-	m_spnRecentFiles.SetRange(APP_RECENTFILES_MIN, APP_RECENTFILES_MAX);
-	m_spnRecentFiles.SetPos(s.iRecentFilesNumber);
-	acc = {0, 5};
-	m_spnRecentFiles.SetAccel(1, &acc);
 
 	m_edtNetworkTimeout = s.iNetworkTimeout;
 	m_edtNetworkTimeout.SetRange(APP_NETTIMEOUT_MIN, APP_NETTIMEOUT_MAX);
@@ -128,10 +102,6 @@ BOOL CPPagePlayer::OnInitDialog()
 	m_spnNetworkReceiveTimeout.SetRange(APP_NETRECEIVETIMEOUT_MIN, APP_NETRECEIVETIMEOUT_MAX);
 
 	UpdateData(FALSE);
-
-	GetDlgItem(IDC_FILE_POS)->EnableWindow(s.bKeepHistory);
-	GetDlgItem(IDC_DVD_POS)->EnableWindow(s.bKeepHistory);
-	m_spnRecentFiles.EnableWindow(s.bKeepHistory);
 
 	if (m_iSetsLocation != SETS_REGISTRY && ::PathFileExistsW(profile.GetIniPath())) {
 		HANDLE hDir = CreateFileW(profile.GetIniPath(), GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr,
@@ -193,49 +163,10 @@ BOOL CPPagePlayer::OnApply()
 
 	s.bTrayIcon = !!m_bTrayIcon;
 	s.bSavePnSZoom = !!m_bSavePnSZoom;
-	s.bKeepHistory = !!m_bKeepHistory;
 	s.bHideCDROMsSubMenu = !!m_bHideCDROMsSubMenu;
 	s.dwPriority = !m_bPriority ? NORMAL_PRIORITY_CLASS : ABOVE_NORMAL_PRIORITY_CLASS;
 
-	s.bRememberDVDPos          = !!m_bRememberDVDPos;
-	s.bRememberFilePos         = !!m_bRememberFilePos;
-	s.bRememberPlaylistItems   = !!m_bRememberPlaylistItems;
-	s.bRecentFilesShowUrlTitle = !!m_bRecentFilesShowUrlTitle;
-
-	if (!m_bKeepHistory) {
-		// Empty the "Recent" jump list
-		CComPtr<IApplicationDestinations> pDests;
-		HRESULT hr = pDests.CoCreateInstance(CLSID_ApplicationDestinations, nullptr, CLSCTX_INPROC_SERVER);
-		if (SUCCEEDED(hr)) {
-			hr = pDests->RemoveAllDestinations();
-		}
-
-		// Don't clear AfxGetAppSettings().strLastOpenFile here.
-		// Don't clear AfxGetMyApp()->m_HistoryFile here.
-	}
-
-	const unsigned hemax = std::clamp(RoundUp(m_edtHistoryEntriesMax, 100), 100u, 900u);
-	if (s.nHistoryEntriesMax != hemax) {
-		auto& historyFile = AfxGetMyApp()->m_HistoryFile;
-		const unsigned n = historyFile.GetSessionsCount();
-		if (hemax < n) {
-			CStringW message;
-			message.Format(IDS_HISTORY_REDUCE_QUESTION, n, hemax);
-			if (IDYES == AfxMessageBox(message, MB_ICONQUESTION | MB_YESNO)) {
-				s.nHistoryEntriesMax = hemax;
-				historyFile.TrunkFile(hemax);
-			}
-			else {
-				m_spnHistoryEntriesMax.SetPos(s.nHistoryEntriesMax);
-			}
-		}
-		else {
-			s.nHistoryEntriesMax = hemax;
-			historyFile.SetMaxCount(hemax);
-		}
-	}
-
-	s.iRecentFilesNumber = m_edtRecentFiles;
+	s.bRememberPlaylistItems = !!m_bRememberPlaylistItems;
 
 	s.iNetworkTimeout = m_edtNetworkTimeout;
 	s.iNetworkReceiveTimeout = m_edtNetworkReceiveTimeout;
@@ -253,16 +184,5 @@ BOOL CPPagePlayer::OnApply()
 
 	::SetPriorityClass(::GetCurrentProcess(), s.dwPriority);
 
-	GetDlgItem(IDC_FILE_POS)->EnableWindow(s.bKeepHistory);
-	GetDlgItem(IDC_DVD_POS)->EnableWindow(s.bKeepHistory);
-	m_spnRecentFiles.EnableWindow(s.bKeepHistory);
-
 	return __super::OnApply();
-}
-
-void CPPagePlayer::OnUpdateKeepHistory(CCmdUI* pCmdUI)
-{
-	UpdateData();
-
-	pCmdUI->Enable(!!m_bKeepHistory);
 }

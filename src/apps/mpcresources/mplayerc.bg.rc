@@ -212,31 +212,31 @@ BEGIN
     CONTROL         "Поставяне URL адреса от клипборда",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,96,134,9
 END
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 241, 202
+IDD_ABOUTBOX DIALOGEX 0, 0, 241, 235
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "За програмата"
+CAPTION "About MithenPlayer"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_MAINFRAME_ICON,5,5,21,20
-    LTEXT           "MPC-BE",IDC_STATIC1,30,5,195,8,SS_NOPREFIX
-    CONTROL         "Copyright © 2002-2026, вижте файла Authors.txt",IDC_AUTHORS_LINK,
-                    "SysLink",WS_TABSTOP,30,17,195,8
-    LTEXT           "Версия:",IDC_VERSION,30,34,90,8
-    LTEXT           "Компилатор MPC-BE:",IDC_STATIC,30,66,90,8
-    LTEXT           "Компилатор FFmpeg:",IDC_STATIC,30,83,90,8
-    LTEXT           "Libavcodec/Libavutil:",IDC_STATIC,30,99,90,8
-    EDITTEXT        IDC_VERSION_NUMBER,120,32,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT2,120,48,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_MPC_COMPILER,120,64,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_FFMPEG_COMPILER,120,81,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_LIBAVCODEC_VERSION,120,97,110,13,ES_AUTOHSCROLL | ES_READONLY
-    CONTROL         "<a>https://sourceforge.net/projects/mpcbe/</a>",IDC_SOURCEFORGE_LINK,
-                    "SysLink",WS_TABSTOP,30,114,200,8
-    CONTROL         "<a>https://github.com/Aleksoid1978/MPC-BE</a>",IDC_GITHUB_LINK,
-                    "SysLink",WS_TABSTOP,30,126,200,8
-    LTEXT           "Тази програма е безплатна и се разпространява под Общия публичен лиценз на GNU (General Public License).",IDC_STATIC,30,138,200,18
-    LTEXT           "Локализацията е изпълнена от Живко Жеков и Калин Младенов",IDC_STATIC,30,161,200,18
-    DEFPUSHBUTTON   "ОК",IDOK,185,183,50,14,WS_GROUP
+    CONTROL         "",IDC_MITHEN_LOGO,"Static",SS_ICON | SS_CENTERIMAGE,5,5,64,64
+    LTEXT           "MithenPlayer",IDC_STATIC1,75,14,160,14,SS_NOPREFIX
+    CONTROL         "Copyright © 2002-2026 see Authors.txt",IDC_AUTHORS_LINK,
+                    "SysLink",WS_TABSTOP,75,32,160,8
+    LTEXT           "Version :",IDC_VERSION,75,50,70,8
+    EDITTEXT        IDC_VERSION_NUMBER,145,48,90,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT2,145,64,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Compiler :",IDC_STATIC,75,82,70,8
+    EDITTEXT        IDC_MPC_COMPILER,145,80,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "FFmpeg Compiler :",IDC_STATIC,75,99,70,8
+    EDITTEXT        IDC_FFMPEG_COMPILER,145,97,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,75,116,70,8
+    EDITTEXT        IDC_LIBAVCODEC_VERSION,145,114,90,13,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "<a>https://github.com/catchem88/mithen-player</a>",IDC_GITHUB_LINK,
+                    "SysLink",WS_TABSTOP,75,134,160,8
+    LTEXT           "This program is freeware and released under the GNU General Public License.",IDC_STATIC,5,150,230,18
+    LTEXT           "Original MPC by Gabest",IDC_STATIC,5,170,230,8
+    LTEXT           "MPC-HC by casimir666",IDC_STATIC,5,182,230,8
+    LTEXT           "Based on MPC-BE by Aleksoid1978",IDC_STATIC,5,194,230,8
+    DEFPUSHBUTTON   "OK",IDOK,185,216,50,14,WS_GROUP
 END
 
 IDD_PLAYERSTATUSBAR DIALOGEX 0, 0, 183, 15
@@ -669,7 +669,7 @@ EXSTYLE WS_EX_TOOLWINDOW
 CAPTION "Внимание"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "MPC-BE не може да възпроизвежда някои потоци, може да не е инсталиран правилен кодек или филтър.",IDC_STATIC1,5,5,286,18
+    LTEXT           "MithenPlayer не може да възпроизвежда някои потоци, може да не е инсталиран правилен кодек или филтър.",IDC_STATIC1,5,5,286,18
     LTEXT           "Няма намерен подходящ филтър за тези потоци с данни:",IDC_STATIC2,5,27,286,8
     COMBOBOX        IDC_COMBO1,5,39,286,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        IDC_EDIT1,5,56,286,140,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
@@ -1661,7 +1661,6 @@ BEGIN
         MENUITEM "Отваряне на &папка...",            ID_FILE_OPENDIRECTORY
         MENUITEM "Отваряне на &ISO образ...",        ID_FILE_OPENISO
         MENUITEM "Отваряне на &диск",               ID_SUBMENU_OPENDISC
-        MENUITEM "Последни файлове",       ID_SUBMENU_RECENTFILES
         MENUITEM "&Затвори",              ID_FILE_CLOSEPLAYLIST
         MENUITEM SEPARATOR
         MENUITEM "&Запиши като...",           ID_FILE_SAVE_COPY
@@ -1704,7 +1703,6 @@ BEGIN
             MENUITEM "Вписване автоматично",   ID_VIEW_ZOOM_AUTOFIT
         END
         MENUITEM SEPARATOR
-        MENUITEM "Език (&Language)",                   ID_SUBMENU_LANGUAGE
         MENUITEM SEPARATOR
         POPUP "Настройки рендеринг"
         BEGIN
@@ -1776,13 +1774,9 @@ BEGIN
         MENUITEM "Когато възпроизвеждането приключи",                  ID_SUBMENU_AFTERPLAYBACK
     END
     MENUITEM "Н&авигация",                   ID_SUBMENU_NAVIGATE_MAIN
-    MENUITEM "&Любими",                  ID_SUBMENU_FAVORITES_MAIN
     POPUP "&Помощ"
     BEGIN
-        MENUITEM "Начална страница",           ID_HELP_HOMEPAGE
-        MENUITEM "Проверка за обновление",          ID_HELP_CHECKFORUPDATE
-        MENUITEM "Параметри на командния ред",  ID_HELP_SHOWCOMMANDLINESWITCHES
-        MENUITEM "Изтегли лента с инструменти", ID_HELP_TOOLBARIMAGES
+        MENUITEM "&GitHub", ID_HELP_HOMEPAGE
         MENUITEM SEPARATOR
         MENUITEM "&Относно програмата...",             ID_HELP_ABOUT
     END
@@ -1802,7 +1796,6 @@ BEGIN
             MENUITEM "Отваряне на &папка...",            ID_FILE_OPENDIRECTORY
             MENUITEM "Отваряне на &ISO образ...",        ID_FILE_OPENISO
             MENUITEM "Отваряне на &диск",               ID_SUBMENU_OPENDISC
-            MENUITEM "Последни файлове",       ID_SUBMENU_RECENTFILES
             MENUITEM "&Затвори",              ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "&Запиши като...",           ID_FILE_SAVE_COPY
@@ -1841,7 +1834,6 @@ BEGIN
         MENUITEM "Поло&жение и размер на кадъра",                      ID_SUBMENU_PANSCAN
         MENUITEM SEPARATOR
         MENUITEM "Н&авигация",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "&Любими",                   ID_SUBMENU_FAVORITES
         MENUITEM SEPARATOR
         MENUITEM "&Филтри",                    ID_SUBMENU_FILTERS
         MENUITEM "&Шейдъри",                    ID_SUBMENU_SHADERS
@@ -1879,7 +1871,6 @@ BEGIN
             MENUITEM "&Захват",                     ID_VIEW_CAPTURE
             MENUITEM "Редактор на &шейдъри",          ID_VIEW_SHADEREDITOR
             MENUITEM "Списък с канали",                  ID_VIEW_NAVIGATION
-            MENUITEM "Език (&Language)",                   ID_SUBMENU_LANGUAGE
             POPUP "Пре&дв. настройки на изгледа"
             BEGIN
                 MENUITEM "&Минимален",                ID_VIEW_PRESETS_MINIMAL
@@ -1933,7 +1924,6 @@ BEGIN
             MENUITEM "Отваряне на &папка...",           ID_FILE_OPENDIRECTORY
             MENUITEM "Отваряне на &ISO образ...",          ID_FILE_OPENISO
             MENUITEM "Отваряне на &диск",                  ID_SUBMENU_OPENDISC
-            MENUITEM "Последни файлове",       ID_SUBMENU_RECENTFILES
             MENUITEM "&Затвори",              ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "&Запиши като...",           ID_FILE_SAVE_COPY
@@ -1958,7 +1948,6 @@ BEGIN
             MENUITEM "&Захват",               ID_VIEW_CAPTURE
             MENUITEM "Редактор на &шейдъри",    ID_VIEW_SHADEREDITOR
             MENUITEM "Списък с канали",              ID_VIEW_NAVIGATION
-            MENUITEM "Език (&Language)",            ID_SUBMENU_LANGUAGE
             POPUP "Пре&дв. настройки на изгледа"
             BEGIN
                 MENUITEM "&Минимален",                ID_VIEW_PRESETS_MINIMAL
@@ -2030,12 +2019,9 @@ BEGIN
             MENUITEM "Н&улиране на скоростта",    ID_PLAY_RESETRATE
         END
         MENUITEM "Н&авигация",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "&Любими",                  ID_SUBMENU_FAVORITES
         POPUP "&Помощ"
         BEGIN
-            MENUITEM "Начална страница",           ID_HELP_HOMEPAGE
-            MENUITEM "Проверка за обновление",          ID_HELP_CHECKFORUPDATE
-            MENUITEM "Параметри на командния ред",   ID_HELP_SHOWCOMMANDLINESWITCHES
+            MENUITEM "&GitHub", ID_HELP_HOMEPAGE
             MENUITEM SEPARATOR
             MENUITEM "&Относно програмата...",             ID_HELP_ABOUT
         END
@@ -2343,7 +2329,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "MPC-BE"
+    IDR_MAINFRAME           "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2537,7 +2523,7 @@ END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_APP_TITLE       "MPC-BE"
+    AFX_IDS_APP_TITLE       "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2641,7 +2627,7 @@ BEGIN
     IDS_CM_INTENT_RELATIVECM "Относително колориметричен"
     IDS_CM_INTENT_SATURATION "Наситеност"
     IDS_CM_INTENT_ABSOLUTECM "Абсолютно колориметричен"
-    IDS_WEBUI_DISABLED_PREVIEW_MSG  "Визуализацията в момента е деактивирана. Можете да я активирате в настройките на MPC-BE."
+    IDS_WEBUI_DISABLED_PREVIEW_MSG  "Визуализацията в момента е деактивирана. Можете да я активирате в настройките на MithenPlayer."
 END
 
 STRINGTABLE
@@ -2687,7 +2673,7 @@ BEGIN
     IDC_CHECK_RELATIVETO    "Стандартното състояние е наследено от други стилове, където все още не е дефинирано."
     IDC_CHECK_ALLOW_DROPPING_SUBPIC  "Изключването на тази опция ще попречи на субтитрите да мигат, но може да доведе до пропускане на видеокадри"
     IDC_CHECK_SPCANIMWITHBUFFER  "Позволява да анимирате субтитрите, ако броят на кешираните страници е по-голям от 0. Изключване на опцията освобождава малко процесорни ресурси. Изключете, ако има трептене на субтитрите"
-    IDC_BUTTON_EXT_SET      "След като щракнете върху този бутон, избраното състояние на групата формати ще отразява действителните файлови асоциации за MPC-BE. Добавените разширения обикновено задават състоянието на ""сиво"", така че не забравяйте да ги изберете отново, преди да затворите диалоговия прозорец!"
+    IDC_BUTTON_EXT_SET      "След като щракнете върху този бутон, избраното състояние на групата формати ще отразява действителните файлови асоциации за MithenPlayer. Добавените разширения обикновено задават състоянието на ""сиво"", така че не забравяйте да ги изберете отново, преди да затворите диалоговия прозорец!"
 END
 
 STRINGTABLE
@@ -2881,7 +2867,7 @@ BEGIN
     IDS_MENU_VIDEO_ANGLE    "Ъгъл на &видеото"
     IDS_RESET_SETTINGS      "Нулиране на настройките"
     IDS_RESET_SETTINGS_WARNING  "Сигурни ли сте, че искате да нулирате плейъра си?\nИмайте предвид, че всичките ви текущи настройки ще бъдат загубени!"
-    IDS_RESET_SETTINGS_MUTEX  "Моля, затворете другите копия на MPC-BE."
+    IDS_RESET_SETTINGS_MUTEX  "Моля, затворете другите копия на MithenPlayer."
     IDS_EXPORT_SETTINGS     "Експортиране на настройки"
     IDS_EXPORT_SETTINGS_WARNING  "Някои настройки не са запазени.\nИскате ли да ги запазите преди експортиране?"
     IDS_EXPORT_SETTINGS_SUCCESS  "Настройките са експортирани успешно."
@@ -2904,8 +2890,8 @@ BEGIN
     IDS_AG_RESET_STATS      "Нулиране на EVR Sync статистиката"
     IDS_VIEW_BORDERLESS     "Скрий границите\tCtrl+0"
     IDS_VIEW_FRAMEONLY      "Само видеокадър\tCtrl+0"
-    IDS_VIEW_CAPTIONMENU    "Покажи заглавието и менюто\tCtrl+0"
-    IDS_VIEW_HIDEMENU       "Скрий менюто\tCtrl+0"
+    IDS_VIEW_CAPTIONMENU    "Покажи заглавието и менюто"
+    IDS_VIEW_HIDEMENU       "Скрий менюто"
 END
 
 STRINGTABLE
@@ -3112,8 +3098,8 @@ BEGIN
     IDS_ZOOM_AUTOFIT        "Вместване"
     IDS_ZOOM_AUTOFITLARGE   "Побиране в голям"
     IDS_ADD_TO_PLAYLIST     "Добави към плейлиста на MPC-BC"
-    IDS_OPEN_WITH_MPC       "Възпроизвеждане в MPC-BE"
-    IDS_CANNOT_CHANGE_FORMAT  "MPC-BE няма достатъчно привилегии за промяна на файлови асоциации. Кликнете върху бутона ""Редактиране"", за да редактирате с администраторски права."
+    IDS_OPEN_WITH_MPC       "Възпроизвеждане в MithenPlayer"
+    IDS_CANNOT_CHANGE_FORMAT  "MithenPlayer няма достатъчно привилегии за промяна на файлови асоциации. Кликнете върху бутона ""Редактиране"", за да редактирате с администраторски права."
     IDS_APP_DESCRIPTION     "Един от най-мощните и настроиваеми мултимедийни плейъри за Windows. Първоначално е разработена от унгарски разработчик, известен като Gabest. Тази версия има допълнителни функции, като например изключителен режим на цял екран и подобрена поддръжка на Windows Vista/7."
     IDS_MAINFRM_12          "канал"
     IDS_MAINFRM_13          "канали"
@@ -3227,7 +3213,7 @@ BEGIN
     IDS_GAIN_OSD            "Усилване: %+.1f dB"
     IDS_BALANCE_OSD         "Баланс: %s"
     IDS_FULLSCREENMONITOR_CURRENT "Текущ"
-    IDS_MPC_CRASH           "MPC-BE спря. За да ни помогнете да разрешим този проблем, моля, изпратете файла '%s' на нашия бъг-тракер.\n\nИскате ли да отворите папката, съдържаща дъмп-файла и да отидете на бъг-тракера?"
+    IDS_MPC_CRASH           "MithenPlayer спря. За да ни помогнете да разрешим този проблем, моля, изпратете файла '%s' на нашия бъг-тракер.\n\nИскате ли да отворите папката, съдържаща дъмп-файла и да отидете на бъг-тракера?"
     IDS_MPC_MINIDUMP_FAIL   "Грешка при създаване на дъмп файл '%s'  (грешка %d)"
     IDS_MAINFRM_DIR_TITLE   "Изберете папка"
     IDS_MAINFRM_DIR_CHECK   "Вкл. подпапки"
@@ -3285,7 +3271,7 @@ BEGIN
     IDS_AG_REMOVING         "Премахва се: "
     IDS_MAINFRM_134         "ВНИМАНИЕ: CMainFrame::CloseMedia() извикан два или повече пъти\n"
     IDS_MAINFRM_135         "КРИТИЧНА ГРЕШКА: !!! Процесът на отваряне трябва да бъде премахнат!!!"
-    IDS_MAINFRM_136         "MPC-BE ексклузивно на цял екран"
+    IDS_MAINFRM_136         "MithenPlayer ексклузивно на цял екран"
     IDS_MAINFRM_137         "Непознат формат"
     IDS_MAINFRM_138         "Отместване на субтитри: %ld"
     IDS_VOLUME_GAIN_INC     "Увеличи усилването на звука"
@@ -3314,7 +3300,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_CMD_USAGE           "Използване на: mpc-be.exe ""път"" [превключватели]"
+    IDS_CMD_USAGE           "Използване на: mithen-player.exe ""път"" [превключватели]"
     IDS_CMD_PATHNAME        """путь""\tФайл или директория за изтегляне (разрешени са \nmask)"
     IDS_CMD_HELP            "/help /h /?\tПоказва тази помощ"
     IDS_CMD_DUB             "/dub ""dubname""\tЗареди допълнителен звуков файл"
@@ -3755,7 +3741,7 @@ BEGIN
     IDS_RESET_COLOR         "Нулиране настройките на цветовете"
     IDS_UPDATE_ERROR_DATA   "Сървърът за обновяване връща неправилни данни.\n\nМоля, опитайте отново по-късно."
     IDS_USING_NEWER_VERSION "Използвате последната версия на %s."
-    IDS_NEW_UPDATE_AVAILABLE  "По-нова версия %s found.\n\nИскате ли да посетите уебсайта на MPC-BE, за да го изтеглите?"
+    IDS_NEW_UPDATE_AVAILABLE  "По-нова версия %s found.\n\nИскате ли да посетите уебсайта на MithenPlayer, за да го изтеглите?"
     IDS_UPDATE_ERROR_CONNECT  "Сървърът за актуализация не е намерен.\n\nМоля, проверете интернет връзката си и опитайте отново."
     IDS_UPDATE_CLOSE        "&Затвори"
     IDS_OSD_ZOOM            "Мащаб: %.0lf%%"
@@ -3967,14 +3953,14 @@ BEGIN
     BEGIN
         BLOCK "040204b0"
         BEGIN
-            VALUE "Comments", "Bulgarian language resource for MPC-BE"
+            VALUE "Comments", "Bulgarian language resource for MithenPlayer"
             VALUE "CompanyName", MPC_COMP_NAME_STR
-            VALUE "FileDescription", "Bulgarian language resource for MPC-BE"
+            VALUE "FileDescription", "Bulgarian language resource for MithenPlayer"
             VALUE "FileVersion", MPC_VERSION_FULL_STR
-            VALUE "InternalName", "MPC-BE"
+            VALUE "InternalName", "MithenPlayer"
             VALUE "LegalCopyright", MPC_COPYRIGHT_STR
             VALUE "OriginalFilename", "mpcresources.bg.dll"
-            VALUE "ProductName", "MPC-BE"
+            VALUE "ProductName", "MithenPlayer"
             VALUE "ProductVersion", MPC_VERSION_STR
         END
     END

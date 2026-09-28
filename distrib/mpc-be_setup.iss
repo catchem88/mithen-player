@@ -1,4 +1,4 @@
-﻿;
+;
 ; (C) 2009-2025 see Authors.txt
 ;
 ; This file is part of MPC-BE.
@@ -37,7 +37,7 @@
 #define ISPP_INVOKED
 #include "..\include\Version.h"
 
-#define app_name         "MPC-BE"
+#define app_name         "MithenPlayer"
 #define copyright_year   str(MPC_YEAR_COMMENTS)
 #define app_url          str(MPC_VERSION_COMMENTS)
 #if MPC_VERSION_STATUS == 1 && MPC_VERSION_REV == 0
@@ -53,16 +53,16 @@
 
 #ifdef Win32Build
   #define bindir       = bin_dir + "\mpc-be_x86"
-  #define mpcbe_exe    = "mpc-be.exe"
-  #define mpcbe_ini    = "mpc-be.ini"
+  #define mpcbe_exe    = "mithen-player.exe"
+  #define mpcbe_ini    = "mithen-player.ini"
   #define dxdir        = "MPC_components\DirectX\x86"
   #define BeveledLabel = app_name + " " + app_version
   #define Description  = app_name + " " + app_version
   #define VisualElementsManifest = "VisualElements\mpc-be.VisualElementsManifest.xml"
 #else
   #define bindir       = bin_dir + "\mpc-be_x64"
-  #define mpcbe_exe    = "mpc-be64.exe"
-  #define mpcbe_ini    = "mpc-be64.ini"
+  #define mpcbe_exe    = "mithen-player.exe"
+  #define mpcbe_ini    = "mithen-player.ini"
   #define dxdir        = "MPC_components\DirectX\x64"
   #define BeveledLabel = app_name + " x64 " + app_version
   #define Description  = app_name + " x64 " + app_version
@@ -76,7 +76,7 @@
 #ifdef Win32Build
 AppId={{903D098F-DD50-4342-AD23-DA868FCA3126}
 DefaultGroupName={#app_name}
-OutputBaseFilename={#app_name}.{#app_version}.x86
+OutputBaseFilename={#app_name}-setup
 UninstallDisplayName={#app_name} {#app_version}
 AppName={#app_name}
 AppVerName={#app_name} {#app_version}
@@ -84,9 +84,9 @@ VersionInfoDescription={#app_name} Setup
 VersionInfoProductName={#app_name}
 #else
 AppId={{FE09AF6D-78B2-4093-B012-FCDAF78693CE}
-DefaultGroupName={#app_name} x64
-OutputBaseFilename={#app_name}.{#app_version}.x64
-UninstallDisplayName={#app_name} x64 {#app_version}
+DefaultGroupName={#app_name}
+OutputBaseFilename={#app_name}-setup
+UninstallDisplayName={#app_name} {#app_version}
 ArchitecturesAllowed=x64 arm64
 ArchitecturesInstallIn64BitMode=x64 arm64
 AppName={#app_name} x64
@@ -95,14 +95,14 @@ VersionInfoDescription={#app_name} x64 Setup
 VersionInfoProductName={#app_name} x64
 #endif
 AppVersion={#app_version}
-AppPublisher={#app_name} Team
+AppPublisher=MithenApps
 AppPublisherURL={#app_url}
 AppSupportURL={#app_url}
 AppUpdatesURL={#app_url}
 AppContact={#app_url}
 AppCopyright=Copyright © {#copyright_year} all contributors, see Authors.txt
-VersionInfoCompany={#app_name} Team
-VersionInfoCopyright=Copyright © {#copyright_year}, {#app_name} Team
+VersionInfoCompany=MithenApps
+VersionInfoCopyright=Copyright © {#copyright_year}, MithenApps
 VersionInfoProductVersion={#app_version}
 VersionInfoProductTextVersion={#app_version}
 VersionInfoTextVersion={#app_version}
@@ -110,7 +110,7 @@ VersionInfoVersion={#app_version}
 UninstallDisplayIcon={app}\{#mpcbe_exe}
 DefaultDirName={code:GetInstallFolder}
 LicenseFile=..\LICENSE.txt
-OutputDir=.
+OutputDir=res
 SetupIconFile=..\src\apps\mplayerc\res\icon.ico
 AppReadmeFile={app}\Readme.md
 WizardImageFile=WizardImageFile.png
@@ -209,9 +209,6 @@ Name: custom;  Description: {cm:types_CustomInstallation}; Flags: iscustom
 [Components]
 Name: "main";          Description: "{#Description}";           Types: default custom; Flags: fixed
 Name: "mpciconlib";    Description: "{cm:comp_mpciconlib}";     Types: default custom
-#ifdef localize
-Name: "mpcresources";  Description: "{cm:comp_mpcresources}";   Types: default custom; Flags: disablenouninstallwarning
-#endif
 Name: "mpcbeshellext"; Description: "{cm:comp_mpcbeshellext}";  Types: custom;         Flags: disablenouninstallwarning;
 Name: "intel_msdk";    Description: "{cm:comp_intel_msdk}";     Types: custom;         Flags: disablenouninstallwarning;
 Name: "mpcvr";         Description: "{#mpcvr_desc}";            Types: default custom; Flags: disablenouninstallwarning;
@@ -219,14 +216,14 @@ Name: "mpcscriptsrc";  Description: "{#mpcscriptsrc_desc}";     Types: custom;  
 Name: "mpcimagesrc";   Description: "{#mpcimagesrc_desc}";      Types: custom;         Flags: disablenouninstallwarning;
 
 [Tasks]
-Name: desktopicon;              Description: {cm:CreateDesktopIcon};     GroupDescription: {cm:AdditionalIcons}
-Name: desktopicon\user;         Description: {cm:tsk_CurrentUser};       GroupDescription: {cm:AdditionalIcons}; Flags: exclusive
+Name: desktopicon;              Description: {cm:CreateDesktopIcon};     GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
+Name: desktopicon\user;         Description: {cm:tsk_CurrentUser};       GroupDescription: {cm:AdditionalIcons}; Flags: unchecked exclusive
 Name: desktopicon\common;       Description: {cm:tsk_AllUsers};          GroupDescription: {cm:AdditionalIcons}; Flags: unchecked exclusive
 Name: pintotaskbar;             Description: {cm:PinToTaskBar};          GroupDescription: {cm:AdditionalIcons}; OnlyBelowVersion: 0,6.4
 
 Name: longpathsenable;          Description: {cm:tsk_LongPathsEnable};   GroupDescription: {cm:tsk_Other};       Flags: checkedonce unchecked; MinVersion: 10.0.14393; Check: not LongPathIsEnabled()
 ;;ResetSettings
-Name: reset_settings;           Description: {cm:tsk_ResetSettings};     GroupDescription: {cm:tsk_Other};       Flags: checkedonce unchecked; Check: SettingsExist()
+Name: reset_settings;           Description: {cm:tsk_ResetSettings};     GroupDescription: {cm:tsk_Other};       Flags: checkedonce; Check: SettingsExist()
 
 [Files]
 Source: "{#bindir}\{#mpcbe_exe}";            DestDir: "{app}"; Flags: ignoreversion;                                   Components: main
@@ -236,20 +233,43 @@ Source: "{#dxdir}\d3dx9_43.dll";             DestDir: "{app}"; Flags: ignorevers
 Source: "{#bindir_x64}\MPCBEShellExt64.dll"; DestDir: "{app}"; Flags: ignoreversion restartreplace uninsrestartdelete regserver noregerror; Components: mpcbeshellext; Check: IsWin64
 Source: "{#bindir_x86}\MPCBEShellExt.dll";   DestDir: "{app}"; Flags: ignoreversion restartreplace uninsrestartdelete regserver noregerror; Components: mpcbeshellext;
 #ifdef localize
-Source: "{#bindir}\Lang\mpcresources.??.dll";             DestDir: "{app}\Lang"; Flags: ignoreversion; Components: mpcresources
+Source: "{#bindir}\Lang\mpcresources.bg.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: bg
+Source: "{#bindir}\Lang\mpcresources.br.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: br
+Source: "{#bindir}\Lang\mpcresources.by.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: by
+Source: "{#bindir}\Lang\mpcresources.ca.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: ca
+Source: "{#bindir}\Lang\mpcresources.cz.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: cz
+Source: "{#bindir}\Lang\mpcresources.de.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: de
+Source: "{#bindir}\Lang\mpcresources.el.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: el
+Source: "{#bindir}\Lang\mpcresources.es.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: es
+Source: "{#bindir}\Lang\mpcresources.eu.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: eu
+Source: "{#bindir}\Lang\mpcresources.fr.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: fr
+Source: "{#bindir}\Lang\mpcresources.he.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: he
+Source: "{#bindir}\Lang\mpcresources.hr.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: hr
+Source: "{#bindir}\Lang\mpcresources.hu.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: hu
+Source: "{#bindir}\Lang\mpcresources.hy.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: hy
+Source: "{#bindir}\Lang\mpcresources.it.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: it
+Source: "{#bindir}\Lang\mpcresources.ja.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: ja
+Source: "{#bindir}\Lang\mpcresources.kr.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: kr
+Source: "{#bindir}\Lang\mpcresources.nl.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: nl
+Source: "{#bindir}\Lang\mpcresources.pl.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: pl
+Source: "{#bindir}\Lang\mpcresources.ro.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: ro
+Source: "{#bindir}\Lang\mpcresources.ru.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: ru
+Source: "{#bindir}\Lang\mpcresources.sc.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: sc
+Source: "{#bindir}\Lang\mpcresources.sk.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: sk
+Source: "{#bindir}\Lang\mpcresources.sl.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: sl
+Source: "{#bindir}\Lang\mpcresources.sv.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: sv
+Source: "{#bindir}\Lang\mpcresources.tc.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: tc
+Source: "{#bindir}\Lang\mpcresources.tr.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: tr
+Source: "{#bindir}\Lang\mpcresources.ua.dll"; DestDir: "{app}\Lang"; Flags: ignoreversion; Languages: ua
 #endif
 Source: "..\LICENSE.txt";                  DestDir: "{app}";                             Flags: ignoreversion; Components: main
 Source: "..\docs\Authors.txt";             DestDir: "{app}";                             Flags: ignoreversion; Components: main
 Source: "..\docs\Authors mpc-hc team.txt"; DestDir: "{app}";                             Flags: ignoreversion; Components: main
-Source: "..\docs\Changelog.txt";           DestDir: "{app}";                             Flags: ignoreversion; Components: main
-Source: "..\docs\Changelog.Rus.txt";       DestDir: "{app}";                             Flags: ignoreversion; Components: main
 Source: "..\docs\README.md";               DestDir: "{app}";                             Flags: ignoreversion; Components: main
 Source: "Shaders\*.hlsl";                  DestDir: "{commonappdata}\{#app_name}\Shaders"; Flags: ignoreversion; Components: main;
 Source: "Shaders\*.hlsl";                  DestDir: "{app}\Shaders";                     Flags: ignoreversion; Components: main; Check: IniUsed()
 Source: "Shaders11\*.hlsl";                DestDir: "{commonappdata}\{#app_name}\Shaders11"; Flags: ignoreversion; Components: main;
 Source: "Shaders11\*.hlsl";                DestDir: "{app}\Shaders11";                   Flags: ignoreversion; Components: main; Check: IniUsed()
-Source: "VisualElements\*.png";            DestDir: "{app}";                             Flags: ignoreversion; Components: main
-Source: "{#VisualElementsManifest}";       DestDir: "{app}";                             Flags: ignoreversion; Components: main
 #ifdef Win32Build
 Source: "MPC_components\IntelMediaSDK\libmfxsw32.dll"; DestDir: "{app}"; Flags: ignoreversion; Components: intel_msdk;
 Source: "MPC_components\MpcVideoRenderer\MpcVideoRenderer.ax"; DestDir: "{app}\Filters"; Flags: regserver; Components: mpcvr;
@@ -270,19 +290,14 @@ Name: {commondesktop}\{#app_name};                   Filename: {app}\{#mpcbe_exe
 Name: {userdesktop}\{#app_name};                     Filename: {app}\{#mpcbe_exe};      Comment: {#app_name} {#app_version};            WorkingDir: {app}; IconFilename: {app}\{#mpcbe_exe}; IconIndex: 0; Tasks: desktopicon\user
 Name: {group}\{cm:UninstallProgram,{#app_name}};     Filename: {uninstallexe};          Comment: {cm:UninstallProgram,{#app_name}};     WorkingDir: {app}
 #else
-Name: {group}\{#app_name} x64;                       Filename: {app}\{#mpcbe_exe};      Comment: {#app_name} {#app_version} x64;        WorkingDir: {app}; IconFilename: {app}\{#mpcbe_exe}; IconIndex: 0
-Name: {commondesktop}\{#app_name} x64;               Filename: {app}\{#mpcbe_exe};      Comment: {#app_name} {#app_version} x64;        WorkingDir: {app}; IconFilename: {app}\{#mpcbe_exe}; IconIndex: 0; Tasks: desktopicon\common
-Name: {userdesktop}\{#app_name} x64;                 Filename: {app}\{#mpcbe_exe};      Comment: {#app_name} {#app_version} x64;        WorkingDir: {app}; IconFilename: {app}\{#mpcbe_exe}; IconIndex: 0; Tasks: desktopicon\user
-Name: {group}\{cm:UninstallProgram,{#app_name} x64}; Filename: {uninstallexe};          Comment: {cm:UninstallProgram,{#app_name} x64}; WorkingDir: {app}
+Name: {group}\{#app_name};                       Filename: {app}\{#mpcbe_exe};      Comment: {#app_name} {#app_version};        WorkingDir: {app}; IconFilename: {app}\{#mpcbe_exe}; IconIndex: 0
+Name: {commondesktop}\{#app_name};               Filename: {app}\{#mpcbe_exe};      Comment: {#app_name} {#app_version};        WorkingDir: {app}; IconFilename: {app}\{#mpcbe_exe}; IconIndex: 0; Tasks: desktopicon\common
+Name: {userdesktop}\{#app_name};                 Filename: {app}\{#mpcbe_exe};      Comment: {#app_name} {#app_version};        WorkingDir: {app}; IconFilename: {app}\{#mpcbe_exe}; IconIndex: 0; Tasks: desktopicon\user
+Name: {group}\{cm:UninstallProgram,{#app_name}}; Filename: {uninstallexe};          Comment: {cm:UninstallProgram,{#app_name}}; WorkingDir: {app}
 #endif
-Name: {group}\Changelog;                             Filename: {app}\Changelog.txt;     Comment: {cm:ViewChangelog};                    WorkingDir: {app}
-Name: {group}\ChangelogRus;                          Filename: {app}\Changelog.Rus.txt; Comment: {cm:ViewChangelog};                    WorkingDir: {app}
-Name: {group}\{cm:ProgramOnTheWeb,{#app_name}};      Filename: {#app_url}
 
 [Run]
 Filename: "{app}\{#mpcbe_exe}";      WorkingDir: "{app}"; Flags: nowait postinstall skipifsilent unchecked;           Description: "{cm:LaunchProgram,{#app_name}}"
-Filename: "{app}\Changelog.txt";     WorkingDir: "{app}"; Flags: nowait postinstall skipifsilent unchecked shellexec; Description: "{cm:ViewChangelog}"; Check: IsInactiveLang('ru')
-Filename: "{app}\Changelog.Rus.txt"; WorkingDir: "{app}"; Flags: nowait postinstall skipifsilent unchecked shellexec; Description: "{cm:ViewChangelog}"; Languages: ru
 
 [InstallDelete]
 Type: files; Name: "{userdesktop}\{#app_name}.lnk";   Check: not WizardIsTaskSelected('desktopicon\user')   and IsUpgrade()
@@ -307,7 +322,7 @@ Type: files; Name: "{app}\mpcresources.??.dll"
 ;Root: "HKCU"; Subkey: "Software\{#app_name}\ShellExt"; ValueType: string; ValueName: "MpcPath"; ValueData: "{app}\{#mpcbe_exe}"; Flags: uninsdeletekey; Components: mpcbeshellext
 
 [Registry]
-Root: HKLM; Subkey: "SOFTWARE\Clients\Media\MPC-BE"; Flags: dontcreatekey uninsdeletekey
+Root: HKLM; Subkey: "SOFTWARE\Clients\Media\MithenPlayer"; Flags: dontcreatekey uninsdeletekey
 Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\{#mpcbe_exe}"; ValueType: string; ValueName: ""; ValueData: "{app}\{#mpcbe_exe}"; Flags: deletekey uninsdeletekey
 
 [Code]
@@ -559,7 +574,7 @@ begin
     sLanguage := ExpandConstant('{cm:langcode}');
     RegWriteStringValue(HKLM, 'SOFTWARE\{#app_name}', 'ExePath', ExpandConstant('{app}\{#mpcbe_exe}'));
 
-    if WizardIsComponentSelected('mpcresources') and FileExists(ExpandConstant('{app}\{#mpcbe_ini}')) then
+    if FileExists(ExpandConstant('{app}\{#mpcbe_ini}')) then
       SetIniString('Settings', 'Language', sLanguage, ExpandConstant('{app}\{#mpcbe_ini}'))
     else
       RegWriteStringValue(HKCU, 'Software\{#app_name}\Settings', 'Language', sLanguage);
@@ -580,25 +595,16 @@ end;
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 begin
   if (CurUninstallStep = usUninstall) then
+  begin
     PinToTaskbar(ExpandConstant('{app}\{#mpcbe_exe}'), False);
 
-  // When uninstalling, ask the user to delete settings
-  if ((CurUninstallStep = usUninstall) and SettingsExist()) then
-  begin
-    if SuppressibleMsgBox(CustomMessage('msg_DeleteSettings'), mbConfirmation, MB_YESNO or MB_DEFBUTTON2, IDNO) = IDYES then
-    begin
-      DelTree(ExpandConstant('{userappdata}\{#app_name}\Shaders\*.psh'), False, True, False);
-      DelTree(ExpandConstant('{userappdata}\{#app_name}\Shaders\*.hlsl'), False, True, False);
-      RemoveDir(ExpandConstant('{userappdata}\{#app_name}\Shaders'));
-      DelTree(ExpandConstant('{app}\Shaders\*.psh'), False, True, False);
-      DelTree(ExpandConstant('{app}\Shaders\*.hlsl'), False, True, False);
-      RemoveDir(ExpandConstant('{app}\Shaders'));
-      DelTree(ExpandConstant('{userappdata}\{#app_name}\Shaders11\*.hlsl'), False, True, False);
-      RemoveDir(ExpandConstant('{userappdata}\{#app_name}\Shaders11'));
-      DelTree(ExpandConstant('{app}\Shaders11\*.hlsl'), False, True, False);
-      RemoveDir(ExpandConstant('{app}\Shaders11'));
-      CleanUpSettingsAndFiles();
-    end;
+    // Always remove everything cleanly - shaders, settings, folders and registry keys.
+    DelTree(ExpandConstant('{userappdata}\{#app_name}'), True, True, True);
+    DelTree(ExpandConstant('{app}\Shaders'), True, True, True);
+    DelTree(ExpandConstant('{app}\Shaders11'), True, True, True);
+    DelTree(ExpandConstant('{commonappdata}\{#app_name}'), True, True, True);
+
+    CleanUpSettingsAndFiles();
   end;
 end;
 
@@ -676,7 +682,7 @@ begin
   TasksList.WantTabs := WizardForm.TasksList.WantTabs;
   TasksList.Parent := CustomSelectTasksPage.Surface;
 
-  TasksList.AddCheckBox(ExpandConstant('{cm:AssociationVideo}'),    '', 0, False, True, False, True, nil);
+  TasksList.AddCheckBox(ExpandConstant('{cm:AssociationVideo}'),    '', 0, True, True, False, True, nil);
   TasksList.AddCheckBox(ExpandConstant('{cm:AssociationAudio}'),    '', 0, False, True, False, True, nil);
   TasksList.AddCheckBox(ExpandConstant('{cm:AssociationPlaylist}'), '', 0, False, True, False, True, nil);
 end;

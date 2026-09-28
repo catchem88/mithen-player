@@ -212,31 +212,31 @@ BEGIN
     CONTROL         "クリップボードから URL を貼り付ける",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,96,134,9
 END
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 241, 202
+IDD_ABOUTBOX DIALOGEX 0, 0, 241, 235
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "バージョン情報"
+CAPTION "About MithenPlayer"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_MAINFRAME_ICON,5,5,21,20
-    LTEXT           "MPC-BE",IDC_STATIC1,30,5,195,8,SS_NOPREFIX
-    CONTROL         "Copyright © 2002-2026 (Authors.txt ファイルを参照)",IDC_AUTHORS_LINK,
-                    "SysLink",WS_TABSTOP,30,17,195,8
-    LTEXT           "バージョン :",IDC_VERSION,30,34,90,8
-    LTEXT           "MPC-BE コンパイラ :",IDC_STATIC,30,66,90,8
-    LTEXT           "FFmpeg コンパイラ :",IDC_STATIC,30,83,90,8
-    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,30,99,90,8
-    EDITTEXT        IDC_VERSION_NUMBER,120,32,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT2,120,48,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_MPC_COMPILER,120,64,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_FFMPEG_COMPILER,120,81,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_LIBAVCODEC_VERSION,120,97,110,13,ES_AUTOHSCROLL | ES_READONLY
-    CONTROL         "<a>https://sourceforge.net/projects/mpcbe/</a>",IDC_SOURCEFORGE_LINK,
-                    "SysLink",WS_TABSTOP,30,114,200,8
-    CONTROL         "<a>https://github.com/Aleksoid1978/MPC-BE</a>",IDC_GITHUB_LINK,
-                    "SysLink",WS_TABSTOP,30,126,200,8
-    LTEXT           "このプログラムはフリーウェアであり、GNU 一般公衆利用許諾書 (GPL) に基づいて配布されます。",IDC_STATIC,30,138,200,18
-    LTEXT           "多くの方が日本語訳に貢献しています。",IDC_STATIC,30,161,200,18
-    DEFPUSHBUTTON   "OK",IDOK,185,183,50,14,WS_GROUP
+    CONTROL         "",IDC_MITHEN_LOGO,"Static",SS_ICON | SS_CENTERIMAGE,5,5,64,64
+    LTEXT           "MithenPlayer",IDC_STATIC1,75,14,160,14,SS_NOPREFIX
+    CONTROL         "Copyright © 2002-2026 see Authors.txt",IDC_AUTHORS_LINK,
+                    "SysLink",WS_TABSTOP,75,32,160,8
+    LTEXT           "Version :",IDC_VERSION,75,50,70,8
+    EDITTEXT        IDC_VERSION_NUMBER,145,48,90,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT2,145,64,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Compiler :",IDC_STATIC,75,82,70,8
+    EDITTEXT        IDC_MPC_COMPILER,145,80,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "FFmpeg Compiler :",IDC_STATIC,75,99,70,8
+    EDITTEXT        IDC_FFMPEG_COMPILER,145,97,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,75,116,70,8
+    EDITTEXT        IDC_LIBAVCODEC_VERSION,145,114,90,13,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "<a>https://github.com/catchem88/mithen-player</a>",IDC_GITHUB_LINK,
+                    "SysLink",WS_TABSTOP,75,134,160,8
+    LTEXT           "This program is freeware and released under the GNU General Public License.",IDC_STATIC,5,150,230,18
+    LTEXT           "Original MPC by Gabest",IDC_STATIC,5,170,230,8
+    LTEXT           "MPC-HC by casimir666",IDC_STATIC,5,182,230,8
+    LTEXT           "Based on MPC-BE by Aleksoid1978",IDC_STATIC,5,194,230,8
+    DEFPUSHBUTTON   "OK",IDOK,185,216,50,14,WS_GROUP
 END
 
 IDD_PLAYERSTATUSBAR DIALOGEX 0, 0, 183, 15
@@ -272,7 +272,7 @@ BEGIN
     GROUPBOX        "設定の保存場所",IDC_STATIC,5,135,115,55
     CONTROL         "Windows レジストリ",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | BS_TOP | WS_GROUP,10,148,106,10
     CONTROL         "ユーザー プロファイル",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON | BS_TOP,10,161,106,10
-    CONTROL         "MPC-BE フォルダー",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON | BS_TOP,10,175,106,10
+    CONTROL         "MithenPlayer フォルダー",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON | BS_TOP,10,175,106,10
     GROUPBOX        "履歴",IDC_STATIC,124,5,167,128,WS_GROUP
     CONTROL         "最近使ったファイルの履歴を保存する",IDC_CHECK1,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,129,17,156,9
@@ -669,7 +669,7 @@ EXSTYLE WS_EX_TOOLWINDOW
 CAPTION "警告"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "MPC-BE はグラフ内のピンの一部をレンダリングできませんでした。必要なコーデックやフィルターがインストールされていない可能性があります。",IDC_STATIC1,5,5,286,18
+    LTEXT           "MithenPlayer はグラフ内のピンの一部をレンダリングできませんでした。必要なコーデックやフィルターがインストールされていない可能性があります。",IDC_STATIC1,5,5,286,18
     LTEXT           "以下のピンが接続可能なフィルターを検出できませんでした:",IDC_STATIC2,5,27,286,8
     COMBOBOX        IDC_COMBO1,5,39,286,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        IDC_EDIT1,5,56,286,140,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
@@ -1659,7 +1659,6 @@ BEGIN
         MENUITEM "ディレクトリを開く...",                ID_FILE_OPENDIRECTORY
         MENUITEM "ISO イメージを開く(&I)...",          ID_FILE_OPENISO
         MENUITEM "ディスクを開く(&P)",                 ID_SUBMENU_OPENDISC
-        MENUITEM "最近使ったファイル",                   ID_SUBMENU_RECENTFILES
         MENUITEM "閉じる(&C)",               ID_FILE_CLOSEPLAYLIST
         MENUITEM SEPARATOR
         MENUITEM "名前を付けて保存(&S)...",             ID_FILE_SAVE_COPY
@@ -1702,7 +1701,6 @@ BEGIN
             MENUITEM "自動調整",                   ID_VIEW_ZOOM_AUTOFIT
         END
         MENUITEM SEPARATOR
-        MENUITEM "言語(&Language)",                   ID_SUBMENU_LANGUAGE
         MENUITEM SEPARATOR
         POPUP "レンダラー設定"
         BEGIN
@@ -1774,13 +1772,9 @@ BEGIN
         MENUITEM "再生終了後",                  ID_SUBMENU_AFTERPLAYBACK
     END
     MENUITEM "操作(&N)",                   ID_SUBMENU_NAVIGATE_MAIN
-    MENUITEM "お気に入り(&A)",                  ID_SUBMENU_FAVORITES_MAIN
     POPUP "ヘルプ(&H)"
     BEGIN
-        MENUITEM "ホーム ページ(&H)",                      ID_HELP_HOMEPAGE
-        MENUITEM "更新の確認(&U)",          ID_HELP_CHECKFORUPDATE
-        MENUITEM "コマンド ライン スイッチ(&C)",                ID_HELP_SHOWCOMMANDLINESWITCHES
-        MENUITEM "ツールバー画像をダウンロード(&T)",    ID_HELP_TOOLBARIMAGES
+        MENUITEM "&GitHub", ID_HELP_HOMEPAGE
         MENUITEM SEPARATOR
         MENUITEM "バージョン情報(&A)...",              ID_HELP_ABOUT
     END
@@ -1800,7 +1794,6 @@ BEGIN
             MENUITEM "ディレクトリを開く...",                ID_FILE_OPENDIRECTORY
             MENUITEM "ISO イメージを開く(&I)...",          ID_FILE_OPENISO
             MENUITEM "ディスクを開く(&P)",                 ID_SUBMENU_OPENDISC
-            MENUITEM "最近使ったファイル",                   ID_SUBMENU_RECENTFILES
             MENUITEM "閉じる(&C)",               ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "名前を付けて保存(&S)...",             ID_FILE_SAVE_COPY
@@ -1839,7 +1832,6 @@ BEGIN
         MENUITEM "パン＆スキャン(&C)",                      ID_SUBMENU_PANSCAN
         MENUITEM SEPARATOR
         MENUITEM "操作(&N)",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "お気に入り(&A)",                   ID_SUBMENU_FAVORITES
         MENUITEM SEPARATOR
         MENUITEM "フィルター(&F)",                    ID_SUBMENU_FILTERS
         MENUITEM "シェーダー(&H)",                    ID_SUBMENU_SHADERS
@@ -1877,7 +1869,6 @@ BEGIN
             MENUITEM "キャプチャー",                       ID_VIEW_CAPTURE
             MENUITEM "シェーダー編集",                      ID_VIEW_SHADEREDITOR
             MENUITEM "ナビゲーション",                     ID_VIEW_NAVIGATION
-            MENUITEM "言語(&Language)",                   ID_SUBMENU_LANGUAGE
             POPUP "プリセット(&P)..."
             BEGIN
                 MENUITEM "最小(&M)",                          ID_VIEW_PRESETS_MINIMAL
@@ -1931,7 +1922,6 @@ BEGIN
             MENUITEM "ディレクトリを開く...",                ID_FILE_OPENDIRECTORY
             MENUITEM "ISO イメージを開く(&I)...",          ID_FILE_OPENISO
             MENUITEM "ディスクを開く(&P)",                  ID_SUBMENU_OPENDISC
-            MENUITEM "最近使ったファイル",                   ID_SUBMENU_RECENTFILES
             MENUITEM "閉じる(&C)",                     ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "名前を付けて保存(&S)...",             ID_FILE_SAVE_COPY
@@ -1956,7 +1946,6 @@ BEGIN
             MENUITEM "キャプチャー",                 ID_VIEW_CAPTURE
             MENUITEM "シェーダー編集",                ID_VIEW_SHADEREDITOR
             MENUITEM "ナビゲーション",                     ID_VIEW_NAVIGATION
-            MENUITEM "言語(&Language)",                   ID_SUBMENU_LANGUAGE
             POPUP "プリセット(&P)..."
             BEGIN
                 MENUITEM "最小(&M)",                          ID_VIEW_PRESETS_MINIMAL
@@ -2028,12 +2017,9 @@ BEGIN
             MENUITEM "再生速度 標準",                ID_PLAY_RESETRATE
         END
         MENUITEM "操作(&N)",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "お気に入り(&A)",                  ID_SUBMENU_FAVORITES
         POPUP "ヘルプ(&H)"
         BEGIN
-            MENUITEM "ホーム ページ(&H)",                      ID_HELP_HOMEPAGE
-            MENUITEM "更新の確認(&U)",          ID_HELP_CHECKFORUPDATE
-            MENUITEM "コマンド ライン スイッチ(&C)",                ID_HELP_SHOWCOMMANDLINESWITCHES
+            MENUITEM "&GitHub", ID_HELP_HOMEPAGE
             MENUITEM SEPARATOR
             MENUITEM "バージョン情報(&A)...",              ID_HELP_ABOUT
         END
@@ -2341,7 +2327,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "MPC-BE"
+    IDR_MAINFRAME           "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2535,7 +2521,7 @@ END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_APP_TITLE       "MPC-BE"
+    AFX_IDS_APP_TITLE       "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2639,7 +2625,7 @@ BEGIN
     IDS_CM_INTENT_RELATIVECM "相対カラーメトリック"
     IDS_CM_INTENT_SATURATION "彩度"
     IDS_CM_INTENT_ABSOLUTECM "絶対カラーメトリック"
-    IDS_WEBUI_DISABLED_PREVIEW_MSG  "プレビューは現在無効です。MPC-BE のオプションで有効にすることができます。"
+    IDS_WEBUI_DISABLED_PREVIEW_MSG  "プレビューは現在無効です。MithenPlayer のオプションで有効にすることができます。"
 END
 
 STRINGTABLE
@@ -2685,7 +2671,7 @@ BEGIN
     IDC_CHECK_RELATIVETO    "未設定のスタイルには既定の状態の設定が適用されます"
     IDC_CHECK_ALLOW_DROPPING_SUBPIC  "このオプションを無効にすると、字幕が点滅しなくなりますが、ビデオ レンダラーによってビデオ フレームがスキップされることがあります。"
     IDC_CHECK_SPCANIMWITHBUFFER  "サブピクチャー バッファーを使用している時に字幕アニメーションを許可します。このオプションを無効にすると CPU 使用率が下がります。字幕が点滅する場合も無効にします。"
-    IDC_BUTTON_EXT_SET      "このボタンをクリックすると、MPC-BE の実際のファイルの関連付けが形式グループのチェック状態に反映されます。\n新しく拡張子が追加されると、通常チェックボックスは灰色表示になるため、このダイアログを閉じる前に、もう一度チェックしてください!"
+    IDC_BUTTON_EXT_SET      "このボタンをクリックすると、MithenPlayer の実際のファイルの関連付けが形式グループのチェック状態に反映されます。\n新しく拡張子が追加されると、通常チェックボックスは灰色表示になるため、このダイアログを閉じる前に、もう一度チェックしてください!"
 END
 
 STRINGTABLE
@@ -2878,8 +2864,8 @@ BEGIN
     IDS_MENU_VIDEO_STREAM   "映像ストリーム(&T)"
     IDS_MENU_VIDEO_ANGLE    "映像アングル(&L)"
     IDS_RESET_SETTINGS      "設定をリセット"
-    IDS_RESET_SETTINGS_WARNING  "MPC-BE を初期設定に戻してもよろしいですか?\n現在の設定はすべて失われるので注意してください!"
-    IDS_RESET_SETTINGS_MUTEX  "初期設定に戻すには MPC-BE のすべてのインスタンスを閉じてください。"
+    IDS_RESET_SETTINGS_WARNING  "MithenPlayer を初期設定に戻してもよろしいですか?\n現在の設定はすべて失われるので注意してください!"
+    IDS_RESET_SETTINGS_MUTEX  "初期設定に戻すには MithenPlayer のすべてのインスタンスを閉じてください。"
     IDS_EXPORT_SETTINGS     "設定をエクスポート"
     IDS_EXPORT_SETTINGS_WARNING  "未保存の設定があります。\nエクスポートする前に設定を保存しますか?"
     IDS_EXPORT_SETTINGS_SUCCESS  "設定は正常にエクスポートされました。"
@@ -2902,8 +2888,8 @@ BEGIN
     IDS_AG_RESET_STATS      "EVR 同期の統計情報をリセット"
     IDS_VIEW_BORDERLESS     "境界線を隠す\tCtrl+0"
     IDS_VIEW_FRAMEONLY      "フレームのみ\tCtrl+0"
-    IDS_VIEW_CAPTIONMENU    "タイトルとメニューを表示\tCtrl+0"
-    IDS_VIEW_HIDEMENU       "メニューを隠す\tCtrl+0"
+    IDS_VIEW_CAPTIONMENU    "タイトルとメニューを表示"
+    IDS_VIEW_HIDEMENU       "メニューを隠す"
 END
 
 STRINGTABLE
@@ -3109,9 +3095,9 @@ STRINGTABLE
 BEGIN
     IDS_ZOOM_AUTOFIT        "自動調整"
     IDS_ZOOM_AUTOFITLARGE   "自動調整 (超過のみ)"
-    IDS_ADD_TO_PLAYLIST     "MPC-BE プレイリストに追加"
-    IDS_OPEN_WITH_MPC       "MPC-BE で再生する"
-    IDS_CANNOT_CHANGE_FORMAT  "MPC-BE にファイルの関連付けを変更する十分な権限がありません。管理者権限を取得するには、[変更] を押してください。"
+    IDS_ADD_TO_PLAYLIST     "MithenPlayer プレイリストに追加"
+    IDS_OPEN_WITH_MPC       "MithenPlayer で再生する"
+    IDS_CANNOT_CHANGE_FORMAT  "MithenPlayer にファイルの関連付けを変更する十分な権限がありません。管理者権限を取得するには、[変更] を押してください。"
     IDS_APP_DESCRIPTION     "Windows OS 用の非常にパワフルな設定可能なマルチメディア プレーヤーの 1 つです。原作者は Gabest というハンガリーの開発者で、このバージョンには、排他フルスクリーン モードや Windows Vista/7 へのサポート強化といった機能の追加があります。"
     IDS_MAINFRM_12          "チャンネル"
     IDS_MAINFRM_13          "チャンネル"
@@ -3225,7 +3211,7 @@ BEGIN
     IDS_GAIN_OSD            "ゲイン: %+.1f dB"
     IDS_BALANCE_OSD         "バランス: %s"
     IDS_FULLSCREENMONITOR_CURRENT "現在のモニター"
-    IDS_MPC_CRASH           "MPC-BE は予期せず終了しました。この問題の解決に役立てるために、バグ トラッカーにファイル '%s' を送付してください。\n\n今すぐ minidump ファイルが含まれているフォルダーを開いてバグ トラッカーを訪れますか?"
+    IDS_MPC_CRASH           "MithenPlayer は予期せず終了しました。この問題の解決に役立てるために、バグ トラッカーにファイル '%s' を送付してください。\n\n今すぐ minidump ファイルが含まれているフォルダーを開いてバグ トラッカーを訪れますか?"
     IDS_MPC_MINIDUMP_FAIL   "'%s' へのダンプ ファイルの作成に失敗しました (エラー %d)"
     IDS_MAINFRM_DIR_TITLE   "ディレクトリを選択してください"
     IDS_MAINFRM_DIR_CHECK   "サブディレクトリを含める"
@@ -3283,7 +3269,7 @@ BEGIN
     IDS_AG_REMOVING         "除去中: "
     IDS_MAINFRM_134         "警告: CMainFrame::CloseMedia() を2度以上呼んでいます\n"
     IDS_MAINFRM_135         "重大なエラー: !!! 開いているスレッドを終了してください !!!"
-    IDS_MAINFRM_136         "MPC-BE 排他フルスクリーン"
+    IDS_MAINFRM_136         "MithenPlayer 排他フルスクリーン"
     IDS_MAINFRM_137         "不明な形式"
     IDS_MAINFRM_138         "字幕の移動: %ld ミリ秒"
     IDS_VOLUME_GAIN_INC     "音量ゲイン 増加"
@@ -3312,7 +3298,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_CMD_USAGE           "使用方法: mpc-be.exe ""pathname"" [switches]"
+    IDS_CMD_USAGE           "使用方法: mithen-player.exe ""pathname"" [switches]"
     IDS_CMD_PATHNAME        """pathname""\t読み込むメイン ファイルまたはディレクトリ (ワイルドカード使用可)"
     IDS_CMD_HELP            "/help /h /?\tコマンド ライン スイッチのヘルプを表示する"
     IDS_CMD_DUB             "/dub ""dubname""\t追加の音声ファイルを読み込む"
@@ -3753,7 +3739,7 @@ BEGIN
     IDS_RESET_COLOR         "カラー設定をリセット"
     IDS_UPDATE_ERROR_DATA   "更新サーバーが間違ったデータを提供します。\n\n後で試してください。"
     IDS_USING_NEWER_VERSION "既に最新版の %s を使用しています。"
-    IDS_NEW_UPDATE_AVAILABLE  "新しい %s を入手できます。\n\nダウンロードしに MPC-BE のウェブサイトを訪れますか?"
+    IDS_NEW_UPDATE_AVAILABLE  "新しい %s を入手できます。\n\nダウンロードしに MithenPlayer のウェブサイトを訪れますか?"
     IDS_UPDATE_ERROR_CONNECT  "更新サーバーが見つかりません。\n\nインターネット接続を確認して再試行してください。"
     IDS_UPDATE_CLOSE        "閉じる(&C)"
     IDS_OSD_ZOOM            "ズーム: %.0lf%%"
@@ -3787,7 +3773,7 @@ BEGIN
     IDS_GOTO_ERROR_PARSING_FPS "入力されたフレーム レートの解析エラーが発生しました!"
     IDS_FRAME_STEP_ERROR_RENDERER  "コマ送りできません。別のビデオ レンダラーを試してください。"
     IDS_SCREENSHOT_ERROR_SHOCKWAVE  "「画像を保存」と「サムネイルを保存」機能は、Shockwave ファイルでは機能しません。"
-    IDS_SCREENSHOT_ERROR_OVERLAY  "「画像を保存」と「サムネイルを保存」機能は、オーバーレイ ミキサー ビデオ レンダラーでは動作しません。\nMPC-BE の出力オプションでビデオ レンダラーを変更し、ファイルを開き直してください。"
+    IDS_SCREENSHOT_ERROR_OVERLAY  "「画像を保存」と「サムネイルを保存」機能は、オーバーレイ ミキサー ビデオ レンダラーでは動作しません。\nMithenPlayer の出力オプションでビデオ レンダラーを変更し、ファイルを開き直してください。"
     IDS_SUBDL_DLG_CONNECT_ERROR  "オンライン字幕データベースに接続できません。"
 END
 
@@ -3804,7 +3790,7 @@ BEGIN
     IDS_FILTERS_VIDEO       "ビデオ デコーダー"
     IDS_FILTERS_AUDIO       "音声デコーダー"
     IDS_GOTO_ERROR_INVALID_TIME  "ファイルの時間より長い時間が入力されました。"
-    IDS_SCREENSHOT_ERROR_MADVR  "「画像を保存」と「サムネイルを保存」機能は、madVR ビデオ レンダラーでは動作しません。\nMPC-BE の出力オプションでビデオ レンダラーを変更し、ファイルを開き直してください。"
+    IDS_SCREENSHOT_ERROR_MADVR  "「画像を保存」と「サムネイルを保存」機能は、madVR ビデオ レンダラーでは動作しません。\nMithenPlayer の出力オプションでビデオ レンダラーを変更し、ファイルを開き直してください。"
     IDS_SUBDL_DLG_FILENAME_COL "ファイル"
     IDS_SUBDL_DLG_LANGUAGE_COL "言語"
     IDS_SUBDL_DLG_FORMAT_COL "形式"
@@ -3965,14 +3951,14 @@ BEGIN
     BEGIN
         BLOCK "041104b0"
         BEGIN
-            VALUE "Comments", "Japanese language resource for MPC-BE"
+            VALUE "Comments", "Japanese language resource for MithenPlayer"
             VALUE "CompanyName", MPC_COMP_NAME_STR
-            VALUE "FileDescription", "Japanese language resource for MPC-BE"
+            VALUE "FileDescription", "Japanese language resource for MithenPlayer"
             VALUE "FileVersion", MPC_VERSION_FULL_STR
             VALUE "InternalName", "mpc-be"
             VALUE "LegalCopyright", MPC_COPYRIGHT_STR
             VALUE "OriginalFilename", "mpcresources.ja.dll"
-            VALUE "ProductName", "MPC-BE"
+            VALUE "ProductName", "MithenPlayer"
             VALUE "ProductVersion", MPC_VERSION_STR
         END
     END

@@ -984,8 +984,6 @@ void CPlayerToolBar::OnRButtonDown(UINT nFlags, CPoint point)
 		m_pMainFrame->PostMessageW(WM_COMMAND, ID_NAVIGATE_SKIPFORWARDFILE);
 	} else if (Idx == 5) {
 		m_pMainFrame->OnMenuNavJumpTo();
-	} else if (Idx == 6) {
-		m_pMainFrame->OnMenuRecentFiles();
 	} else if (Idx == 8) {
 		m_pMainFrame->OnMenuNavAudioOptions();
 	} else if (Idx == 9) {

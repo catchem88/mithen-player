@@ -212,31 +212,31 @@ BEGIN
     CONTROL         "從剪貼簿貼上網址",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,96,134,9
 END
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 241, 202
+IDD_ABOUTBOX DIALOGEX 0, 0, 241, 235
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "關於"
+CAPTION "About MithenPlayer"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_MAINFRAME_ICON,5,5,21,20
-    LTEXT           "MPC-BE",IDC_STATIC1,30,5,195,8,SS_NOPREFIX
-    CONTROL         "Copyright © 2002-2026 詳見 Authors.txt 檔案",IDC_AUTHORS_LINK,
-                    "SysLink",WS_TABSTOP,30,17,195,8
-    LTEXT           "版本：",IDC_VERSION,30,34,90,8
-    LTEXT           "MPC-BE 編譯器：",IDC_STATIC,30,66,90,8
-    LTEXT           "FFmpeg 編譯器：",IDC_STATIC,30,83,90,8
-    LTEXT           "Libavcodec / Libavutil：",IDC_STATIC,30,99,90,8
-    EDITTEXT        IDC_VERSION_NUMBER,120,32,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_EDIT2,120,48,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_MPC_COMPILER,120,64,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_FFMPEG_COMPILER,120,81,110,13,ES_AUTOHSCROLL | ES_READONLY
-    EDITTEXT        IDC_LIBAVCODEC_VERSION,120,97,110,13,ES_AUTOHSCROLL | ES_READONLY
-    CONTROL         "<a>https://sourceforge.net/projects/mpcbe/</a>",IDC_SOURCEFORGE_LINK,
-                    "SysLink",WS_TABSTOP,30,114,200,8
-    CONTROL         "<a>https://github.com/Aleksoid1978/MPC-BE</a>",IDC_GITHUB_LINK,
-                    "SysLink",WS_TABSTOP,30,126,200,8
-    LTEXT           "本程式係依 GNU 通用公共授權 (GPL) 發行之自由軟體。",IDC_STATIC,30,138,200,18
-    LTEXT           "本翻譯版本延伸自 Kene Lin 及 roytam \n之譯本，並作多處擴充，特此鳴謝。",IDC_STATIC,30,161,200,18
-    DEFPUSHBUTTON   "確認",IDOK,185,183,50,14,WS_GROUP
+    CONTROL         "",IDC_MITHEN_LOGO,"Static",SS_ICON | SS_CENTERIMAGE,5,5,64,64
+    LTEXT           "MithenPlayer",IDC_STATIC1,75,14,160,14,SS_NOPREFIX
+    CONTROL         "Copyright © 2002-2026 see Authors.txt",IDC_AUTHORS_LINK,
+                    "SysLink",WS_TABSTOP,75,32,160,8
+    LTEXT           "Version :",IDC_VERSION,75,50,70,8
+    EDITTEXT        IDC_VERSION_NUMBER,145,48,90,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT2,145,64,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Compiler :",IDC_STATIC,75,82,70,8
+    EDITTEXT        IDC_MPC_COMPILER,145,80,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "FFmpeg Compiler :",IDC_STATIC,75,99,70,8
+    EDITTEXT        IDC_FFMPEG_COMPILER,145,97,90,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Libavcodec / Libavutil :",IDC_STATIC,75,116,70,8
+    EDITTEXT        IDC_LIBAVCODEC_VERSION,145,114,90,13,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "<a>https://github.com/catchem88/mithen-player</a>",IDC_GITHUB_LINK,
+                    "SysLink",WS_TABSTOP,75,134,160,8
+    LTEXT           "This program is freeware and released under the GNU General Public License.",IDC_STATIC,5,150,230,18
+    LTEXT           "Original MPC by Gabest",IDC_STATIC,5,170,230,8
+    LTEXT           "MPC-HC by casimir666",IDC_STATIC,5,182,230,8
+    LTEXT           "Based on MPC-BE by Aleksoid1978",IDC_STATIC,5,194,230,8
+    DEFPUSHBUTTON   "OK",IDOK,185,216,50,14,WS_GROUP
 END
 
 IDD_PLAYERSTATUSBAR DIALOGEX 0, 0, 183, 15
@@ -669,7 +669,7 @@ EXSTYLE WS_EX_TOOLWINDOW
 CAPTION "警告"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "MPC-BE 無法繪製篩選器圖中某些 Pin，您的系統可能未有安裝所需的編解碼器或篩選器。",IDC_STATIC1,5,5,286,18
+    LTEXT           "MithenPlayer 無法繪製篩選器圖中某些 Pin，您的系統可能未有安裝所需的編解碼器或篩選器。",IDC_STATIC1,5,5,286,18
     LTEXT           "以下的 Pin 找不到對應的篩選器：",IDC_STATIC2,5,27,286,8
     COMBOBOX        IDC_COMBO1,5,39,286,87,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        IDC_EDIT1,5,56,286,140,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
@@ -1659,7 +1659,6 @@ BEGIN
         MENUITEM "開啟目錄...",                     ID_FILE_OPENDIRECTORY
         MENUITEM "開啟 &ISO 映像檔...",          ID_FILE_OPENISO
         MENUITEM "開啟光碟(&P)",                    ID_SUBMENU_OPENDISC
-        MENUITEM "最近的檔案",                       ID_SUBMENU_RECENTFILES
         MENUITEM "關閉(&C)",                ID_FILE_CLOSEPLAYLIST
         MENUITEM SEPARATOR
         MENUITEM "另存新檔(&S)...",                 ID_FILE_SAVE_COPY
@@ -1702,7 +1701,6 @@ BEGIN
             MENUITEM "自動調整",                   ID_VIEW_ZOOM_AUTOFIT
         END
         MENUITEM SEPARATOR
-        MENUITEM "語言 Language(&L)",                   ID_SUBMENU_LANGUAGE
         MENUITEM SEPARATOR
         POPUP "繪製器設定"
         BEGIN
@@ -1774,13 +1772,9 @@ BEGIN
         MENUITEM "播放完後",                  ID_SUBMENU_AFTERPLAYBACK
     END
     MENUITEM "導覽(&N)",                   ID_SUBMENU_NAVIGATE_MAIN
-    MENUITEM "我的最愛(&A)",                  ID_SUBMENU_FAVORITES_MAIN
     POPUP "說明(&H)"
     BEGIN
-        MENUITEM "網站首頁(&H)",                        ID_HELP_HOMEPAGE
-        MENUITEM "檢查更新(&U)",          ID_HELP_CHECKFORUPDATE
-        MENUITEM "命令列選項(&C)",                       ID_HELP_SHOWCOMMANDLINESWITCHES
-        MENUITEM "下載工具列圖示(&T)",    ID_HELP_TOOLBARIMAGES
+        MENUITEM "&GitHub", ID_HELP_HOMEPAGE
         MENUITEM SEPARATOR
         MENUITEM "關於(&A)...",                   ID_HELP_ABOUT
     END
@@ -1800,7 +1794,6 @@ BEGIN
             MENUITEM "開啟目錄...",                     ID_FILE_OPENDIRECTORY
             MENUITEM "開啟 &ISO 映像檔...",          ID_FILE_OPENISO
             MENUITEM "開啟光碟(&P)",                    ID_SUBMENU_OPENDISC
-            MENUITEM "最近的檔案",                       ID_SUBMENU_RECENTFILES
             MENUITEM "關閉(&C)",                ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "另存新檔(&S)...",                 ID_FILE_SAVE_COPY
@@ -1839,7 +1832,6 @@ BEGIN
         MENUITEM "平移掃描(&C)",                      ID_SUBMENU_PANSCAN
         MENUITEM SEPARATOR
         MENUITEM "導覽(&N)",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "我的最愛(&A)",                    ID_SUBMENU_FAVORITES
         MENUITEM SEPARATOR
         MENUITEM "篩選器(&F)",                    ID_SUBMENU_FILTERS
         MENUITEM "着色器(&H)",                ID_SUBMENU_SHADERS
@@ -1877,7 +1869,6 @@ BEGIN
             MENUITEM "擷取",                          ID_VIEW_CAPTURE
             MENUITEM "編輯着色器",                  ID_VIEW_SHADEREDITOR
             MENUITEM "導覽",                          ID_VIEW_NAVIGATION
-            MENUITEM "語言 Language(&L)",                   ID_SUBMENU_LANGUAGE
             POPUP "範例介面(&P)..."
             BEGIN
                 MENUITEM "最小(&M)",                          ID_VIEW_PRESETS_MINIMAL
@@ -1931,7 +1922,6 @@ BEGIN
             MENUITEM "開啟目錄...",                     ID_FILE_OPENDIRECTORY
             MENUITEM "開啟 &ISO 映像檔...",          ID_FILE_OPENISO
             MENUITEM "開啟光碟(&P)",                  ID_SUBMENU_OPENDISC
-            MENUITEM "最近的檔案",                       ID_SUBMENU_RECENTFILES
             MENUITEM "關閉(&C)",                      ID_FILE_CLOSEPLAYLIST
             MENUITEM SEPARATOR
             MENUITEM "另存新檔(&S)...",                 ID_FILE_SAVE_COPY
@@ -1956,7 +1946,6 @@ BEGIN
             MENUITEM "擷取",                    ID_VIEW_CAPTURE
             MENUITEM "編輯着色器",            ID_VIEW_SHADEREDITOR
             MENUITEM "導覽",                          ID_VIEW_NAVIGATION
-            MENUITEM "語言 Language(&L)",                   ID_SUBMENU_LANGUAGE
             POPUP "範例介面(&P)..."
             BEGIN
                 MENUITEM "最小(&M)",                          ID_VIEW_PRESETS_MINIMAL
@@ -2028,12 +2017,9 @@ BEGIN
             MENUITEM "重設頻率",                  ID_PLAY_RESETRATE
         END
         MENUITEM "導覽(&N)",                   ID_SUBMENU_NAVIGATE
-        MENUITEM "我的最愛(&A)",                  ID_SUBMENU_FAVORITES
         POPUP "說明(&H)"
         BEGIN
-            MENUITEM "網站首頁(&H)",                        ID_HELP_HOMEPAGE
-            MENUITEM "檢查更新(&U)",          ID_HELP_CHECKFORUPDATE
-            MENUITEM "命令列選項(&C)",                       ID_HELP_SHOWCOMMANDLINESWITCHES
+            MENUITEM "&GitHub", ID_HELP_HOMEPAGE
             MENUITEM SEPARATOR
             MENUITEM "關於(&A)...",                   ID_HELP_ABOUT
         END
@@ -2341,7 +2327,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "MPC-BE"
+    IDR_MAINFRAME           "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2535,7 +2521,7 @@ END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_APP_TITLE       "MPC-BE"
+    AFX_IDS_APP_TITLE       "MithenPlayer"
 END
 
 STRINGTABLE
@@ -2639,7 +2625,7 @@ BEGIN
     IDS_CM_INTENT_RELATIVECM "相對色度"
     IDS_CM_INTENT_SATURATION "飽和度"
     IDS_CM_INTENT_ABSOLUTECM "絕對色度"
-    IDS_WEBUI_DISABLED_PREVIEW_MSG  "未啟用預覽。可以於 MPC-BE 設定選項中啟用。"
+    IDS_WEBUI_DISABLED_PREVIEW_MSG  "未啟用預覽。可以於 MithenPlayer 設定選項中啟用。"
 END
 
 STRINGTABLE
@@ -2685,7 +2671,7 @@ BEGIN
     IDC_CHECK_RELATIVETO    "如果依舊沒定義，預設會繼承其他的樣式"
     IDC_CHECK_ALLOW_DROPPING_SUBPIC  "停用此選項將防止字幕閃爍，但亦可能導致視訊繪製器略過部份影格。"
     IDC_CHECK_SPCANIMWITHBUFFER  "當子畫面緩衝大於 0 時允許字幕動畫。停用此選項將降低 CPU 使用量。如果字幕在閃爍亦請停用。"
-    IDC_BUTTON_EXT_SET      "按下此按鈕後，格式群組中已選取的狀態會反映 MPC-BE 實際的檔案關聯。新加入的副檔名通常呈現灰色，所以在關閉對話框之前別忘記再檢查一次！"
+    IDC_BUTTON_EXT_SET      "按下此按鈕後，格式群組中已選取的狀態會反映 MithenPlayer 實際的檔案關聯。新加入的副檔名通常呈現灰色，所以在關閉對話框之前別忘記再檢查一次！"
 END
 
 STRINGTABLE
@@ -2878,8 +2864,8 @@ BEGIN
     IDS_MENU_VIDEO_STREAM   "視訊串流(&T)"
     IDS_MENU_VIDEO_ANGLE    "視訊角度(&L)"
     IDS_RESET_SETTINGS      "重設設定"
-    IDS_RESET_SETTINGS_WARNING  "您確定要還原 MPC-BE 的設定至預設設定？\n警告：所有現有設定將會消失！"
-    IDS_RESET_SETTINGS_MUTEX  "請關閉所有的 MPC-BE 實體以還原為預設設定。"
+    IDS_RESET_SETTINGS_WARNING  "您確定要還原 MithenPlayer 的設定至預設設定？\n警告：所有現有設定將會消失！"
+    IDS_RESET_SETTINGS_MUTEX  "請關閉所有的 MithenPlayer 實體以還原為預設設定。"
     IDS_EXPORT_SETTINGS     "匯出設定"
     IDS_EXPORT_SETTINGS_WARNING  "部份設定尚未儲存。\n你要先儲存後才匯出嗎？"
     IDS_EXPORT_SETTINGS_SUCCESS  "成功匯出設定。"
@@ -2902,8 +2888,8 @@ BEGIN
     IDS_AG_RESET_STATS      "EVR 同步繪製 重設統計"
     IDS_VIEW_BORDERLESS     "隱藏邊框\tCtrl+0"
     IDS_VIEW_FRAMEONLY      "僅影格\tCtrl+0"
-    IDS_VIEW_CAPTIONMENU    "顯示標題選單\tCtrl+0"
-    IDS_VIEW_HIDEMENU       "隱藏選單\tCtrl+0"
+    IDS_VIEW_CAPTIONMENU    "顯示標題選單"
+    IDS_VIEW_HIDEMENU       "隱藏選單"
 END
 
 STRINGTABLE
@@ -3109,9 +3095,9 @@ STRINGTABLE
 BEGIN
     IDS_ZOOM_AUTOFIT        "自動調整"
     IDS_ZOOM_AUTOFITLARGE   "自動調整（僅限影片較大時）"
-    IDS_ADD_TO_PLAYLIST     "加到 MPC-BE 的播放清單"
-    IDS_OPEN_WITH_MPC       "以 MPC-BE 播放"
-    IDS_CANNOT_CHANGE_FORMAT  "MPC-BE 沒有足夠的權限變更檔案關聯。請按「修改」按鈕取得管理員權限。"
+    IDS_ADD_TO_PLAYLIST     "加到 MithenPlayer 的播放清單"
+    IDS_OPEN_WITH_MPC       "以 MithenPlayer 播放"
+    IDS_CANNOT_CHANGE_FORMAT  "MithenPlayer 沒有足夠的權限變更檔案關聯。請按「修改」按鈕取得管理員權限。"
     IDS_APP_DESCRIPTION     "Windows 作業系統上其中一款非常強大、可靈活配置的多媒體播放程式。原由匈牙利的開發者 Gabest 所製作。此版本帶有額外的功能如獨佔全螢幕模式，及對 Windows Vista/7 的支援更佳。"
     IDS_MAINFRM_12          "聲道"
     IDS_MAINFRM_13          "聲道"
@@ -3154,7 +3140,7 @@ STRINGTABLE
 BEGIN
     IDS_ADDTOPLS_FROMDIR_SIMILAR "同一資料夾的相似檔案"
     IDS_ADDTOPLS_FROMDIR_ALL "同一資料夾的所有檔案"
-    IDS_EXCLUSIVE_FS_WARNING  "此選項本用作避免撕裂及抖動，然而在播放時亦會阻礙 MPC-BE 顯示右鍵選單及對話框。\n\n要離開 Direct3D 全螢幕並停止播放，您必須按下：Ctrl+C。\n\n您確認要開啟本選項？"
+    IDS_EXCLUSIVE_FS_WARNING  "此選項本用作避免撕裂及抖動，然而在播放時亦會阻礙 MithenPlayer 顯示右鍵選單及對話框。\n\n要離開 Direct3D 全螢幕並停止播放，您必須按下：Ctrl+C。\n\n您確認要開啟本選項？"
     IDS_MAINFRM_139         "字幕延遲：%ld ms"
     IDS_AG_TITLE2           "標題：%02d/%02d"
     IDS_THUMB_ROWNUMBER     "列："
@@ -3225,7 +3211,7 @@ BEGIN
     IDS_GAIN_OSD            "增益：%+.1f dB"
     IDS_BALANCE_OSD         "平衡：%s"
     IDS_FULLSCREENMONITOR_CURRENT "目前的"
-    IDS_MPC_CRASH           "MPC-BE 意外終止。為協助我們修復問題，請傳送以下檔案 '%s' 至我們的 bug tracker。\n\n您現在想開啟包含這個 Minidump 檔案的資料夾，並瀏覽 bug tracker 嗎？"
+    IDS_MPC_CRASH           "MithenPlayer 意外終止。為協助我們修復問題，請傳送以下檔案 '%s' 至我們的 bug tracker。\n\n您現在想開啟包含這個 Minidump 檔案的資料夾，並瀏覽 bug tracker 嗎？"
     IDS_MPC_MINIDUMP_FAIL   "無法建立傾印檔案到 '%s' （錯誤 %d）"
     IDS_MAINFRM_DIR_TITLE   "選擇目錄"
     IDS_MAINFRM_DIR_CHECK   "包含子目錄"
@@ -3283,7 +3269,7 @@ BEGIN
     IDS_AG_REMOVING         "正在移除："
     IDS_MAINFRM_134         "警告: CMainFrame::CloseMedia() 被呼叫了兩次以上\n"
     IDS_MAINFRM_135         "嚴重錯誤: !!! 必須殺掉開檔執行緒 !!!"
-    IDS_MAINFRM_136         "MPC-BE 全螢幕獨佔模式"
+    IDS_MAINFRM_136         "MithenPlayer 全螢幕獨佔模式"
     IDS_MAINFRM_137         "未知格式"
     IDS_MAINFRM_138         "字幕移動：%ld"
     IDS_VOLUME_GAIN_INC     "提升音量增益"
@@ -3312,7 +3298,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_CMD_USAGE           "用法: mpc-be.exe ""路徑名稱"" [選項]"
+    IDS_CMD_USAGE           "用法: mithen-player.exe ""路徑名稱"" [選項]"
     IDS_CMD_PATHNAME        """路徑名稱""\t要載入的主要檔案或資料夾 (可使用萬用字元)"
     IDS_CMD_HELP            "/help /h /?\t顯示命令列選項的說明"
     IDS_CMD_DUB             "/dub ""音源名稱""\t載入額外的音訊檔案"
@@ -3753,7 +3739,7 @@ BEGIN
     IDS_RESET_COLOR         "重設色彩設定"
     IDS_UPDATE_ERROR_DATA   "更新伺服器資料錯誤。\n\n請稍後再試。"
     IDS_USING_NEWER_VERSION "您已經使用最新的穩定版本 %s"
-    IDS_NEW_UPDATE_AVAILABLE  "新版本 %s 已經發佈。\n\n您要前往 MPC-BE 網站下載嗎？"
+    IDS_NEW_UPDATE_AVAILABLE  "新版本 %s 已經發佈。\n\n您要前往 MithenPlayer 網站下載嗎？"
     IDS_UPDATE_ERROR_CONNECT  "找不到更新伺服器。\n\n請檢查您的連線狀態或稍後再嘗試。"
     IDS_UPDATE_CLOSE        "關閉(&C)"
     IDS_OSD_ZOOM            "縮放：%.0lf%%"
@@ -3787,7 +3773,7 @@ BEGIN
     IDS_GOTO_ERROR_PARSING_FPS "分析輸入的影格播放速率時發生錯誤！"
     IDS_FRAME_STEP_ERROR_RENDERER  "無法步進影格，請嘗試其他的繪製器。"
     IDS_SCREENSHOT_ERROR_SHOCKWAVE  "「儲存影像」和「儲存縮圖」功能在 Shockwave 檔案下不能運作。"
-    IDS_SCREENSHOT_ERROR_OVERLAY  "「儲存影像」和「儲存縮圖」功能在覆疊合成器繪製器下不能運作。\n請至 MPC-BE 輸出選項中更改繪製器設定並重新開啟檔案。"
+    IDS_SCREENSHOT_ERROR_OVERLAY  "「儲存影像」和「儲存縮圖」功能在覆疊合成器繪製器下不能運作。\n請至 MithenPlayer 輸出選項中更改繪製器設定並重新開啟檔案。"
     IDS_SUBDL_DLG_CONNECT_ERROR  "無法連接線上字幕資料庫。"
 END
 
@@ -3804,7 +3790,7 @@ BEGIN
     IDS_FILTERS_VIDEO       "視訊解碼器"
     IDS_FILTERS_AUDIO       "音訊解碼器"
     IDS_GOTO_ERROR_INVALID_TIME  "輸入時間大於檔案長度"
-    IDS_SCREENSHOT_ERROR_MADVR  "「儲存影像」和「儲存縮圖」功能在 madVR 繪製器下不能運作。\n請至 MPC-BE 輸出選項中更改繪製器設定並重新開啟檔案。"
+    IDS_SCREENSHOT_ERROR_MADVR  "「儲存影像」和「儲存縮圖」功能在 madVR 繪製器下不能運作。\n請至 MithenPlayer 輸出選項中更改繪製器設定並重新開啟檔案。"
     IDS_SUBDL_DLG_FILENAME_COL "檔案"
     IDS_SUBDL_DLG_LANGUAGE_COL "語言"
     IDS_SUBDL_DLG_FORMAT_COL "格式"
@@ -3965,14 +3951,14 @@ BEGIN
     BEGIN
         BLOCK "040404b0"
         BEGIN
-            VALUE "Comments", "Chinese traditional language resource for MPC-BE"
+            VALUE "Comments", "Chinese traditional language resource for MithenPlayer"
             VALUE "CompanyName", MPC_COMP_NAME_STR
-            VALUE "FileDescription", "Chinese traditional language resource for MPC-BE"
+            VALUE "FileDescription", "Chinese traditional language resource for MithenPlayer"
             VALUE "FileVersion", MPC_VERSION_FULL_STR
             VALUE "InternalName", "mpc-be"
             VALUE "LegalCopyright", MPC_COPYRIGHT_STR
             VALUE "OriginalFilename", "mpcresources.tc.dll"
-            VALUE "ProductName", "MPC-BE"
+            VALUE "ProductName", "MithenPlayer"
             VALUE "ProductVersion", MPC_VERSION_STR
         END
     END

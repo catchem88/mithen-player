@@ -44,11 +44,6 @@ private:
 	BOOL m_fMiniDump         = FALSE;
 	CComboBox m_cbFFmpegExePath;
 
-	CButton m_updaterAutoCheckCtrl;
-	CEdit m_updaterDelayCtrl;
-	CSpinButtonCtrl m_updaterDelaySpin;
-	int m_nUpdaterDelay = 7;
-
 public:
 	CPPageMisc();
 	virtual ~CPPageMisc();
@@ -64,7 +59,6 @@ protected:
 
 public:
 	afx_msg void OnBnClickedButton1();
-	afx_msg void OnUpdateDelayEditBox(CCmdUI* pCmdUI);
 	afx_msg void OnResetSettings();
 	afx_msg void OnExportSettings();
 };

@@ -741,7 +741,7 @@ public:
 
 	bool DoAfterPlaybackEvent();
 	void ParseDirs(std::list<CString>& sl);
-	int SearchInDir(const bool bForward);
+	void SearchInDir(const bool bForward);
 
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
@@ -1097,6 +1097,7 @@ public:
 	afx_msg void OnUpdateNavigateSkip(CCmdUI* pCmdUI);
 	afx_msg void OnNavigateSkipFile(UINT nID);
 	afx_msg void OnUpdateNavigateSkipFile(CCmdUI* pCmdUI);
+	afx_msg LRESULT OnSearchInDirDone(WPARAM wParam, LPARAM lParam);
 	afx_msg void OnNavigateMenu(UINT nID);
 	afx_msg void OnUpdateNavigateMenu(CCmdUI* pCmdUI);
 	afx_msg void OnNavigateAudio(UINT nID);

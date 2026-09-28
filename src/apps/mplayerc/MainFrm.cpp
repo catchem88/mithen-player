@@ -105,6 +105,13 @@ namespace LAVVideo
 #include <exdisp.h>
 #include <shlguid.h>
 
+#include <thread>
+
+// Posted by the background Next/Previous File lookup when the target file is known.
+#define WM_APP_SEARCHINDIR (WM_APP + 201)
+
+static int HasNextFileInDir(const CString& curFile, const bool bForward);
+
 #define DEFCLIENTW		292
 #define DEFCLIENTH		200
 #define MENUBARBREAK	30
@@ -156,6 +163,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_MESSAGE(WM_HANDLE_CMDLINE, HandleCmdLine)
 
 	ON_MESSAGE(WM_RESTORE, OnRestore)
+
+	ON_MESSAGE(WM_APP_SEARCHINDIR, OnSearchInDirDone)
 
 	ON_WM_CREATE()
 	ON_WM_DESTROY()
@@ -3120,7 +3129,7 @@ bool CMainFrame::GraphEventComplete()
 		} else {
 			int NextMediaExist = 0;
 			if (s.fNextInDirAfterPlayback) {
-				NextMediaExist = SearchInDir(true);
+				NextMediaExist = HasNextFileInDir(m_LastOpenFile, true);
 			}
 			if (!s.fNextInDirAfterPlayback || !(NextMediaExist > 1)) {
 				m_bEndOfStream = true;
@@ -3133,6 +3142,9 @@ bool CMainFrame::GraphEventComplete()
 				if ((m_bFullScreen || IsD3DFullScreenMode()) && s.fExitFullScreenAtTheEnd) {
 					OnViewFullscreen();
 				}
+			} else {
+				// Open the next file in the background (never blocks).
+				SearchInDir(true);
 			}
 			if (s.fNextInDirAfterPlayback && !NextMediaExist) {
 				m_OSD.DisplayMessage(OSD_TOPLEFT, ResStr(IDS_NO_MORE_MEDIA));
@@ -9880,13 +9892,9 @@ void CMainFrame::OnNavigateSkipFile(UINT nID)
 				SendMessageW(WM_COMMAND, ID_PLAY_PLAY);
 			} else {
 				if (nID == ID_NAVIGATE_SKIPBACKFILE) {
-					if (!SearchInDir(false)) {
-						m_OSD.DisplayMessage(OSD_TOPLEFT, ResStr(IDS_FIRST_IN_FOLDER));
-					}
+					SearchInDir(false);
 				} else if (nID == ID_NAVIGATE_SKIPFORWARDFILE) {
-					if (!SearchInDir(true)) {
-						m_OSD.DisplayMessage(OSD_TOPLEFT, ResStr(IDS_LAST_IN_FOLDER));
-					}
+					SearchInDir(true);
 				}
 			}
 		} else {
@@ -14588,14 +14596,17 @@ static std::vector<CString> GetExplorerSortOrder(const CString& folderPath)
 	return sortOrder;
 }
 
-int CMainFrame::SearchInDir(const bool bForward)
+// Quick, synchronous check (no shell/COM) whether a next/previous media file exists in the
+// current file's folder. Returns the number of media files when navigation is possible,
+// 1 when the folder holds a single file, or 0 when there is nowhere to go.
+static int HasNextFileInDir(const CString& curFile, const bool bForward)
 {
 	std::list<CString> sl;
 
 	CAppSettings& s = AfxGetAppSettings();
 	CMediaFormats& mf = s.m_Formats;
 
-	const CString dir  = GetAddSlash(GetFolderPath(m_LastOpenFile));
+	const CString dir  = GetAddSlash(GetFolderPath(curFile));
 	const CString mask = dir + L"*.*";
 	WIN32_FIND_DATAW fd;
 	HANDLE h = FindFirstFileW(mask, &fd);
@@ -14613,8 +14624,58 @@ int CMainFrame::SearchInDir(const bool bForward)
 		FindClose(h);
 	}
 
-	if (sl.size() == 1) {
-		return 1;
+	if (sl.size() <= 1) {
+		return (int)sl.size();
+	}
+
+	const auto it = std::find(sl.cbegin(), sl.cend(), curFile);
+	if (it == sl.cend()) {
+		return 0;
+	}
+
+	if (bForward) {
+		if (it == std::prev(sl.cend()) && !s.fNextInDirAfterPlaybackLooped) {
+			return 0;
+		}
+	} else {
+		if (it == sl.cbegin() && !s.fNextInDirAfterPlaybackLooped) {
+			return 0;
+		}
+	}
+
+	return (int)sl.size();
+}
+
+// Computes the next/previous media file in the folder, following the folder's current
+// Windows Explorer sort order when available. Returns an empty string when there is none.
+// Safe to call from a background thread (does not touch any UI object).
+static CString FindNextFileInDir(const CString& curFile, const bool bForward)
+{
+	std::list<CString> sl;
+
+	CAppSettings& s = AfxGetAppSettings();
+	CMediaFormats& mf = s.m_Formats;
+
+	const CString dir  = GetAddSlash(GetFolderPath(curFile));
+	const CString mask = dir + L"*.*";
+	WIN32_FIND_DATAW fd;
+	HANDLE h = FindFirstFileW(mask, &fd);
+	if (h != INVALID_HANDLE_VALUE) {
+		do {
+			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+				continue;
+			}
+
+			const CString ext = GetFileExt(fd.cFileName).MakeLower();
+			if (mf.FindExt(ext)) {
+				sl.emplace_back(dir + fd.cFileName);
+			}
+		} while (FindNextFileW(h, &fd));
+		FindClose(h);
+	}
+
+	if (sl.size() <= 1) {
+		return CString();
 	}
 
 	sl.sort([](const CString& a, const CString& b) {
@@ -14622,7 +14683,7 @@ int CMainFrame::SearchInDir(const bool bForward)
 	});
 
 	// Follow the current sort order of the folder as shown in Windows Explorer, if it is open there.
-	const std::vector<CString> explorerOrder = GetExplorerSortOrder(GetFolderPath(m_LastOpenFile));
+	const std::vector<CString> explorerOrder = GetExplorerSortOrder(GetFolderPath(curFile));
 	if (!explorerOrder.empty()) {
 		std::map<CString, int> orderMap;
 		for (int i = 0; i < (int)explorerOrder.size(); i++) {
@@ -14639,9 +14700,9 @@ int CMainFrame::SearchInDir(const bool bForward)
 		});
 	}
 
-	auto it = std::find(sl.cbegin(), sl.cend(), m_LastOpenFile);
+	auto it = std::find(sl.cbegin(), sl.cend(), curFile);
 	if (it == sl.cend()) {
-		return 0;
+		return CString();
 	}
 
 	if (bForward) {
@@ -14649,7 +14710,7 @@ int CMainFrame::SearchInDir(const bool bForward)
 			if (s.fNextInDirAfterPlaybackLooped) {
 				it = sl.cbegin();
 			} else {
-				return 0;
+				return CString();
 			}
 		} else {
 			++it;
@@ -14659,17 +14720,48 @@ int CMainFrame::SearchInDir(const bool bForward)
 			if (s.fNextInDirAfterPlaybackLooped) {
 				it = std::prev(sl.cend());
 			} else {
-				return 0;
+				return CString();
 			}
 		} else {
 			--it;
 		}
 	}
 
-	m_wndPlaylistBar.Open(*it);
-	OpenCurPlaylistItem();
+	return *it;
+}
 
-	return sl.size();
+// Starts the background Next/Previous File lookup. Never blocks the UI thread or playback.
+void CMainFrame::SearchInDir(const bool bForward)
+{
+	const CString curFile = m_LastOpenFile;
+	if (curFile.IsEmpty()) {
+		return;
+	}
+
+	const HWND hwnd = m_hWnd;
+	std::thread([hwnd, curFile, bForward]() {
+		const CString target = FindNextFileInDir(curFile, bForward);
+		CString* pTarget = target.IsEmpty() ? nullptr : new CString(target);
+		if (!::PostMessageW(hwnd, WM_APP_SEARCHINDIR, bForward ? 1 : 0, reinterpret_cast<LPARAM>(pTarget))) {
+			delete pTarget;
+		}
+	}).detach();
+}
+
+// UI-thread completion of the background Next/Previous File lookup.
+LRESULT CMainFrame::OnSearchInDirDone(WPARAM wParam, LPARAM lParam)
+{
+	const bool bForward = (wParam != 0);
+	std::unique_ptr<CString> pTarget(reinterpret_cast<CString*>(lParam));
+
+	if (pTarget && !pTarget->IsEmpty()) {
+		m_wndPlaylistBar.Open(*pTarget);
+		OpenCurPlaylistItem();
+	} else {
+		m_OSD.DisplayMessage(OSD_TOPLEFT, ResStr(bForward ? IDS_LAST_IN_FOLDER : IDS_FIRST_IN_FOLDER));
+	}
+
+	return 0;
 }
 
 void CMainFrame::DoTunerScan(TunerScanData* pTSD)

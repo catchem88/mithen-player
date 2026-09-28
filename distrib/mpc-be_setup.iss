@@ -77,7 +77,7 @@
 AppId={{903D098F-DD50-4342-AD23-DA868FCA3126}
 DefaultGroupName={#app_name}
 OutputBaseFilename={#app_name}-setup
-UninstallDisplayName={#app_name} {#app_version}
+UninstallDisplayName={#app_name}
 AppName={#app_name}
 AppVerName={#app_name} {#app_version}
 VersionInfoDescription={#app_name} Setup
@@ -86,7 +86,7 @@ VersionInfoProductName={#app_name}
 AppId={{FE09AF6D-78B2-4093-B012-FCDAF78693CE}
 DefaultGroupName={#app_name}
 OutputBaseFilename={#app_name}-setup
-UninstallDisplayName={#app_name} {#app_version}
+UninstallDisplayName={#app_name}
 ArchitecturesAllowed=x64 arm64
 ArchitecturesInstallIn64BitMode=x64 arm64
 AppName={#app_name} x64

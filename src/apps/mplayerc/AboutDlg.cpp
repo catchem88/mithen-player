@@ -95,7 +95,7 @@ BOOL CAboutDlg::OnInitDialog()
 	}
 
 	// display the MithenPlayer logo
-	m_hLogoIcon = (HICON)LoadImageW(AfxGetInstanceHandle(), MAKEINTRESOURCEW(IDI_MITHEN_LOGO), IMAGE_ICON, 64, 64, 0);
+	m_hLogoIcon = (HICON)LoadImageW(AfxGetInstanceHandle(), MAKEINTRESOURCEW(IDI_MITHEN_LOGO), IMAGE_ICON, 96, 96, 0);
 	if (m_hLogoIcon) {
 		if (CStatic* pLogo = static_cast<CStatic*>(GetDlgItem(IDC_MITHEN_LOGO))) {
 			pLogo->SetIcon(m_hLogoIcon);

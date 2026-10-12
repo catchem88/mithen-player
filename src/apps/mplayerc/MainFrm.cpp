@@ -3027,8 +3027,6 @@ void CMainFrame::OnTimer(UINT_PTR nIDEvent)
 		break;
 		case TIMER_DM_AUTOCHANGING: {
 			KillTimer(TIMER_DM_AUTOCHANGING);
-
-			ASSERT(GetMediaState() != State_Stopped);
 			OnPlayPlay();
 		}
 		break;

@@ -811,9 +811,8 @@ void CPlayerSeekBar::SetColor()
 		if (m_pMainFrame->m_BackGroundGradient.Size()) {
 			ThemeRGB(s.nThemeRed, s.nThemeGreen, s.nThemeBlue, m_crBackground.R, m_crBackground.G, m_crBackground.B);
 		} else {
-			ThemeRGB(0, 5, 10, R, G, B);
+			ThemeRGB(32, 36, 40, R, G, B);
 			tvBackground[0] = { 0, 0, COLOR16(R * 256), COLOR16(G * 256), COLOR16(B * 256), 255 * 256 };
-			ThemeRGB(15, 20, 25, R, G, B);
 			tvBackground[1] = { 0, 0, COLOR16(R * 256), COLOR16(G * 256), COLOR16(B * 256), 255 * 256 };
 		}
 
@@ -829,19 +828,16 @@ void CPlayerSeekBar::SetColor()
 		m_penRepeatAB.DeleteObject();
 		m_penRepeatAB.CreatePen(PS_SOLID, 0, ThemeRGB(242, 13, 13));
 
-		ThemeRGB(45, 55, 60, R, G, B);
+		ThemeRGB(60, 65, 70, R, G, B);
 		tvBufferingProgress[0] = { 0, 0, COLOR16(R * 256), COLOR16(G * 256), COLOR16(B * 256), 255 * 256 };
-		ThemeRGB(65, 70, 75, R, G, B);
 		tvBufferingProgress[1] = { 0, 0, COLOR16(R * 256), COLOR16(G * 256), COLOR16(B * 256), 255 * 256 };
 
-		ThemeRGB(0, 5, 10, R, G, B);
+		ThemeRGB(58, 63, 68, R, G, B);
 		tvBackgroundEnabledLeft[0] = { 0, 0, COLOR16(R * 256), COLOR16(G * 256), COLOR16(B * 256), 255 * 256 };
-		ThemeRGB(105, 110, 115, R, G, B);
 		tvBackgroundEnabledLeft[1] = { 0, 0, COLOR16(R * 256), COLOR16(G * 256), COLOR16(B * 256), 255 * 256 };
 
-		ThemeRGB(0, 5, 10, R, G, B);
+		ThemeRGB(150, 155, 160, R, G, B);
 		tvBackgroundEnabledRight[0] = { 0, 0, COLOR16(R * 256), COLOR16(G * 256), COLOR16(B * 256), 255 * 256 };
-		ThemeRGB(205, 210, 215, R, G, B);
 		tvBackgroundEnabledRight[1] = { 0, 0, COLOR16(R * 256), COLOR16(G * 256), COLOR16(B * 256), 255 * 256 };
 
 		m_crText = ThemeRGB(135, 140, 145);

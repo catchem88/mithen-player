@@ -363,15 +363,7 @@ void CPlayerStatusBar::OnPaint()
 			ThemeRGB(s.nThemeRed, s.nThemeGreen, s.nThemeBlue, R, G, B);
 			m_pMainFrame->m_BackGroundGradient.Paint(&dc, r, 55, s.nThemeBrightness, R, G, B);
 		} else {
-			int R2, G2, B2;
-			ThemeRGB(30, 35, 40, R, G, B);
-			ThemeRGB(0, 5, 10, R2, G2, B2);
-			GRADIENT_RECT gr = {0, 1};
-			TRIVERTEX tv[2] = {
-				{r.left, r.top, R * 256, G * 256, B * 256, 255 * 256},
-				{r.right, r.bottom, R2 * 256, G2 * 256, B2 * 256, 255 * 256},
-			};
-			memdc.GradientFill(tv, 2, &gr, 1, GRADIENT_FILL_RECT_V);
+			memdc.FillSolidRect(&r, ThemeRGB(32, 36, 40));
 		}
 
 		memdc.SetBkMode(TRANSPARENT);

@@ -120,7 +120,7 @@ void CVolumeCtrl::OnNMCustomdraw(NMHDR* pNMHDR, LRESULT* pResult)
 	LRESULT lr = CDRF_DODEFAULT;
 	const auto& s = AfxGetAppSettings();
 
-	int R, G, B, R2, G2, B2;
+	int R, G, B;
 
 	GRADIENT_RECT gr = {0, 1};
 
@@ -146,13 +146,7 @@ void CVolumeCtrl::OnNMCustomdraw(NMHDR* pNMHDR, LRESULT* pResult)
 						ThemeRGB(s.nThemeRed, s.nThemeGreen, s.nThemeBlue, R, G, B);
 						m_BackGroundGradient.Paint(&dc, r, 22, s.nThemeBrightness, R, G, B);
 					} else {
-						ThemeRGB(50, 55, 60, R, G, B);
-						ThemeRGB(20, 25, 30, R2, G2, B2);
-						TRIVERTEX tv[2] = {
-							{ r.left, r.top, R * 256, G * 256, B * 256, 255 * 256 },
-							{ r.Width(), r.Height(), R2 * 256, G2 * 256, B2 * 256, 255 * 256 },
-						};
-						dc.GradientFill(tv, 2, &gr, 1, GRADIENT_FILL_RECT_V);
+						dc.FillSolidRect(&r, ThemeRGB(32, 36, 40));
 					}
 
 					CDC memdc;

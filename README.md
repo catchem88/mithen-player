@@ -33,6 +33,8 @@ MithenPlayer is a lightweight media player for Windows, focused on local playbac
 * No update checking (use it as a tool, update it when you find issues only)
 * Uninstalls cleanly, no leftovers
 * Prioritizing user-ergonomics
+## Support and Sponsor the OG creator!
+[MPC-BE](https://github.com/Aleksoid1978/MPC-BE)
 ## Credits
 * [Gabest](https://github.com/guliverkli) - original author of Media Player Classic.
 * [casimir666](https://github.com/mpc-hc/mpc-hc) - author of Media Player Classic - Home Cinema (MPC-HC).
